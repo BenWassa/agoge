@@ -520,7 +520,7 @@ body {
     font-size: clamp(1rem, 2vw, 1.5rem);
     font-weight: 500;
     color: var(--gold);
-    opacity: 0.95;
+    opacity: 1.1;
     margin: 0;
     font-family: 'playfair display', serif;
     font-variant: small-caps;
