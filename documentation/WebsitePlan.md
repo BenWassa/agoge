@@ -1,133 +1,82 @@
-# **Website Plan**
+# 🌐 **Upgraded Website Plan — Project Agoge**
 
 ## 1. **Overall Vision**
 
-A modern, professional portfolio site that leads with your **manifesto** and draws visitors into a **narrative journey**: from mythic past → cross-cultural rites → symbolic insights → today’s challenges → your podcast episodes as the chronological path forward.
-It must feel **credible and sleek** (to impress professionals), while also **evocative and mythic** (to capture the spiritual weight of rites).
+A portfolio site that feels like a **journey and an artifact**: professional, credible, and sleek enough for young professionals, but mythic and evocative in its imagery and storytelling. Visitors should immediately feel they’ve stepped into a **threshold space** — a site that *itself* embodies the idea of initiation.
 
 ---
 
-## 2. **Site Structure & Navigation**
+## 2. **Hero Section (Landing Index)**
 
-**Navigation Bar (fixed top, minimalist):**
+The centerpiece of the site. Minimal, polished, and visually striking.
 
-* **Home** (Vision / Manifesto)
-* **Episodes** (Chronological journey through podcast + docs)
-* **Insights** (Key pillars, models, diagrams, symbolism glossary)
-* **Library** (Research briefs & references)
-* **About** (Author statement, contact info)
+* **Rotating Archetypal Faces:** Slow crossfade between close-up portraits (Maasai, Spartan, Viking, Samurai, Yanomami, Persian). Each face neutral, solemn, filling the frame.
+* **Overlay:**
 
----
-
-## 3. **Page-by-Page Content Plan**
-
-### **Home (Landing Page)**
-
-* **Hero Section:**
-
-  * Dark background (deep green/black gradient with gold accents).
-  * Title: *Project Agoge* (strong serif font, gold).
-  * Subtitle tagline: *“Forging boys into grounded, resilient men through the timeless power of initiation.”*
-  * Call-to-action: “Enter the Journey” (scrolls to manifesto).
-
-* **Manifesto Block:**
-
-  * White/neutral text on dark background, max 4–5 short paragraphs.
-  * Purpose: Reclaiming rites of passage for today.
-  * Pull-quote in gold serif font (e.g., “In the Agoge, we discover not just strength of body, but strength of character”).
-
-* **Episode Journey Teaser:**
-
-  * Horizontal timeline graphic with milestones: *Thresholds* → *Wisdom of the Elders* → *Sacred Symbols* → *Virtue Forged in Fire*.
-  * Each clickable → links to full Episodes page.
+  * Title: *Project Agoge* (large serif, muted gold).
+  * Tagline: *“Forging boys into grounded, resilient men.”*
+  * CTA: *“Enter the Journey”* — scrolls to manifesto.
+* **Mood:** Sacred, cinematic, modern. The site begins not with explanation, but with presence.
 
 ---
 
-### **Episodes Page** *(chronological path)*
+## 3. **Narrative Flow & Pages**
 
-* Layout: Vertical scrolling journey, each episode a “chapter card.”
-* Each card includes:
+### **Home**
 
-  * Episode title + short subtitle.
-  * Embedded podcast player (Spotify/Anchor).
-  * One-sentence hook (why this rite matters).
-  * Link to supporting research brief (PDF/Markdown).
-  * Space for symbolic artwork / cultural imagery (placeholder if not yet sourced).
-* Interactivity placeholder: Expand/collapse episode notes or “Key Takeaways” popups.
+* **Manifesto Block:** Four concise paragraphs introducing the problem (loss of rites), the vision (Agoge as recovery), and the journey (episodes + research).
+* **Pull-Quote Highlight:** *“In the Agoge, we discover not just strength of body, but strength of character.”*
+* **Episode Journey Teaser:** Horizontal timeline graphic → clickable nodes for Episodes 1–4.
 
----
+### **Episodes**
 
-### **Insights Page** *(Key Models & Takeaways)*
+* Vertical scroll, each episode as a “chapter card.”
+* Card design: title, subtitle, one-sentence hook, embedded podcast, link to research brief, optional symbolic artwork.
+* Interactivity: expandable notes or “key takeaways” for each episode.
+* Flow feels like reading chapters in a book.
 
-* **Section 1: Core Pillars**
+### **Insights**
 
-  * Four illustrated blocks: Confidence–Competence, Resilience, Moral Strength, Community Self-Worth.
+* **Core Pillars Grid:** Confidence–Competence, Resilience, Moral Strength, Community Self-Worth (each with icon + 2 sentences).
+* **Van Gennep’s Model:** Timeline diagram (Separation → Liminality → Reintegration).
+* **Symbols & Archetypes Glossary:** Icons with hover text (Fire, Death/Rebirth, Ordeal, Mentor, Recognition).
 
-* **Section 2: Van Gennep’s Model**
+### **Library**
 
-  * Interactive diagram placeholder: *Separation → Liminality → Reintegration*.
+* A clean research repository: each brief listed with abstract + download link.
+* Grouped by episode for intuitive navigation.
+* Tone: scholarly but still approachable.
 
-* **Section 3: Symbols & Archetypes**
+### **About**
 
-  * Glossary grid: Fire, Death/Rebirth, Ordeal, Mentor, Recognition.
-  * Small icons + short 1–2 sentence explanations.
-
----
-
-### **Library Page** *(Research Repository)*
-
-* Simple list/grid of research briefs:
-
-  * Title + short abstract + download link.
-  * Grouped by episode for easy navigation.
-
----
-
-### **About Page**
-
-* Author statement (short, direct, first person).
-* Why you built Project Agoge.
+* First-person note on why you built Project Agoge.
+* Professional but personal.
 * Contact links: GitHub, Notion, Email.
-* Optional headshot or symbolic logo (could be an AI gen placeholder like a Spartan shield or fire symbol).
+* Optional symbolic logo (shield, fire, ouroboros).
 
 ---
 
 ## 4. **Look & Feel**
 
-* **Color Palette:**
-
-  * Base: Dark charcoal/black.
-  * Accents: Muted gold (#C9A43B), earth green (#395E3C), bone white (#F4F1EC).
-  * Hover states / CTA highlights in brighter gold.
-
-* **Typography:**
-
-  * Titles / Headings: Strong serif (e.g., *Merriweather*, *Playfair Display*).
-  * Body / Content: Clean sans-serif (e.g., *Inter*, *Poppins*, *Roboto*).
-
-* **Layout Style:**
-
-  * Grid-based, spacious, professional.
-  * Subtle parallax or fade-in animations for episode cards and insights.
-  * High readability (plenty of whitespace).
+* **Hero Section:** Bold, cinematic, faces on dark backgrounds. Minimal text overlay.
+* **Color Palette:** Dark charcoal base, muted gold accents, earth greens, bone white text.
+* **Typography:** Serif for titles/headings (*Playfair Display*), clean sans-serif (*Inter* or *Poppins*) for content.
+* **Layout:** Spacious, grid-based, high readability. Use whitespace to balance the heaviness of the imagery.
+* **Motion:** Subtle fades, slow parallax, hover highlights. No clutter, no fast animations.
 
 ---
 
-## 5. **Interactivity Placeholders**
+## 5. **Interactivity & Engagement**
 
-* Episode cards expand/collapse for notes.
-* Insights diagrams interactive (hover reveals explanations).
-* Timeline navigation clickable.
-* “Glossary” terms reveal definitions on hover.
-
-*(First version: static scaffolds, later swapped for simple JS animations.)*
+* Timeline navigation is clickable (Episodes + Insights).
+* Glossary and diagrams reveal more detail on hover.
+* Faces rotate slowly at landing, setting tone.
+* Expansion notes for Episodes keep the flow compact but deep when opened.
 
 ---
 
-## 6. **Technical Approach**
+## 6. **Future Scalability**
 
-* **Static HTML/CSS** for baseline (Claude builds clean).
-* **Responsive design** (must look good on mobile, since Gen Z target).
-* **Embed Spotify/Anchor players** for episodes.
-* **Host on GitHub Pages** for free, portfolio-ready deployment.
-* Keep all supporting docs downloadable via GitHub repo links.
+* Each episode release adds a new “chapter card” to Episodes + Library.
+* More cultural faces can be added to the landing rotation over time.
+* Toolkit resources (parents, educators) could eventually live in Insights or a new **Practice** page.
