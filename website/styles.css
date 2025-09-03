@@ -472,25 +472,27 @@ body {
 
 .pull-quote::before {
     content: '“';
-    font-size: 5rem;
+    font-size: 4.5rem;
     position: absolute;
-    top: -20px;
-    left: 15px;
+    top: -5px;
+    left: 20px;
     color: var(--gold);
-    opacity: 0.3;
-    font-family: serif;
+    opacity: 0.4;
+    font-family: 'Playfair Display', serif;
     line-height: 1;
+    font-weight: 400;
 }
 .pull-quote::after {
     content: '”';
-    font-size: 5rem;
+    font-size: 4.5rem;
     position: absolute;
-    bottom: -30px;
-    right: 15px;
+    bottom: -15px;
+    right: 20px;
     color: var(--gold);
-    opacity: 0.3;
-    font-family: serif;
+    opacity: 0.4;
+    font-family: 'Playfair Display', serif;
     line-height: 1;
+    font-weight: 400;
 }
 
 /* Journey Timeline Section */
