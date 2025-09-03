@@ -67,6 +67,18 @@ body {
     transform: translateY(0);
 }
 
+/* Special transformation statement animation */
+.transformation-statement.fade-in {
+    opacity: 0;
+    transform: translateY(50px) scale(0.95);
+    transition: all 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.transformation-statement.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
 /* Hero Section */
 .hero-section {
     height: 100vh;
@@ -493,6 +505,26 @@ body {
     font-family: 'Playfair Display', serif;
     line-height: 1;
     font-weight: 400;
+}
+
+/* Transformation Statement */
+.transformation-statement {
+    text-align: center;
+    margin-top: 4rem;
+    margin-bottom: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.transformation-statement p {
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    font-weight: 500;
+    color: var(--gold);
+    opacity: 0.95;
+    margin: 0;
+    font-family: 'playfair display', serif;
+    font-variant: small-caps;
+    letter-spacing: 0.025em;
 }
 
 /* Journey Timeline Section */
