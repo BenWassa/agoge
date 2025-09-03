@@ -1,20 +1,47 @@
-// Enhanced face rotation functionality
-let currentFace = 0;
+// Enhanced face rotation functionality with randomization
+let currentFaceIndex = 0;
+let faceOrder = []; // Will hold randomized order of faces
 const faces = document.querySelectorAll('.face');
 const totalFaces = faces.length;
 let faceRotationInterval;
 
+// Function to shuffle array using Fisher-Yates algorithm
+function shuffleArray(array) {
+    const shuffled = [...array];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled;
+}
+
+// Initialize random face order
+function initializeRandomFaceOrder() {
+    // Create array of face indices [0, 1, 2, 3, 4, 5]
+    const faceIndices = Array.from({length: totalFaces}, (_, i) => i);
+    
+    // Shuffle the order
+    faceOrder = shuffleArray(faceIndices);
+    
+    // Start with a random position in the shuffled array
+    currentFaceIndex = Math.floor(Math.random() * totalFaces);
+    
+    // Set the initial active face
+    faces.forEach(face => face.classList.remove('active'));
+    faces[faceOrder[currentFaceIndex]].classList.add('active');
+}
+
 function rotateFaces() {
-    if (totalFaces === 0) return;
+    if (totalFaces === 0 || faceOrder.length === 0) return;
     
     // Remove active class from current face
-    faces[currentFace].classList.remove('active');
+    faces[faceOrder[currentFaceIndex]].classList.remove('active');
     
-    // Move to the next face, loop back if at the end
-    currentFace = (currentFace + 1) % totalFaces;
+    // Move to the next face in the randomized order
+    currentFaceIndex = (currentFaceIndex + 1) % totalFaces;
     
     // Add active class to the new current face
-    faces[currentFace].classList.add('active');
+    faces[faceOrder[currentFaceIndex]].classList.add('active');
 }
 
 function startFaceRotation() {
@@ -30,6 +57,9 @@ function pauseFaceRotation() {
 
 // Initialize face rotation when page loads
 document.addEventListener('DOMContentLoaded', function() {
+    // Initialize random face order first
+    initializeRandomFaceOrder();
+    
     // Preload images for smooth transitions
     // Paths are relative to the index.html file
     const imageUrls = [
