@@ -1,10 +1,10 @@
 /* Root Variables */
 :root {
-    --gold: #c9a96e;
+    --gold: #c9a96e; /* Muted gold */
     --bone-white: #f7f5f3;
-    --deep-black: #0a0a0a;
-    --charcoal: #1a1a1a;
-    --dark-grey: #2a2a2a;
+    --deep-black: #080808; /* Richer black */
+    --charcoal: #1f1f1f; /* Darker charcoal */
+    --dark-grey: #333333;
     --earth-green: #4a5a3a;
 }
 
@@ -28,6 +28,9 @@ body {
 
 .section-container {
     padding: 8rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
 }
 
 .section-title {
@@ -36,17 +39,30 @@ body {
     font-weight: 700;
     color: var(--gold);
     text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: 4rem; /* Increased margin */
+    letter-spacing: -0.03em;
+    line-height: 1.1;
 }
 
-.section-subtitle {
-    font-size: 1.2rem;
+.subsection-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    color: var(--gold);
+    margin-top: 5rem;
+    margin-bottom: 2.5rem;
     text-align: center;
-    margin-bottom: 4rem;
-    color: rgba(247, 245, 243, 0.8);
-    max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
+}
+
+/* Fade-in Animation */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* Hero Section */
@@ -65,6 +81,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
+    /* Complex gradient background for depth and mood */
     background: 
         radial-gradient(ellipse at center top, 
             rgba(26, 26, 26, 0.9) 0%, 
@@ -88,6 +105,7 @@ body {
     z-index: 1;
 }
 
+/* Additional background elements for atmospheric effect */
 .hero-background::before {
     content: '';
     position: absolute;
@@ -136,9 +154,10 @@ body {
     width: 100%;
     height: 100%;
     z-index: 3;
-    pointer-events: none;
+    pointer-events: none; /* Allows click-through to elements beneath if any */
 }
 
+/* Subtle light sweep animation over faces for dynamic feel */
 .archetypal-faces::before {
     content: '';
     position: absolute;
@@ -171,14 +190,16 @@ body {
     width: 100%;
     height: 100%;
     opacity: 0;
-    background-size: contain;
-    background-position: center top;
+    background-size: contain; /* Ensure portrait fits */
+    background-position: center top; /* Center horizontally, align to top */
     background-repeat: no-repeat;
-    transition: opacity 2.5s ease-in-out;
-    filter: grayscale(15%) brightness(0.85) contrast(1.15) saturate(1.1) sepia(3%);
+    transition: opacity 2.5s ease-in-out; /* Smooth crossfade */
+    filter: grayscale(15%) brightness(0.85) contrast(1.15) saturate(1.1) sepia(3%); /* Cinematic effect */
     transform: scale(1.0);
-    animation: subtle-parallax 25s infinite alternate ease-in-out;
+    animation: subtle-parallax 25s infinite alternate ease-in-out; /* Subtle parallax effect */
     z-index: 4;
+
+    /* Masking to blend faces into the background, creating a threshold feel */
     mask: 
         linear-gradient(to right, 
             transparent 0%, 
@@ -198,8 +219,8 @@ body {
             black 18%,
             black 94%,
             rgba(0,0,0,0.2) 100%);
-    mask-composite: intersect;
-    -webkit-mask: 
+    mask-composite: intersect; /* Combine multiple masks */
+    -webkit-mask: /* For Webkit browsers */
         linear-gradient(to right, 
             transparent 0%, 
             rgba(0,0,0,0.1) 8%, 
@@ -221,6 +242,7 @@ body {
     -webkit-mask-composite: source-in;
 }
 
+/* Inner overlay for subtle face effects */
 .face::after {
     content: '';
     position: absolute;
@@ -258,6 +280,7 @@ body {
     z-index: 1;
 }
 
+/* Blurred shadow effect for depth */
 .face::before {
     content: '';
     position: absolute;
@@ -265,11 +288,11 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: inherit;
+    background: inherit; /* Inherit background from parent .face */
     background-size: inherit;
     background-position: inherit;
     background-repeat: inherit;
-    filter: blur(12px) brightness(0.3);
+    filter: blur(12px) brightness(0.3); /* Blurred and darkened */
     mask: 
         linear-gradient(to right, 
             black 0%, 
@@ -290,7 +313,7 @@ body {
             rgba(0,0,0,0.6) 65%, 
             black 75%, 
             black 100%);
-    z-index: -1;
+    z-index: -1; /* Behind the main face image */
 }
 
 .face.active {
@@ -299,25 +322,25 @@ body {
 
 @keyframes subtle-parallax {
     0% { transform: scale(1.0) translateY(0px); }
-    100% { transform: scale(1.03) translateY(-8px); }
+    100% { transform: scale(1.03) translateY(-8px); } /* Slight movement */
 }
 
-/* Image paths for archetypal faces */
+/* Image paths for archetypal faces (relative to styles.css) */
 .face-1 { background-image: url('../assets/faces/Maasai_man.png'); }
 .face-2 { background-image: url('../assets/faces/Spartan_man.png'); }
-.face-3 { background-image: url('../assets/faces/Norse_man.png'); }
-.face-4 { background-image: url('../assets/faces/Japan_man.png'); }
+.face-3 { background-image: url('../assets/faces/Norse_man.png'); } /* Viking */
+.face-4 { background-image: url('../assets/faces/Japan_man.png'); } /* Samurai */
 .face-5 { background-image: url('../assets/faces/Yanomami_man.png'); }
 .face-6 { background-image: url('../assets/faces/Persian_man.png'); }
 
 .hero-overlay {
     position: absolute;
-    bottom: 2%;
+    bottom: 2%; /* Positioned at the bottom */
     left: 50%;
     transform: translateX(-50%);
-    z-index: 10;
+    z-index: 10; /* Above all background elements */
     text-align: center;
-    background: none;
+    background: none; /* No solid background for overlay */
     padding: 0;
     border-radius: 0;
     backdrop-filter: none;
@@ -332,26 +355,26 @@ body {
     font-size: clamp(3rem, 8vw, 6rem);
     font-weight: 700;
     color: var(--gold);
-    margin-bottom: 2rem;
+    margin-bottom: 0.8rem; /* Adjusted for tagline */
     text-shadow: 
         3px 3px 8px rgba(0, 0, 0, 0.9), 
         1px 1px 2px rgba(0, 0, 0, 0.8),
-        0 0 20px rgba(201, 169, 110, 0.3);
+        0 0 20px rgba(201, 169, 110, 0.3); /* Richer gold text shadow */
     letter-spacing: -0.02em;
     position: relative;
     line-height: 1.1;
 }
 
-.hero-title::before {
-    content: '';
-    position: absolute;
-    top: -10px;
-    left: -10px;
-    right: -10px;
-    bottom: -10px;
-    background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.3) 0%, transparent 70%);
-    z-index: -1;
-    border-radius: 8px;
+.hero-tagline {
+    font-size: clamp(1rem, 2.5vw, 1.3rem);
+    font-weight: 300;
+    margin-bottom: 2.5rem; /* Space before arrow */
+    font-style: italic;
+    color: var(--bone-white);
+    opacity: 0.9;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .hero-arrow {
@@ -365,8 +388,9 @@ body {
     transition: all 0.3s ease;
     background: none;
     border: none;
-    animation: bounce 2s infinite;
+    animation: bounce 2s infinite; /* Animated scroll arrow */
     position: relative;
+    cursor: pointer;
 }
 
 .hero-arrow::before {
@@ -389,8 +413,8 @@ body {
     transform: translateY(-3px);
 }
 
-.hero-arrow svg {
-    display: none;
+.hero-arrow svg { /* Hide default SVG icon if you are using ::before */
+    display: none; 
 }
 
 @keyframes bounce {
@@ -431,7 +455,7 @@ body {
     font-size: 1.8rem;
     font-style: italic;
     color: var(--gold);
-    margin: 4rem 0;
+    margin: 4rem auto; /* Center the quote */
     padding: 2.5rem 3rem;
     border-left: 5px solid var(--gold);
     background: rgba(201, 169, 110, 0.08);
@@ -439,12 +463,11 @@ body {
     line-height: 1.4;
     text-align: center;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    margin-left: auto;
-    margin-right: auto;
+    max-width: 700px; /* Constrain width */
 }
 
 .pull-quote::before {
-    content: '"';
+    content: '“';
     font-size: 5rem;
     position: absolute;
     top: -20px;
@@ -455,7 +478,7 @@ body {
     line-height: 1;
 }
 .pull-quote::after {
-    content: '"';
+    content: '”';
     font-size: 5rem;
     position: absolute;
     bottom: -30px;
@@ -927,7 +950,12 @@ body {
 
     .hero-title {
         font-size: clamp(2.5rem, 10vw, 4rem);
-        margin-bottom: 1.5rem;
+        margin-bottom: 1rem;
+    }
+    
+    .hero-tagline {
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
     }
 
     .hero-arrow {
