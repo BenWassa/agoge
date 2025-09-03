@@ -27,7 +27,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const imageUrls = [
         '../assets/faces/Maasai_man.png',
         '../assets/faces/Spartan_man.png', 
-        '../assets/faces/Norse_man.png',
         '../assets/faces/Japan_man.png',
         '../assets/faces/Yanomami_man.png',
         '../assets/faces/Persian_man.png'
