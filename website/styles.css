@@ -569,19 +569,38 @@ body {
 
 .episodes-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 3rem;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
     margin-top: 4rem;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media (max-width: 768px) {
+    .episodes-grid {
+        gap: 2.5rem;
+    }
+
+    .episode-card {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 2rem;
+    }
 }
 
 .episode-card {
     background: var(--charcoal);
     border-radius: 12px;
-    padding: 2.5rem;
+    padding: 2rem 2.5rem;
     text-align: left;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
     border: 1px solid rgba(201, 169, 110, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: start;
 }
 
 .episode-card:hover {
@@ -592,33 +611,50 @@ body {
 .episode-card h3 {
     font-family: 'Playfair Display', serif;
     color: var(--gold);
-    font-size: 1.8rem;
-    margin-bottom: 0.8rem;
+    font-size: 1.6rem;
+    margin-bottom: 0.6rem;
 }
 
 .episode-card h4 {
     font-family: 'Inter', sans-serif;
     color: var(--bone-white);
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 500;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
     opacity: 0.8;
 }
 
 .episode-card .hook {
-    font-size: 1rem;
+    font-size: 0.95rem;
     color: rgba(247, 245, 243, 0.8);
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.2rem;
+    line-height: 1.6;
+}
+
+.episode-card .key-takeaways {
+    font-size: 0.9rem;
+    color: rgba(201, 169, 110, 0.9);
+    margin-bottom: 1.2rem;
+    padding: 0.8rem;
+    background: rgba(201, 169, 110, 0.05);
+    border-radius: 6px;
+    border-left: 3px solid var(--gold);
+    line-height: 1.4;
+}
+
+.episode-card .key-takeaways strong {
+    color: var(--gold);
+    font-weight: 600;
 }
 
 .episode-card .podcast-embed {
     background: var(--dark-grey);
-    height: 80px;
+    height: 60px;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 8px;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
     color: rgba(247, 245, 243, 0.6);
     font-size: 0.9rem;
     border: 1px dashed rgba(247, 245, 243, 0.2);
@@ -629,8 +665,9 @@ body {
     color: var(--earth-green);
     text-decoration: none;
     font-weight: 500;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
     transition: color 0.3s ease;
+    font-size: 0.95rem;
 }
 
 .episode-card .research-link:hover {
@@ -638,45 +675,16 @@ body {
 }
 
 .episode-card .symbolic-artwork {
-    height: 100px;
+    height: 80px;
     background: var(--dark-grey);
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 8px;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
     color: rgba(247, 245, 243, 0.4);
     font-size: 0.9rem;
     border: 1px dashed rgba(247, 245, 243, 0.2);
-}
-
-.expansion-notes {
-    background: rgba(0, 0, 0, 0.2);
-    border-radius: 8px;
-    padding: 1rem;
-    color: rgba(247, 245, 243, 0.9);
-    margin-top: 1.5rem;
-    border: 1px solid rgba(247, 245, 243, 0.1);
-    text-align: left;
-}
-
-.expansion-notes summary {
-    font-weight: 600;
-    cursor: pointer;
-    color: var(--gold);
-    outline: none;
-    padding-bottom: 0.5rem;
-}
-
-.expansion-notes ul {
-    list-style-type: disc;
-    padding-left: 20px;
-    margin-top: 0.8rem;
-    font-size: 0.95rem;
-}
-
-.expansion-notes li {
-    margin-bottom: 0.5rem;
 }
 
 /* Insights Section */
@@ -712,9 +720,15 @@ body {
 
 .core-pillars-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 2.5rem;
     margin-top: 4rem;
+}
+
+@media (max-width: 768px) {
+    .core-pillars-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 .pillar-card {
@@ -1099,7 +1113,7 @@ body {
         height: 100px;
     }
 
-    .episodes-grid, .core-pillars-grid, .symbols-glossary-grid {
+    .symbols-glossary-grid {
         grid-template-columns: 1fr;
     }
 
