@@ -23,12 +23,8 @@ The repository is the single source of truth for every artifact: deep-research b
 ## 📚 Current Components
 
 - **Podcast Series**  
-  Narrative-driven episodes (20–45 min) exploring:
-  1. *Thresholds & Transformations* — psychological foundations  
-  2. *Wisdom of the Elders* — cross-cultural anthropological survey  
-  3. *Sacred Symbols & Myths* — mythic dimensions of initiation  
-  4. *Virtue Forged in Fire* — philosophical & ethical insights  
-  *(More planned in the roadmap.)*
+- **Podcast Series**  
+  Narrative-driven episodes (20–45 min). High-level themes include Thresholds & Transformations; Wisdom of the Elders; Sacred Symbols & Myths; and Virtue Forged in Fire. Full episode outlines, scripts, production notes, and the publishing plan are maintained in `documentation/PodcastPlan.md` — see that file for complete details.
 
 - **Research Briefs**  
   Concise, citation-rich documents powering each episode—produced with GPT/Gemini/Claude deep-research runs and version-controlled here.
