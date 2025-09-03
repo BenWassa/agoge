@@ -1,24 +1,1141 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Project Agoge</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Agoge - Forging Boys into Grounded, Resilient Men</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --charcoal: #2c2c2c;
+            --gold: #c9a96e;
+            --earth-green: #4a5a3a;
+            --bone-white: #f7f5f3;
+            --deep-black: #1a1a1a;
+            --dark-grey: #3a3a3a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--bone-white);
+            background: var(--deep-black);
+            overflow-x: hidden;
+            scroll-behavior: smooth; /* Smooth scrolling for the entire page [4, 6, 9, 12, 13] */
+        }
+
+        /* Reusable classes */
+        .section-container {
+            padding: 8rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            color: var(--gold);
+            margin-bottom: 4rem;
+            text-align: center;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+        }
+
+        .subsection-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            color: var(--gold);
+            margin-top: 5rem;
+            margin-bottom: 2.5rem;
+            text-align: center;
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--deep-black) 0%, var(--charcoal) 100%);
+            z-index: 1;
+        }
+
+        .archetypal-faces {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            pointer-events: none; /* Allow interaction with overlay [2, 3] */
+        }
+
+        .face {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            transition: opacity 2s ease-in-out;
+            filter: grayscale(30%) brightness(0.7) contrast(1.3) sepia(10%);
+            transform: scale(1.02);
+            animation: subtle-parallax 20s infinite alternate ease-in-out;
+        }
+
+        .face.active {
+            opacity: 1;
+        }
+
+        @keyframes subtle-parallax {
+            0% { transform: scale(1.02) translateY(0px); }
+            100% { transform: scale(1.05) translateY(-10px); }
+        }
+
+        /* Image paths for archetypal faces */
+        .face-1 { background-image: url('assets/faces/Maasai_man.png'); }
+        .face-2 { background-image: url('assets/faces/Spartan_man.png'); }
+        .face-3 { background-image: url('assets/faces/Norse_man.png'); }
+        .face-4 { background-image: url('assets/faces/Japan_man.png'); }
+        .face-5 { background-image: url('assets/faces/Yanomami_man.png'); }
+        .face-6 { background-image: url('assets/faces/Persian_man.png'); }
+
+        @keyframes subtle-parallax {
+            0% { transform: scale(1.02) translateY(0px); }
+            100% { transform: scale(1.05) translateY(-10px); }
+        }
+
+        .hero-overlay {
+            position: relative;
+            z-index: 3;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.6); /* Increased opacity for readability [1, 5] */
+            padding: 3.5rem 2.5rem;
+            border-radius: 12px;
+            backdrop-filter: blur(8px); /* Slightly less blur [5] */
+            max-width: 800px;
+            margin: 0 2rem;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
+            letter-spacing: -0.02em;
+        }
+
+        .hero-tagline {
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            font-weight: 300;
+            margin-bottom: 2.5rem;
+            font-style: italic;
+            color: var(--bone-white);
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-cta {
+            display: inline-block;
+            padding: 1.1rem 2.8rem;
+            background: linear-gradient(45deg, var(--gold), #d4af75);
+            color: var(--deep-black);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.15rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(201, 169, 110, 0.3);
+            letter-spacing: 0.05em;
+        }
+
+        .hero-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(201, 169, 110, 0.45);
+            background: linear-gradient(45deg, #d4af75, var(--gold));
+        }
+
+        /* Manifesto Section */
+        .manifesto-section {
+            background: var(--charcoal);
+            border-top: 1px solid rgba(247, 245, 243, 0.1);
+            border-bottom: 1px solid rgba(247, 245, 243, 0.1);
+        }
+
+        .manifesto-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .manifesto-text {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            color: rgba(247, 245, 243, 0.9);
+            text-align: left;
+        }
+
+        .pull-quote {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-style: italic;
+            color: var(--gold);
+            margin: 4rem 0;
+            padding: 2.5rem 3rem;
+            border-left: 5px solid var(--gold);
+            background: rgba(201, 169, 110, 0.08);
+            position: relative;
+            line-height: 1.4;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .pull-quote::before {
+            content: '“';
+            font-size: 5rem;
+            position: absolute;
+            top: -20px;
+            left: 15px;
+            color: var(--gold);
+            opacity: 0.3;
+            font-family: serif;
+            line-height: 1;
+        }
+        .pull-quote::after {
+            content: '”';
+            font-size: 5rem;
+            position: absolute;
+            bottom: -30px;
+            right: 15px;
+            color: var(--gold);
+            opacity: 0.3;
+            font-family: serif;
+            line-height: 1;
+        }
+
+        /* Journey Timeline Section */
+        .journey-section {
+            background: var(--deep-black);
+            padding-bottom: 8rem;
+        }
+
+        .timeline-container {
+            margin-top: 4rem;
+            position: relative;
+        }
+
+        .timeline {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            padding: 0 1rem;
+        }
+
+        .timeline-line {
+            position: absolute;
+            top: 50%;
+            left: 5%;
+            right: 5%;
+            height: 2px;
+            background: var(--gold);
+            z-index: 1;
+        }
+
+        .timeline-node {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: var(--gold);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            color: var(--deep-black);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 4px 15px rgba(201, 169, 110, 0.3);
+            text-decoration: none; /* For anchor tags */
+        }
+
+        .timeline-node:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(201, 169, 110, 0.5);
+            background: #d4af75;
+        }
+
+        .timeline-node span {
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .timeline-label {
+            font-size: 0.9rem;
+            color: var(--deep-black);
+            white-space: nowrap;
+        }
+
+        /* Episodes Section */
+        .episodes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .episode-card {
+            background: var(--charcoal);
+            border-radius: 12px;
+            padding: 2.5rem;
+            text-align: left;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(201, 169, 110, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .episode-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .episode-card h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--gold);
+            font-size: 1.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .episode-card h4 {
+            font-family: 'Inter', sans-serif;
+            color: var(--bone-white);
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            opacity: 0.8;
+        }
+
+        .episode-card .hook {
+            font-size: 1rem;
+            color: rgba(247, 245, 243, 0.8);
+            margin-bottom: 1.5rem;
+        }
+
+        .episode-card .podcast-embed {
+            background: var(--dark-grey);
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            color: rgba(247, 245, 243, 0.6);
+            font-size: 0.9rem;
+            border: 1px dashed rgba(247, 245, 243, 0.2);
+        }
+
+        .episode-card .research-link {
+            display: block;
+            color: var(--earth-green); /* Using earth green */
+            text-decoration: none;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .episode-card .research-link:hover {
+            color: var(--gold);
+        }
+
+        .episode-card .symbolic-artwork {
+            height: 100px;
+            background: var(--dark-grey);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            color: rgba(247, 245, 243, 0.4);
+            font-size: 0.9rem;
+            border: 1px dashed rgba(247, 245, 243, 0.2);
+        }
+
+        .expansion-notes {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            padding: 1rem;
+            color: rgba(247, 245, 243, 0.9);
+            margin-top: 1.5rem;
+            border: 1px solid rgba(247, 245, 243, 0.1);
+            text-align: left;
+        }
+
+        .expansion-notes summary {
+            font-weight: 600;
+            cursor: pointer;
+            color: var(--gold);
+            outline: none;
+            padding-bottom: 0.5rem;
+        }
+
+        .expansion-notes ul {
+            list-style-type: disc;
+            padding-left: 20px;
+            margin-top: 0.8rem;
+            font-size: 0.95rem;
+        }
+
+        .expansion-notes li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Insights Section */
+        .insights-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .core-pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+
+        .pillar-card {
+            background: var(--charcoal);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(201, 169, 110, 0.08);
+            text-align: center;
+        }
+
+        .pillar-icon {
+            font-size: 3rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+            display: block;
+            line-height: 1;
+        }
+
+        .pillar-card h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--gold);
+            font-size: 1.5rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .pillar-card p {
+            font-size: 0.95rem;
+            color: rgba(247, 245, 243, 0.85);
+            line-height: 1.7;
+        }
+
+        .van-gennep-diagram {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5rem;
+            margin-top: 3.5rem;
+            flex-wrap: wrap;
+        }
+
+        .van-gennep-diagram .stage {
+            background: var(--earth-green); /* Using earth green */
+            color: var(--bone-white);
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            font-weight: 500;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            white-space: nowrap;
+        }
+
+        .van-gennep-diagram .arrow {
+            font-size: 1.8rem;
+            color: var(--gold);
+        }
+
+        .symbols-glossary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3.5rem;
+        }
+
+        .symbol-item {
+            background: var(--dark-grey);
+            border-radius: 10px;
+            padding: 1.5rem 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            cursor: help;
+            transition: background 0.3s ease;
+            border: 1px solid rgba(247, 245, 243, 0.05);
+        }
+
+        .symbol-item:hover {
+            background: var(--charcoal);
+        }
+
+        .symbol-item .symbol-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            line-height: 1;
+        }
+
+        .symbol-item span {
+            font-size: 0.9rem;
+            color: var(--bone-white);
+        }
+
+        /* Tooltip for glossary */
+        .symbol-item::before {
+            content: attr(data-hover-text);
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-10px);
+            background: var(--gold);
+            color: var(--deep-black);
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            white-space: nowrap;
+            font-size: 0.85rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .symbol-item:hover::before {
+            opacity: 1;
+            transform: translateX(-50%) translateY(-20px);
+        }
+
+        /* Library Section */
+        .library-list {
+            margin-top: 4rem;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: left;
+        }
+
+        .research-item {
+            background: var(--charcoal);
+            border-radius: 12px;
+            padding: 2.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(201, 169, 110, 0.1);
+            transition: transform 0.2s ease;
+        }
+        .research-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .research-item h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--gold);
+            font-size: 1.6rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .research-item p {
+            font-size: 1rem;
+            color: rgba(247, 245, 243, 0.8);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .research-item .download-link {
+            display: inline-block;
+            background: var(--earth-green); /* Using earth green */
+            color: var(--bone-white);
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background 0.3s ease;
+        }
+
+        .research-item .download-link:hover {
+            background: #5b6f4a;
+        }
+
+        /* About Section */
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .about-text p {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            color: rgba(247, 245, 243, 0.9);
+        }
+
+        .contact-links {
+            margin-top: 3rem;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--gold);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            padding: 0.8rem 1.5rem;
+            border: 1px solid var(--gold);
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        .social-link:hover {
+            background: var(--gold);
+            color: var(--deep-black);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(201, 169, 110, 0.2);
+        }
+
+        .about-logo {
+            margin-top: 4rem;
+            height: 150px;
+            background: var(--dark-grey);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(247, 245, 243, 0.4);
+            font-size: 1rem;
+            border: 1px dashed rgba(247, 245, 243, 0.2);
+        }
+
+        /* Footer */
+        .footer {
+            padding: 3rem 2rem;
+            text-align: center;
+            border-top: 1px solid var(--charcoal);
+            background: var(--deep-black);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-link {
+            color: var(--gold);
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer-link:hover {
+            opacity: 0.7;
+        }
+
+        .copyright {
+            color: rgba(247, 245, 243, 0.6);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .hero-overlay {
+                padding: 2.5rem 1.5rem;
+            }
+
+            .hero-title {
+                font-size: 4rem;
+            }
+
+            .hero-tagline {
+                font-size: 1.3rem;
+            }
+
+            .section-container {
+                padding: 6rem 1.5rem;
+            }
+
+            .section-title {
+                font-size: 3rem;
+            }
+
+            .manifesto-text {
+                font-size: 1rem;
+            }
+
+            .pull-quote {
+                font-size: 1.5rem;
+                padding: 2rem;
+            }
+
+            .timeline {
+                flex-direction: column;
+                gap: 3.5rem;
+                padding: 0;
+            }
+
+            .timeline-line {
+                top: 0;
+                bottom: 0;
+                left: 50%;
+                width: 2px;
+                height: auto;
+                right: auto;
+                transform: translateX(-50%);
+            }
+
+            .timeline-node {
+                margin: 0; /* Remove auto margins */
+                width: 100px;
+                height: 100px;
+            }
+
+            .episodes-grid, .core-pillars-grid, .symbols-glossary-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pillar-card, .research-item, .episode-card {
+                padding: 2rem;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .about-text p {
+                font-size: 1rem;
+            }
+
+            .contact-links {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <h1>Project Agoge</h1>
-    <p>Forging boys into grounded, resilient men through the timeless power of initiation.</p>
-  </header>
-  <main>
-    <section>
-      <h2>Coming soon</h2>
-      <p>This static site will host the project manifesto, episodes, and research briefs.</p>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-background"></div>
+        <div class="archetypal-faces">
+            <div class="face face-1 active"></div>
+            <div class="face face-2"></div>
+            <div class="face face-3"></div>
+            <div class="face face-4"></div>
+            <div class="face face-5"></div>
+            <div class="face face-6"></div>
+        </div>
+        <div class="hero-overlay">
+            <h1 class="hero-title">Project Agoge</h1>
+            <p class="hero-tagline">"Forging boys into grounded, resilient men."</p>
+            <a href="#manifesto" class="hero-cta">Enter the Journey</a>
+        </div>
     </section>
-  </main>
-  <footer>
-    <p>&copy; Project Agoge</p>
-  </footer>
+
+    <!-- Manifesto Section -->
+    <section id="manifesto" class="manifesto-section section-container">
+        <div class="manifesto-content">
+            <h2 class="section-title fade-in">The Call to Initiation</h2>
+            <p class="manifesto-text fade-in">In an age where boys drift into manhood without maps or mentors, we have forgotten the ancient wisdom of initiation. Traditional cultures understood that becoming a man required more than biological maturation—it demanded transformation through trial, teaching, and community recognition.</p>
+            
+            <p class="manifesto-text fade-in">Project Agoge excavates these timeless rites of passage, mining history, myth, psychology, and anthropology to understand how our ancestors forged confident, morally strong men. Through deep research and narrative exploration, we discover not just what was lost, but how these principles can be adapted for our modern world.</p>
+            
+            <div class="pull-quote fade-in">
+                In the Agoge, we discover not just strength of body, but strength of character.
+            </div>
+            
+            <p class="manifesto-text fade-in">This is more than academic research—it's a blueprint for reclaiming masculine initiation. Each episode and research brief offers both historical wisdom and practical insights, creating a bridge between ancient truth and contemporary need.</p>
+            
+            <p class="manifesto-text fade-in">The journey begins with understanding. It continues with transformation.</p>
+        </div>
+    </section>
+
+    <!-- Journey Timeline Section -->
+    <section class="journey-section section-container">
+        <h2 class="section-title fade-in">The Journey Unfolds</h2>
+        <div class="timeline-container">
+            <div class="timeline">
+                <div class="timeline-line"></div>
+                <a href="#episodes" class="timeline-node fade-in">
+                    <span>EP 1-4</span>
+                    <div class="timeline-label">Episodes</div>
+                </a>
+                <a href="#insights" class="timeline-node fade-in">
+                    <span>Insights</span>
+                    <div class="timeline-label">Pillars & Models</div>
+                </a>
+                <a href="#library" class="timeline-node fade-in">
+                    <span>Library</span>
+                    <div class="timeline-label">Research</div>
+                </a>
+                <a href="#about" class="timeline-node fade-in">
+                    <span>About</span>
+                    <div class="timeline-label">Our Story</div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Episodes Section -->
+    <section id="episodes" class="section-container">
+        <h2 class="section-title fade-in">The Episodes: Chapters of Transformation</h2>
+        <div class="episodes-grid">
+            <!-- Episode Card 1 -->
+            <div class="episode-card fade-in">
+                <h3>Episode 1: The Call to the Unknown</h3>
+                <h4>Embracing the First Step</h4>
+                <p class="hook">A deep dive into the historical and psychological significance of leaving the familiar behind, the crucial first stage of true initiation.</p>
+                <div class="podcast-embed">[Podcast Player Placeholder]</div>
+                <a href="#library" class="research-link">Research Brief: Origins of Separation (PDF)</a>
+                <div class="symbolic-artwork">Symbolic Artwork: Broken Chains</div>
+                <details class="expansion-notes">
+                    <summary>Key Takeaways</summary>
+                    <ul>
+                        <li>Understanding the necessity of detachment from old identities and comfort zones.</li>
+                        <li>Exploring cultural rituals of spatial and social separation from the community.</li>
+                        <li>The psychological impact of entering a "threshold space."</li>
+                    </ul>
+                </details>
+            </div>
+            <!-- Episode Card 2 -->
+            <div class="episode-card fade-in">
+                <h3>Episode 2: The Liminal Crucible</h3>
+                <h4>Enduring the Trials</h4>
+                <p class="hook">Exploring the "in-between" stage where challenges forge character, and old identities are shed for new ones.</p>
+                <div class="podcast-embed">[Podcast Player Placeholder]</div>
+                <a href="#library" class="research-link">Research Brief: The Transformative Power of Ordeal (PDF)</a>
+                <div class="symbolic-artwork">Symbolic Artwork: Labyrinth</div>
+                <details class="expansion-notes">
+                    <summary>Key Takeaways</summary>
+                    <ul>
+                        <li>The importance of structured ordeal and hardship in personal growth.</li>
+                        <li>Learning to navigate ambiguity and uncertainty (liminality).</li>
+                        <li>The role of mentorship and guided instruction during transition.</li>
+                    </ul>
+                </details>
+            </div>
+            <!-- Episode Card 3 -->
+            <div class="episode-card fade-in">
+                <h3>Episode 3: Symbols & Archetypes</h3>
+                <h4>Language of the Soul</h4>
+                <p class="hook">Unpacking the universal imagery and stories that resonate deep within the masculine psyche.</p>
+                <div class="podcast-embed">[Podcast Player Placeholder]</div>
+                <a href="#library" class="research-link">Research Brief: Myth and the Modern Man (PDF)</a>
+                <div class="symbolic-artwork">Symbolic Artwork: Ouroboros</div>
+                <details class="expansion-notes">
+                    <summary>Key Takeaways</summary>
+                    <ul>
+                        <li>Understanding the power of archetypal imagery in personal development.</li>
+                        <li>How ancient myths provide maps for navigating modern challenges.</li>
+                        <li>Integrating symbolic wisdom into daily life for deeper meaning.</li>
+                    </ul>
+                </details>
+            </div>
+            <!-- Episode Card 4 -->
+            <div class="episode-card fade-in">
+                <h3>Episode 4: Reintegration & Service</h3>
+                <h4>Returning with Purpose</h4>
+                <p class="hook">The final stage: returning to community as a grounded man, ready to contribute and lead.</p>
+                <div class="podcast-embed">[Podcast Player Placeholder]</div>
+                <a href="#library" class="research-link">Research Brief: The Responsibilities of Manhood (PDF)</a>
+                <div class="symbolic-artwork">Symbolic Artwork: Shield</div>
+                <details class="expansion-notes">
+                    <summary>Key Takeaways</summary>
+                    <ul>
+                        <li>The importance of societal recognition and acceptance of new status.</li>
+                        <li>Embracing new responsibilities and contributing to the well-being of the community.</li>
+                        <li>Sustaining the wisdom gained through ongoing practice and mentorship.</li>
+                    </ul>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- Insights Section -->
+    <section id="insights" class="section-container">
+        <h2 class="section-title fade-in">Insights: Pillars & Pathways</h2>
+        <div class="insights-content">
+            <h3 class="subsection-title fade-in">Core Pillars of Grounded Masculinity</h3>
+            <div class="core-pillars-grid">
+                <!-- Pillar 1 -->
+                <div class="pillar-card fade-in">
+                    <span class="pillar-icon">💪</span>
+                    <h3>Confidence–Competence</h3>
+                    <p>Developing self-assurance through proven ability and mastery of skills, knowing one's capabilities.</p>
+                </div>
+                <!-- Pillar 2 -->
+                <div class="pillar-card fade-in">
+                    <span class="pillar-icon">🌿</span>
+                    <h3>Resilience</h3>
+                    <p>The capacity to recover quickly from difficulties, adapting and thriving in the face of adversity.</p>
+                </div>
+                <!-- Pillar 3 -->
+                <div class="pillar-card fade-in">
+                    <span class="pillar-icon">⚖️</span>
+                    <h3>Moral Strength</h3>
+                    <p>Adherence to ethical principles and integrity, guiding actions with an unwavering inner compass.</p>
+                </div>
+                <!-- Pillar 4 -->
+                <div class="pillar-card fade-in">
+                    <span class="pillar-icon">🤝</span>
+                    <h3>Community Self-Worth</h3>
+                    <p>Finding value not just in individual achievement, but in contribution to and recognition within one's community.</p>
+                </div>
+            </div>
+
+            <h3 class="subsection-title fade-in">Van Gennep’s Rites of Passage Model</h3>
+            <div class="van-gennep-diagram fade-in">
+                <div class="stage separation">Separation</div>
+                <div class="arrow">→</div>
+                <div class="stage liminality">Liminality</div>
+                <div class="arrow">→</div>
+                <div class="stage reintegration">Reintegration</div>
+            </div>
+            <p class="manifesto-text fade-in" style="margin-top: 2rem; text-align: center;">Arnold van Gennep's seminal work outlines the three universal stages of transition: detachment from the old, the transformative 'threshold' period, and re-entry with a new status.</p>
+
+
+            <h3 class="subsection-title fade-in">Symbols & Archetypes Glossary</h3>
+            <div class="symbols-glossary-grid">
+                <div class="symbol-item fade-in" data-hover-text="The purifying force; destruction and creation; life-giving energy.">
+                    <span class="symbol-icon">🔥</span>
+                    <span>Fire</span>
+                </div>
+                <div class="symbol-item fade-in" data-hover-text="Profound transformation; end of one phase, beginning of another.">
+                    <span class="symbol-icon">💀</span>
+                    <span>Death/Rebirth</span>
+                </div>
+                <div class="symbol-item fade-in" data-hover-text="A difficult or painful experience testing character and resolve.">
+                    <span class="symbol-icon">⛰️</span>
+                    <span>Ordeal</span>
+                </div>
+                <div class="symbol-item fade-in" data-hover-text="A wise and trusted guide offering support and instruction.">
+                    <span class="symbol-icon">🦉</span>
+                    <span>Mentor</span>
+                </div>
+                <div class="symbol-item fade-in" data-hover-text="Public acknowledgment and acceptance of new status and responsibilities.">
+                    <span class="symbol-icon">🏅</span>
+                    <span>Recognition</span>
+                </div>
+                <div class="symbol-item fade-in" data-hover-text="The journey, struggle, and eventual triumph of an individual.">
+                    <span class="symbol-icon">🛡️</span>
+                    <span>Hero's Journey</span>
+                </div>
+            </div>
+             <p class="manifesto-text fade-in" style="margin-top: 2rem; text-align: center;">These universal symbols and archetypes serve as a common language for the unconscious, guiding and enriching the journey of self-discovery and transformation.</p>
+        </div>
+    </section>
+
+    <!-- Library Section -->
+    <section id="library" class="section-container">
+        <h2 class="section-title fade-in">The Library: Research & Resources</h2>
+        <div class="library-list">
+            <!-- Research Brief Item 1 -->
+            <div class="research-item fade-in">
+                <h3>Brief 1.1: The Anthropology of Adolescent Transitions</h3>
+                <p>An abstract outlining cross-cultural studies of puberty rites and their societal functions across various indigenous communities, highlighting the common threads of separation, instruction, and reincorporation.</p>
+                <a href="#" class="download-link">Download PDF</a>
+            </div>
+            <!-- Research Brief Item 2 -->
+            <div class="research-item fade-in">
+                <h3>Brief 2.1: Modern Psychology & Masculine Identity</h3>
+                <p>Exploration of contemporary psychological perspectives on male development, addressing the challenges faced by young men in the absence of traditional rites of passage.</p>
+                <a href="#" class="download-link">Download PDF</a>
+            </div>
+            <!-- Research Brief Item 3 -->
+            <div class="research-item fade-in">
+                <h3>Brief 3.1: Mythology as a Blueprint for Growth</h3>
+                <p>Analyzes how archetypal narratives and mythic structures provide profound insights and practical guidance for personal development and navigating life's challenges.</p>
+                <a href="#" class="download-link">Download PDF</a>
+            </div>
+            <!-- Research Brief Item 4 -->
+            <div class="research-item fade-in">
+                <h3>Brief 4.1: Building Resilient Communities</h3>
+                <p>Examines the societal benefits of intentional initiation processes, fostering community cohesion, moral integrity, and the development of responsible, contributing men.</p>
+                <a href="#" class="download-link">Download PDF</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section-container">
+        <h2 class="section-title fade-in">About Project Agoge</h2>
+        <div class="about-content">
+            <div class="about-text fade-in">
+                <p>Project Agoge was born from a profound observation: the modern world, for all its advancements, has largely abandoned the intentional processes that historically guided young men into grounded, resilient adulthood. I (Your Name/Founder) felt a deep calling to bridge this gap, drawing upon ancient wisdom and contemporary research to create a resource for transformation.</p>
+                <p>This initiative is a synthesis of historical inquiry, psychological understanding, and a personal commitment to fostering environments where true character can be forged. It's a journey I invite you to join, as we collectively explore what it means to build strength of spirit, mind, and body.</p>
+            </div>
+            <div class="contact-links fade-in">
+                <a href="https://github.com/yourprofile" target="_blank" class="social-link">GitHub</a>
+                <a href="https://notion.so/yourprofile" target="_blank" class="social-link">Notion</a>
+                <a href="mailto:your_email@example.com" class="social-link">Email</a>
+            </div>
+            <div class="about-logo fade-in">Optional Symbolic Logo Placeholder: Shield and Fire</div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="#episodes" class="footer-link">Episodes</a>
+            <a href="#insights" class="footer-link">Insights</a>
+            <a href="#library" class="footer-link">Library</a>
+            <a href="#about" class="footer-link">About</a>
+        </div>
+        <p class="copyright">&copy; 2025 Project Agoge. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Enhanced face rotation functionality
+        let currentFace = 0;
+        const faces = document.querySelectorAll('.face');
+        const totalFaces = faces.length;
+        let faceRotationInterval;
+
+        function rotateFaces() {
+            if (totalFaces === 0) return;
+            
+            faces[currentFace].classList.remove('active');
+            currentFace = (currentFace + 1) % totalFaces;
+            faces[currentFace].classList.add('active');
+        }
+
+        function startFaceRotation() {
+            // Start rotation after page load
+            faceRotationInterval = setInterval(rotateFaces, 4000);
+        }
+
+        function pauseFaceRotation() {
+            clearInterval(faceRotationInterval);
+        }
+
+        // Initialize face rotation when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            // Preload images for smooth transitions
+            const imageUrls = [
+                'assets/faces/Maasai_man.png',
+                'assets/faces/Spartan_man.png', 
+                'assets/faces/Norse_man.png',
+                'assets/faces/Japan_man.png',
+                'assets/faces/Yanomami_man.png',
+                'assets/faces/Persian_man.png'
+            ];
+            
+            imageUrls.forEach(url => {
+                const img = new Image();
+                img.src = url;
+            });
+            
+            // Start rotation after a brief delay
+            setTimeout(startFaceRotation, 2000);
+        });
+
+        // Pause rotation when user hovers over hero section
+        const heroSection = document.querySelector('.hero-section');
+        if (heroSection) {
+            heroSection.addEventListener('mouseenter', pauseFaceRotation);
+            heroSection.addEventListener('mouseleave', startFaceRotation);
+        }
+
+        // Smooth scrolling for all anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Fade in animations on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    // Stop observing once visible to prevent re-triggering
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
 </body>
 </html>
