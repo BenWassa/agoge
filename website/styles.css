@@ -374,6 +374,9 @@ body {
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
+    font-family: 'playfair display', serif;
+    font-variant: small-caps;
+    letter-spacing: 0.025em;
 }
 
 .hero-arrow {
