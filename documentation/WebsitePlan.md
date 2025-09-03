@@ -1,4 +1,4 @@
-# 🌐 **Upgraded Website Plan — Project Agoge**
+# **Website Plan — Project Agoge**
 
 ## 1. **Overall Vision**
 
