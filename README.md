@@ -11,7 +11,7 @@ The repository is the single source of truth for every artifact: deep-research b
 
 | Folder / File | Purpose |
 |---------------|---------|
-| **`docs/`** | Deep-dive research documents (one subfolder per theme/episode) |
+| **`research/`** | Deep-dive research documents (one subfolder per theme/episode) |
 | **`podcasts/`** | NotebookLM scripts & final transcripts for each episode |
 | **`website/`** | Static HTML/CSS files for the public site (ready for GitHub Pages or Netlify) |
 | **`assets/`** | Images, audio snippets, diagrams, branding elements |
