@@ -502,6 +502,22 @@ body {
 .timeline-container {
     margin-top: 4rem;
     position: relative;
+    padding: 2rem 0;
+}
+
+.timeline-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    height: 100%;
+    background: radial-gradient(ellipse at center, 
+        rgba(201, 169, 110, 0.03) 0%, 
+        transparent 70%);
+    border-radius: 50px;
+    z-index: 0;
 }
 
 .timeline {
@@ -512,6 +528,7 @@ body {
     margin: 0 auto;
     position: relative;
     padding: 0 1rem;
+    z-index: 1;
 }
 
 .timeline-line {
@@ -519,16 +536,22 @@ body {
     top: 50%;
     left: 5%;
     right: 5%;
-    height: 2px;
-    background: var(--gold);
+    height: 3px;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        var(--gold) 15%, 
+        var(--gold) 85%, 
+        transparent 100%);
     z-index: 1;
+    border-radius: 2px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
 .timeline-node {
     width: 120px;
     height: 120px;
     border-radius: 50%;
-    background: var(--gold);
+    background: linear-gradient(135deg, var(--gold) 0%, #d4af75 100%);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -539,25 +562,38 @@ body {
     transition: all 0.3s ease;
     position: relative;
     z-index: 2;
-    box-shadow: 0 4px 15px rgba(201, 169, 110, 0.3);
+    box-shadow: 
+        0 4px 15px rgba(201, 169, 110, 0.3),
+        inset 0 2px 4px rgba(255, 255, 255, 0.1);
     text-decoration: none;
+    border: 2px solid rgba(255, 255, 255, 0.1);
 }
 
 .timeline-node:hover {
     transform: scale(1.1);
-    box-shadow: 0 8px 25px rgba(201, 169, 110, 0.5);
-    background: #d4af75;
+    box-shadow: 
+        0 8px 25px rgba(201, 169, 110, 0.5),
+        inset 0 2px 6px rgba(255, 255, 255, 0.2);
+    background: linear-gradient(135deg, #d4af75 0%, #e6c085 100%);
 }
 
 .timeline-node span {
     font-size: 1.1rem;
     margin-bottom: 0.3rem;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .timeline-label {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     color: var(--deep-black);
     white-space: nowrap;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    opacity: 0.8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 /* Episodes Section */
@@ -1093,7 +1129,7 @@ body {
 
     .timeline {
         flex-direction: column;
-        gap: 3.5rem;
+        gap: 4rem;
         padding: 0;
     }
 
@@ -1101,10 +1137,15 @@ body {
         top: 0;
         bottom: 0;
         left: 50%;
-        width: 2px;
+        width: 3px;
         height: auto;
         right: auto;
         transform: translateX(-50%);
+        background: linear-gradient(180deg, 
+            transparent 0%, 
+            var(--gold) 15%, 
+            var(--gold) 85%, 
+            transparent 100%);
     }
 
     .timeline-node {
