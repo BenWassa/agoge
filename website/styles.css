@@ -898,7 +898,7 @@ h4 {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
-    margin-top: 3rem;
+    margin-top: 1rem;
 }
 
 @media (max-width: 768px) {
@@ -942,7 +942,7 @@ h4 {
     justify-content: center;
     align-items: center;
     gap: 1.5rem;
-    margin-top: 2.5rem;
+    margin-top: 1.5rem;
     flex-wrap: wrap;
 }
 
@@ -965,7 +965,7 @@ h4 {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     gap: 1.5rem;
-    margin-top: 2.5rem;
+    margin-top: 1rem;
 }
 
 .symbol-item {
