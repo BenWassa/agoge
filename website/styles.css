@@ -76,11 +76,35 @@ body {
     font-size: 1.2rem;
     font-weight: 600;
     color: rgba(247, 245, 243, 0.7);
-    margin-bottom: 2rem;
-    margin-top: 2rem;
+    margin-bottom: 3rem;
+    margin-top: 4rem;
     text-transform: uppercase;
     letter-spacing: 0.05em;
     text-align: center;
+    position: relative;
+    padding: 1.5rem 0;
+}
+
+.subsection-title::before {
+    content: '◆';
+    position: absolute;
+    left: calc(50% - 120px);
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--gold);
+    font-size: 0.8rem;
+    opacity: 0.6;
+}
+
+.subsection-title::after {
+    content: '◆';
+    position: absolute;
+    right: calc(50% - 120px);
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--gold);
+    font-size: 0.8rem;
+    opacity: 0.6;
 }
 
 /* General H3 Styling for Episode Titles and Card Titles */
