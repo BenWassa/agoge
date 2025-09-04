@@ -82,42 +82,39 @@ body {
     letter-spacing: 0.05em;
     text-align: center;
     position: relative;
-    padding: 1.5rem 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 2rem;
+    padding: 0;
 }
 
-.subsection-title::before {
-    content: '▶';
-    color: var(--gold);
-    font-size: 1rem;
-    opacity: 0.8;
-    text-shadow: 0 0 8px rgba(201, 169, 110, 0.4);
-    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
-    animation: pulse-glow 3s ease-in-out infinite;
+/* Subsection Container Styling */
+.subsection-container {
+    background: linear-gradient(135deg, 
+        rgba(31, 31, 31, 0.6) 0%, 
+        rgba(26, 22, 18, 0.7) 100%);
+    border-radius: 16px;
+    padding: 2.5rem;
+    margin: 1.5rem 0 3rem 0;
+    border: 1px solid rgba(201, 169, 110, 0.12);
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        inset 0 1px 2px rgba(201, 169, 110, 0.08);
+    position: relative;
+    backdrop-filter: blur(2px);
 }
 
-.subsection-title::after {
-    content: '◀';
-    color: var(--gold);
-    font-size: 1rem;
-    opacity: 0.8;
-    text-shadow: 0 0 8px rgba(201, 169, 110, 0.4);
-    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
-    animation: pulse-glow 3s ease-in-out infinite 0.5s;
-}
-
-@keyframes pulse-glow {
-    0%, 100% { 
-        opacity: 0.8;
-        text-shadow: 0 0 8px rgba(201, 169, 110, 0.4);
-    }
-    50% { 
-        opacity: 1;
-        text-shadow: 0 0 12px rgba(201, 169, 110, 0.6);
-    }
+.subsection-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        var(--gold) 25%, 
+        var(--gold) 75%, 
+        transparent 100%);
+    border-radius: 16px 16px 0 0;
+    opacity: 0.7;
 }
 
 /* General H3 Styling for Episode Titles and Card Titles */
