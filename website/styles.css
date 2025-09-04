@@ -670,17 +670,16 @@ body {
 
 .episodes-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    grid-template-columns: 1fr;
     gap: 2rem;
     margin-top: 3rem;
-    max-width: 1200px;
+    max-width: 1000px;
     margin-left: auto;
     margin-right: auto;
 }
 
 @media (max-width: 768px) {
     .episodes-grid {
-        grid-template-columns: 1fr;
         gap: 1.5rem;
     }
 
