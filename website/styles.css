@@ -22,7 +22,13 @@ body {
     font-family: 'Inter', sans-serif;
     line-height: 1.6;
     color: var(--bone-white);
-    background: var(--deep-black);
+    background: linear-gradient(180deg, 
+        var(--deep-black) 0%, 
+        rgba(16, 14, 12, 0.98) 20%,
+        rgba(24, 20, 16, 0.95) 50%,
+        rgba(16, 14, 12, 0.98) 80%,
+        var(--deep-black) 100%);
+    background-attachment: fixed;
     overflow-x: hidden;
 }
 
@@ -308,15 +314,40 @@ body {
 
 /* Manifesto Section */
 .manifesto-section {
-    background: var(--charcoal);
-    border-top: 1px solid rgba(247, 245, 243, 0.1);
-    border-bottom: 1px solid rgba(247, 245, 243, 0.1);
+    background: linear-gradient(135deg, 
+        rgba(31, 31, 31, 0.95) 0%, 
+        rgba(26, 22, 18, 0.97) 30%,
+        rgba(31, 27, 23, 0.95) 70%,
+        rgba(31, 31, 31, 0.95) 100%);
+    border-top: 1px solid rgba(201, 169, 110, 0.15);
+    border-bottom: 1px solid rgba(201, 169, 110, 0.15);
+    position: relative;
+}
+
+.manifesto-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(ellipse at 20% 30%, 
+            rgba(201, 169, 110, 0.08) 0%, 
+            transparent 50%),
+        radial-gradient(ellipse at 80% 70%, 
+            rgba(74, 90, 58, 0.06) 0%, 
+            transparent 40%);
+    z-index: 1;
+    pointer-events: none;
 }
 
 .manifesto-content {
     max-width: 800px;
     margin: 0 auto;
     text-align: center;
+    position: relative;
+    z-index: 2;
 }
 
 .manifesto-text {
@@ -416,8 +447,31 @@ body {
 
 /* Journey Timeline Section */
 .journey-section {
-    background: var(--deep-black);
-    padding-bottom: 5rem;
+    background: linear-gradient(180deg,
+        rgba(12, 10, 8, 0.98) 0%,
+        rgba(16, 14, 12, 0.95) 30%,
+        rgba(20, 18, 16, 0.92) 70%,
+        rgba(12, 10, 8, 0.98) 100%);
+    position: relative;
+}
+
+.journey-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(ellipse at center, 
+            rgba(201, 169, 110, 0.05) 0%, 
+            transparent 60%),
+        linear-gradient(45deg, 
+            transparent 0%, 
+            rgba(74, 90, 58, 0.03) 30%, 
+            transparent 60%);
+    z-index: 1;
+    pointer-events: none;
 }
 
 .timeline-container {
@@ -523,9 +577,33 @@ body {
 
 /* Episodes Section */
 .episodes-section {
-    background: var(--charcoal);
+    background: linear-gradient(180deg,
+        rgba(8, 8, 10, 0.98) 0%,
+        rgba(12, 12, 14, 0.95) 30%,
+        rgba(16, 16, 18, 0.92) 70%,
+        rgba(8, 8, 10, 0.98) 100%);
+    position: relative;
     border-top: 1px solid rgba(201, 169, 110, 0.1);
     border-bottom: 1px solid rgba(201, 169, 110, 0.1);
+}
+
+.episodes-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(ellipse at 30% 70%, 
+            rgba(201, 169, 110, 0.04) 0%, 
+            transparent 50%),
+        linear-gradient(135deg, 
+            transparent 0%, 
+            rgba(74, 90, 58, 0.02) 40%, 
+            transparent 80%);
+    z-index: 1;
+    pointer-events: none;
 }
 
 .episodes-grid {
@@ -682,7 +760,11 @@ body {
 
 /* Insights Section */
 .insights-section {
-    background: var(--deep-black);
+    background: linear-gradient(180deg,
+        rgba(10, 8, 6, 0.98) 0%,
+        rgba(14, 12, 10, 0.95) 30%,
+        rgba(18, 16, 14, 0.92) 70%,
+        rgba(10, 8, 6, 0.98) 100%);
     position: relative;
 }
 
@@ -840,7 +922,11 @@ body {
 
 /* Library Section */
 .library-section {
-    background: var(--charcoal);
+    background: linear-gradient(180deg,
+        rgba(6, 8, 10, 0.98) 0%,
+        rgba(10, 12, 14, 0.95) 30%,
+        rgba(14, 16, 18, 0.92) 70%,
+        rgba(6, 8, 10, 0.98) 100%);
     border-top: 1px solid rgba(74, 90, 58, 0.2);
     border-bottom: 1px solid rgba(74, 90, 58, 0.2);
     position: relative;
@@ -925,7 +1011,11 @@ body {
 
 /* About Section */
 .about-section {
-    background: var(--deep-black);
+    background: linear-gradient(180deg,
+        rgba(8, 6, 4, 0.98) 0%,
+        rgba(12, 10, 8, 0.95) 30%,
+        rgba(16, 14, 12, 0.92) 70%,
+        rgba(8, 6, 4, 0.98) 100%);
     position: relative;
 }
 
