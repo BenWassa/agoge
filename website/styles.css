@@ -206,32 +206,32 @@ body {
     width: 100%;
     height: 100%;
     opacity: 0;
-    background-size: cover; /* Changed from contain to cover for better fill */
-    background-position: center center; /* Center the square image */
+    background-size: cover; /* Use cover to fill the container and eliminate black sides */
+    background-position: center center; /* Center the image */
     background-repeat: no-repeat;
     transition: opacity 2.5s ease-in-out; /* Smooth crossfade */
-    filter: grayscale(15%) brightness(0.85) contrast(1.15) saturate(1.1) sepia(3%); /* Cinematic effect */
+    filter: grayscale(15%) brightness(0.95) contrast(1.1) saturate(1.15) sepia(2%); /* Lighter, more natural look */
     transform: scale(1.0);
     animation: subtle-parallax 25s infinite alternate ease-in-out; /* Subtle parallax effect */
     z-index: 4;
 
-    /* Simple fade effect for square images */
+    /* Softer, more natural fade effect */
     mask: 
         radial-gradient(ellipse at center, 
-            black 20%, 
-            rgba(0,0,0,0.9) 35%, 
-            rgba(0,0,0,0.7) 50%, 
-            rgba(0,0,0,0.4) 65%, 
-            rgba(0,0,0,0.2) 75%, 
-            transparent 85%);
+            black 50%, 
+            rgba(0,0,0,0.95) 65%, 
+            rgba(0,0,0,0.8) 75%, 
+            rgba(0,0,0,0.5) 85%, 
+            rgba(0,0,0,0.2) 95%, 
+            transparent 100%);
     -webkit-mask: 
         radial-gradient(ellipse at center, 
-            black 20%, 
-            rgba(0,0,0,0.9) 35%, 
-            rgba(0,0,0,0.7) 50%, 
-            rgba(0,0,0,0.4) 65%, 
-            rgba(0,0,0,0.2) 75%, 
-            transparent 85%);
+            black 50%, 
+            rgba(0,0,0,0.95) 65%, 
+            rgba(0,0,0,0.8) 75%, 
+            rgba(0,0,0,0.5) 85%, 
+            rgba(0,0,0,0.2) 95%, 
+            transparent 100%);
 }
 
 /* Inner overlay for subtle face effects */
@@ -245,11 +245,10 @@ body {
     background: 
         radial-gradient(
             ellipse at center,
-            transparent 30%,
-            rgba(0, 0, 0, 0.1) 50%,
-            rgba(0, 0, 0, 0.3) 70%,
-            rgba(0, 0, 0, 0.6) 85%,
-            rgba(0, 0, 0, 0.8) 100%
+            transparent 60%,
+            rgba(0, 0, 0, 0.1) 75%,
+            rgba(0, 0, 0, 0.2) 90%,
+            rgba(0, 0, 0, 0.4) 100%
         );
     pointer-events: none;
     z-index: 1;
@@ -267,8 +266,8 @@ body {
     background-size: inherit;
     background-position: inherit;
     background-repeat: inherit;
-    filter: blur(20px) brightness(0.2); /* More blur and darker for square images */
-    opacity: 0.6;
+    filter: blur(15px) brightness(0.4); /* Lighter shadow effect */
+    opacity: 0.4;
     z-index: -1; /* Behind the main face image */
 }
 
@@ -284,7 +283,7 @@ body {
 /* Image paths for archetypal faces (relative to styles.css) */
 .face-1 { background-image: url('../assets/faces/Maasai_man.png'); }
 .face-2 { background-image: url('../assets/faces/Spartan_man.png'); }
-.face-3 { background-image: url('../assets/faces/Japan_man.png'); } /* Samurai */
+.face-3 { background-image: url('../assets/faces/Japan_man.png'); }
 .face-4 { background-image: url('../assets/faces/Yanomami_man.png'); }
 .face-5 { background-image: url('../assets/faces/Persian_man.png'); }
 
