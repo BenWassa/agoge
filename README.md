@@ -79,7 +79,11 @@ Please keep contributions respectful and evidence-based.
 
 ## 📜 License
 
-Released under the **MIT License** — see `LICENSE` for details.
+This project uses a dual-license approach:
+- **Code** (HTML, CSS, JS, etc.): MIT License
+- **Content** (research briefs, podcasts, images, etc.): Creative Commons Attribution-NonCommercial-NoDerivatives (CC BY-NC-ND)
+
+See `LICENSE` for full details.
 
 ---
 
