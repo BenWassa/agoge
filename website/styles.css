@@ -141,39 +141,12 @@ body {
 }
 
 /* Subtle light sweep animation over faces for dynamic feel */
-.archetypal-faces::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: 
-        linear-gradient(45deg, transparent 0%, rgba(201, 169, 110, 0.05) 50%, transparent 100%),
-        linear-gradient(-45deg, transparent 0%, rgba(74, 90, 58, 0.03) 50%, transparent 100%);
-    animation: subtle-light-sweep 30s infinite ease-in-out;
-    z-index: 1;
-}
-
-/* Dark side fades so square images using background-size: contain blend into the hero */
+.archetypal-faces::before,
 .archetypal-faces::after {
+    /* Neutralized while you assess the raw PNGs */
     content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    display: none; /* disable global overlays/animations */
     pointer-events: none;
-    z-index: 5; /* Above faces but below hero overlay (which is z-index:10) */
-    background: linear-gradient(90deg,
-        rgba(0,0,0,0.85) 0%,
-        rgba(0,0,0,0.65) 8%,
-        rgba(0,0,0,0) 22%,
-        rgba(0,0,0,0) 78%,
-        rgba(0,0,0,0.65) 92%,
-        rgba(0,0,0,0.85) 100%
-    );
-    mix-blend-mode: normal;
 }
 
 @keyframes subtle-light-sweep {
@@ -188,75 +161,35 @@ body {
 }
 
 .face {
+    /* Minimal/reset styling for assessment */
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    opacity: 0;
-    background-size: contain; /* Use contain to fit the image within the container */
-    background-position: center center; /* Center the image */
+    background-size: contain;
+    background-position: center center;
     background-repeat: no-repeat;
-    transition: opacity 2.5s ease-in-out; /* Smooth crossfade */
-    filter: grayscale(15%) brightness(0.95) contrast(1.1) saturate(1.15) sepia(2%); /* Lighter, more natural look */
-    transform: scale(1.0);
-    animation: subtle-parallax 25s infinite alternate ease-in-out; /* Subtle parallax effect */
+    opacity: 1;
+    transition: none;
+    filter: none;
+    transform: none;
+    animation: none;
     z-index: 4;
-
-    /* Softer, more natural fade effect */
-    mask: 
-        radial-gradient(ellipse at center, 
-            black 50%, 
-            rgba(0,0,0,0.95) 65%, 
-            rgba(0,0,0,0.8) 75%, 
-            rgba(0,0,0,0.5) 85%, 
-            rgba(0,0,0,0.2) 95%, 
-            transparent 100%);
-    -webkit-mask: 
-        radial-gradient(ellipse at center, 
-            black 50%, 
-            rgba(0,0,0,0.95) 65%, 
-            rgba(0,0,0,0.8) 75%, 
-            rgba(0,0,0,0.5) 85%, 
-            rgba(0,0,0,0.2) 95%, 
-            transparent 100%);
 }
 
 /* Special transformation statement (slower, more deliberate) */
 .face::after {
+    /* disabled while assessing */
     content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: 
-        radial-gradient(
-            ellipse at center,
-            transparent 60%,
-            rgba(0, 0, 0, 0.1) 75%,
-            rgba(0, 0, 0, 0.2) 90%,
-            rgba(0, 0, 0, 0.4) 100%
-        );
-    pointer-events: none;
-    z-index: 1;
+    display: none;
 }
 
 /* Blurred shadow effect for depth */
 .face::before {
+    /* disabled while assessing */
     content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: inherit; /* Inherit background from parent .face */
-    background-size: inherit;
-    background-position: inherit;
-    background-repeat: inherit;
-    filter: blur(15px) brightness(0.4); /* Lighter shadow effect */
-    opacity: 0.4;
-    z-index: -1; /* Behind the main face image */
+    display: none;
 }
 
 .face.active {
