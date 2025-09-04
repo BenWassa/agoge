@@ -320,11 +320,11 @@ h4 {
 }
 
 /* Image paths for archetypal faces (relative to styles.css) */
-.face-1 { background-image: url('../assets/faces/Maasai_man.png'); }
-.face-2 { background-image: url('../assets/faces/Spartan_man.png'); }
-.face-3 { background-image: url('../assets/faces/Japan_man.png'); }
-.face-4 { background-image: url('../assets/faces/Yanomami_man.png'); }
-.face-5 { background-image: url('../assets/faces/Persian_man.png'); }
+.face-1 { background-image: url('Maasai_man.png'); }
+.face-2 { background-image: url('Spartan_man.png'); }
+.face-3 { background-image: url('Japan_man.png'); }
+.face-4 { background-image: url('Yanomami_man.png'); }
+.face-5 { background-image: url('Persian_man.png'); }
 
 .hero-overlay {
     position: absolute;
