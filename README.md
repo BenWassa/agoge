@@ -11,10 +11,12 @@ The repository is the single source of truth for every artifact: deep-research b
 
 | Folder / File | Purpose |
 |---------------|---------|
-| **`research/`** | Deep-dive research documents (one subfolder per theme/episode) |
+| **`research/`** | Deep-dive research documents and PDFs |
 | **`podcasts/`** | NotebookLM scripts & final transcripts for each episode |
-| **`website/`** | Static HTML/CSS files for the public site (ready for GitHub Pages or Netlify) |
+| **`website/`** | Static HTML/CSS/JS files for the public site (ready for GitHub Pages or Netlify) |
 | **`assets/`** | Images, audio snippets, diagrams, branding elements |
+| **`backup/`** | Backup files |
+| **`documentation/`** | Project documentation and plans |
 | **`README.md`** | You’re here—project overview, setup, roadmap |
 | **`LICENSE`** | Project license (default: MIT—change if needed) |
 
@@ -22,7 +24,6 @@ The repository is the single source of truth for every artifact: deep-research b
 
 ## 📚 Current Components
 
-- **Podcast Series**  
 - **Podcast Series**  
   Narrative-driven episodes (20–45 min). High-level themes include Thresholds & Transformations; Wisdom of the Elders; Sacred Symbols & Myths; and Virtue Forged in Fire. Full episode outlines, scripts, production notes, and the publishing plan are maintained in `documentation/PodcastPlan.md` — see that file for complete details.
 
@@ -42,11 +43,11 @@ The repository is the single source of truth for every artifact: deep-research b
 
 ```bash
 # Clone the repo
-git clone https://github.com/your-username/project-agoge.git
-cd project-agoge
+git clone https://github.com/BenWassa/agoge.git
+cd agoge
 
 # Browse research docs
-open docs/
+open research/
 
 # Serve the static site locally (optional)
 cd website
