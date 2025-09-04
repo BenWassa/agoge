@@ -18,7 +18,7 @@ The repository is the single source of truth for every artifact: deep-research b
 | **`backup/`** | Backup files |
 | **`documentation/`** | Project documentation and plans |
 | **`README.md`** | You’re here—project overview, setup, roadmap |
-| **`LICENSE`** | Project license (default: MIT—change if needed) |
+| **`LICENSE`** | Dual-license file (MIT for code, CC BY-NC-ND for content) |
 
 ---
 
