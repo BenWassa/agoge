@@ -953,7 +953,8 @@ h4 {
     background-size: contain;
     background-position: center center;
     background-repeat: no-repeat;
-    filter: brightness(0) saturate(100%) invert(84%) sepia(21%) saturate(1178%) hue-rotate(17deg) brightness(92%) contrast(86%);
+    background-color: transparent;
+    border: 1px dashed rgba(201, 169, 110, 0.3);
 }
 
 /* Icon paths for pillar icons */
