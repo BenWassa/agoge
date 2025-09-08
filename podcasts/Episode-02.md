@@ -64,7 +64,3 @@
 * **Narrative Vignettes Bank:** from PDFs and Indigenous brief.
 * **Quote Bank:** short cultural sayings or anthropological commentary (Turner, Mbiti, Plutarch, sagas).
 * **Sound Design Notes:** drums, chanting, fire crackling, whipping sounds, insect buzzing (to enhance immersion).
-
----
-
-Would you like me to **generate this as a polished Markdown doc** (like `Ep2_Skeleton.md`) with headers, placeholders for vignettes, and slots for audio cues — so it can serve directly as a production script outline?
