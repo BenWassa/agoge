@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Audio Player</title>
+    <style>
+        :root {
+            --gold: #c9a96e;
+            --charcoal: #232323;
+            --bone-white: #f7f5f3;
+            --earth-green: #4a5a3a;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--charcoal);
+            color: var(--bone-white);
+            margin: 0;
+            padding: 20px;
+        }
+
+        .section-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .subsection-title {
+            color: var(--gold);
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+
+        /* Custom Audio Player Styles */
+        .custom-audio-player {
+            max-width: 800px;
+            margin: 4rem auto; /* Center the player and give it some space */
+            background: linear-gradient(135deg, 
+                rgba(35, 35, 35, 0.95) 0%, 
+                var(--charcoal) 100%);
+            border-radius: 12px;
+            padding: 1.5rem 2rem;
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.4),
+                inset 0 1px 3px rgba(201, 169, 110, 0.1);
+            border: 1px solid rgba(201, 169, 110, 0.15);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            overflow: hidden; /* For pseudo-element */
+        }
+
+        /* Gold line at the top, similar to subsection-container */
+        .custom-audio-player::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                var(--gold) 25%, 
+                var(--gold) 75%, 
+                transparent 100%);
+            border-radius: 10px 10px 0 0;
+            opacity: 0.7;
+        }
+
+        .custom-audio-player audio {
+            display: none; /* Hide the default audio element */
+        }
+
+        .player-controls {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            gap: 1rem;
+            padding-top: 0.5rem; /* Space below the gold line */
+        }
+
+        .play-pause-btn, .mute-btn {
+            background: transparent;
+            border: none;
+            color: var(--gold);
+            cursor: pointer;
+            padding: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: color 0.3s ease, transform 0.2s ease;
+            border-radius: 50%;
+        }
+
+        .play-pause-btn:hover, .mute-btn:hover {
+            color: #e6c085; /* Lighter gold on hover */
+            transform: scale(1.05);
+        }
+
+        .play-pause-btn svg, .mute-btn svg {
+            width: 28px;
+            height: 28px;
+            fill: currentColor; /* Use the button's color for the SVG */
+            display: none; /* Hide by default, active class will show */
+        }
+
+        .play-pause-btn svg.active, .mute-btn svg.active {
+            display: block;
+        }
+
+        .progress-container {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            gap: 0.5rem;
+        }
+
+        .progress-bar, .volume-slider {
+            width: 100%;
+            height: 8px; /* Thinner for a sleek look */
+            -webkit-appearance: none;
+            appearance: none;
+            background: rgba(247, 245, 243, 0.1); /* Light track for progress */
+            border-radius: 5px;
+            cursor: pointer;
+            outline: none;
+            transition: background 0.3s ease;
+        }
+
+        /* Thumb for progress and volume sliders */
+        .progress-bar::-webkit-slider-thumb,
+        .volume-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: var(--gold);
+            border: 2px solid var(--bone-white);
+            box-shadow: 0 0 5px rgba(201, 169, 110, 0.5);
+            transition: background 0.3s ease, border-color 0.3s ease;
+        }
+
+        .progress-bar::-moz-range-thumb,
+        .volume-slider::-moz-range-thumb {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: var(--gold);
+            border: 2px solid var(--bone-white);
+            box-shadow: 0 0 5px rgba(201, 169, 110, 0.5);
+            transition: background 0.3s ease, border-color 0.3s ease;
+        }
+
+        /* Track for progress and volume sliders (Firefox) */
+        .progress-bar::-moz-range-track,
+        .volume-slider::-moz-range-track {
+            background: rgba(247, 245, 243, 0.1);
+            border-radius: 5px;
+        }
+
+        .progress-bar:hover::-webkit-slider-thumb,
+        .volume-slider:hover::-webkit-slider-thumb {
+            background: #e6c085; /* Lighter gold on hover */
+            border-color: #e6c085;
+        }
+
+        .progress-bar:hover::-moz-range-thumb,
+        .volume-slider:hover::-moz-range-thumb {
+            background: #e6c085; /* Lighter gold on hover */
+            border-color: #e6c085;
+        }
+
+
+        .time-display {
+            font-size: 0.85rem;
+            color: rgba(247, 245, 243, 0.7);
+            font-family: 'Inter', sans-serif;
+            text-align: right;
+            width: 100%;
+            white-space: nowrap; /* Prevent time from wrapping */
+        }
+
+        .volume-container {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            width: 150px; /* Fixed width for volume for consistency */
+        }
+
+        .volume-slider {
+            height: 6px;
+            background: rgba(74, 90, 58, 0.3); /* Earth green for volume track */
+        }
+
+        /* Responsive adjustments for audio player */
+        @media (max-width: 768px) {
+            .custom-audio-player {
+                margin: 3rem auto;
+                padding: 1rem 1.2rem;
+            }
+
+            .player-controls {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 0.8rem;
+            }
+
+            .play-pause-btn svg, .mute-btn svg {
+                width: 24px;
+                height: 24px;
+            }
+
+            .progress-container {
+                width: 100%;
+                order: 1; /* Place progress bar above volume on small screens */
+            }
+
+            .volume-container {
+                width: auto; /* Auto width on smaller screens */
+                order: 2; /* Place volume below progress */
+            }
+
+            .time-display {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="section-container">
+        <h2 class="subsection-title">Listen to Episode 1</h2>
+
+        <div class="custom-audio-player">
+            <audio id="episodeAudio" src="../podcasts/Agoge_Episode_1.mp3"></audio>
+
+            <div class="player-controls">
+                <button id="playPauseBtn" class="play-pause-btn" aria-label="Play/Pause">
+                    <svg class="icon play-icon active" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                    <svg class="icon pause-icon" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                </button>
+
+                <div class="progress-container">
+                    <input type="range" id="progressBar" class="progress-bar" value="0" min="0" max="100">
+                    <div class="time-display">
+                        <span id="currentTime">00:00</span> / <span id="duration">00:00</span>
+                    </div>
+                </div>
+
+                <div class="volume-container">
+                    <button id="muteBtn" class="mute-btn" aria-label="Mute/Unmute">
+                        <svg class="icon volume-high-icon active" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+                        <svg class="icon volume-mute-icon" viewBox="0 0 24 24"><path d="M7 9H3v6h4l5 5V4L7 9zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5-1.28l-1.65-1.65c.35-.68.55-1.47.55-2.32 0-3.54-2.56-6.42-6-7.13v2.06c2.59.75 4.5 3.24 4.5 6.07 0 .34-.03.67-.09 1zm-.81 3.54l-1.89-1.89v2.21l3.52 3.52c.26-.81.41-1.69.41-2.64 0-.44-.04-.87-.12-1.28zM16.5 12c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM12 4l-8 7H0v2h4l8 7V4z"/></svg>
+                    </button>
+                    <input type="range" id="volumeSlider" class="volume-slider" value="100" min="0" max="100">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const audio = document.getElementById('episodeAudio');
+        const playPauseBtn = document.getElementById('playPauseBtn');
+        const playIcon = playPauseBtn.querySelector('.play-icon');
+        const pauseIcon = playPauseBtn.querySelector('.pause-icon');
+        const progressBar = document.getElementById('progressBar');
+        const currentTimeSpan = document.getElementById('currentTime');
+        const durationSpan = document.getElementById('duration');
+        const volumeSlider = document.getElementById('volumeSlider');
+        const muteBtn = document.getElementById('muteBtn');
+        const volumeHighIcon = muteBtn.querySelector('.volume-high-icon');
+        const volumeMuteIcon = muteBtn.querySelector('.volume-mute-icon');
+
+        let isDraggingProgress = false;
+        let lastVolume = 1; // Store last volume for mute/unmute
+
+        function formatTime(seconds) {
+            const minutes = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${minutes < 10 ? '0' : ''}${minutes}:${secs < 10 ? '0' : ''}${secs}`;
+        }
+
+        // Initialize player when audio metadata is loaded
+        audio.addEventListener('loadedmetadata', () => {
+            durationSpan.textContent = formatTime(audio.duration);
+            progressBar.max = audio.duration;
+            volumeSlider.value = audio.volume * 100; // Set initial volume slider position
+        });
+
+        // Play/Pause functionality
+        playPauseBtn.addEventListener('click', () => {
+            if (audio.paused) {
+                audio.play();
+                playIcon.classList.remove('active');
+                pauseIcon.classList.add('active');
+            } else {
+                audio.pause();
+                pauseIcon.classList.remove('active');
+                playIcon.classList.add('active');
+            }
+        });
+
+        // Update progress bar and current time
+        audio.addEventListener('timeupdate', () => {
+            if (!isDraggingProgress) {
+                progressBar.value = audio.currentTime;
+            }
+            currentTimeSpan.textContent = formatTime(audio.currentTime);
+        });
+
+        // Handle manual seeking on progress bar
+        progressBar.addEventListener('mousedown', () => {
+            isDraggingProgress = true;
+        });
+        progressBar.addEventListener('mouseup', () => {
+            isDraggingProgress = false;
+            audio.currentTime = progressBar.value;
+        });
+        // For direct input (e.g., keyboard or rapid click)
+        progressBar.addEventListener('input', () => {
+             currentTimeSpan.textContent = formatTime(progressBar.value); // Update time while dragging
+        });
+
+
+        // Volume control
+        volumeSlider.addEventListener('input', () => {
+            audio.volume = volumeSlider.value / 100;
+            if (audio.volume === 0) {
+                audio.muted = true;
+                volumeHighIcon.classList.remove('active');
+                volumeMuteIcon.classList.add('active');
+            } else {
+                audio.muted = false;
+                volumeMuteIcon.classList.remove('active');
+                volumeHighIcon.classList.add('active');
+                lastVolume = audio.volume; // Update last volume if not muted
+            }
+        });
+
+        // Mute/Unmute functionality
+        muteBtn.addEventListener('click', () => {
+            if (audio.muted) {
+                audio.muted = false;
+                audio.volume = lastVolume > 0 ? lastVolume : 0.5; // Restore previous or default
+                volumeSlider.value = audio.volume * 100;
+                volumeMuteIcon.classList.remove('active');
+                volumeHighIcon.classList.add('active');
+            } else {
+                audio.muted = true;
+                lastVolume = audio.volume; // Save current volume before muting
+                audio.volume = 0;
+                volumeSlider.value = 0;
+                volumeHighIcon.classList.remove('active');
+                volumeMuteIcon.classList.add('active');
+            }
+        });
+
+        // Update UI if audio ends
+        audio.addEventListener('ended', () => {
+            pauseIcon.classList.remove('active');
+            playIcon.classList.add('active');
+            audio.currentTime = 0; // Reset to start
+            progressBar.value = 0;
+            currentTimeSpan.textContent = formatTime(0);
+        });
+
+        // Handle initial load state: if no duration, means audio not loaded yet.
+        // Also ensure default volume slider matches audio's default (which is usually 1)
+        audio.addEventListener('canplaythrough', () => {
+            if (isNaN(audio.duration)) {
+                // Not ready yet, wait for loadedmetadata
+            } else {
+                durationSpan.textContent = formatTime(audio.duration);
+                progressBar.max = audio.duration;
+                volumeSlider.value = audio.volume * 100;
+            }
+        });
+    </script>
+</body>
+</html>
