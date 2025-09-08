@@ -6,7 +6,7 @@ const totalFaces = faces.length;
 let faceRotationInterval;
 
 // Debug configuration
-const DEBUG_ENABLED = true; // Set to false to disable all debug logging
+const DEBUG_ENABLED = false; // Set to false to disable all debug logging
 
 // Debug function to log with timestamps
 function debugLog(message, data = null) {
@@ -136,11 +136,21 @@ document.addEventListener('DOMContentLoaded', function() {
     }, 6000);
 });
 
-// Pause rotation when user hovers over hero section
+// Pause rotation when user hovers over hero section (only after system has started)
 const heroSection = document.querySelector('.hero-section');
 if (heroSection) {
-    heroSection.addEventListener('mouseenter', pauseFaceRotation);
-    heroSection.addEventListener('mouseleave', startFaceRotation);
+    heroSection.addEventListener('mouseenter', () => {
+        if (systemRunning) {
+            pauseFaceRotation();
+        }
+    });
+    heroSection.addEventListener('mouseleave', () => {
+        if (!systemRunning) {
+            // Don't start if system hasn't been initialized yet
+            return;
+        }
+        startFaceRotation();
+    });
 }
 
 // Smooth scrolling for all anchor links
