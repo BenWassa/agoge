@@ -936,39 +936,59 @@ h4 {
 .core-pillars-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
-    margin-top: 1rem;
+    gap: 3rem;
+    margin-top: 2rem;
 }
 
 @media (max-width: 768px) {
     .core-pillars-grid {
         grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+    
+    .pillar-icon {
+        width: 160px;
+        height: 160px;
+    }
+    
+    .pillar-card h3 {
+        font-size: 1.6rem;
     }
 }
 
 .pillar-card {
-    background: var(--charcoal);
-    border-radius: 12px;
-    padding: 1.5rem;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    border: 1px solid rgba(201, 169, 110, 0.08);
+    background: transparent;
+    border-radius: 0;
+    padding: 1.5rem 0.5rem;
+    box-shadow: none;
+    border: none;
     text-align: center;
-    min-height: 280px;
+    min-height: 320px;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
+    transition: transform 0.3s ease;
+}
+
+.pillar-card:hover {
+    transform: translateY(-8px);
 }
 
 .pillar-icon {
-    width: 128px;
-    height: 128px;
-    margin: 0 auto 1rem auto;
+    width: 200px;
+    height: 200px;
+    margin: 0 auto 1.5rem auto;
     display: block;
     background-size: contain;
     background-position: center center;
     background-repeat: no-repeat;
     background-color: transparent;
+    transition: transform 0.3s ease;
+}
+
+.pillar-card:hover .pillar-icon {
+    transform: scale(1.05);
 }
 
 /* Icon paths for pillar icons */
@@ -980,16 +1000,24 @@ h4 {
 .pillar-card h3 {
     font-family: 'Playfair Display', serif;
     color: var(--gold);
-    font-size: 1.5rem;
-    margin-bottom: 0.8rem;
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    line-height: 1.2;
 }
 
 .pillar-card p {
-    font-size: 0.95rem;
-    color: rgba(247, 245, 243, 0.6);
-    line-height: 1.7;
-    margin-top: auto;
+    font-size: 0.85rem;
+    color: rgba(247, 245, 243, 0.5);
+    line-height: 1.3;
+    margin: 0;
     text-align: center;
+    max-width: 250px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .van-gennep-diagram {
