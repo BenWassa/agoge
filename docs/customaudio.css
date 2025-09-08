@@ -1,0 +1,223 @@
+:root {
+    --gold: #c9a96e;
+    --charcoal: #232323;
+    --bone-white: #f7f5f3;
+    --earth-green: #4a5a3a;
+}
+
+.custom-audio-player {
+    max-width: 800px;
+    margin: 3rem auto;
+    background: linear-gradient(135deg, rgba(35, 35, 35, 0.95) 0%, var(--charcoal) 100%);
+    border-radius: 20px;
+    padding: 0.5rem 1rem;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    border: 2px solid rgba(247, 245, 243, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    min-height: 60px;
+}
+
+.custom-audio-player::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent 0%, var(--gold) 25%, var(--gold) 75%, transparent 100%);
+    border-radius: 10px 10px 0 0;
+    opacity: 0.7;
+}
+
+.custom-audio-player audio {
+    display: none;
+}
+
+.player-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 1.5rem;
+    padding-top: 0.25rem;
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.play-pause-btn, .mute-btn {
+    background: transparent;
+    border: none;
+    color: var(--gold);
+    cursor: pointer;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.3s ease, transform 0.2s ease;
+    border-radius: 50%;
+}
+
+.play-pause-btn:hover, .mute-btn:hover {
+    color: #e6c085;
+    transform: scale(1.05);
+}
+
+.play-pause-btn svg, .mute-btn svg {
+    width: 28px;
+    height: 28px;
+    fill: currentColor;
+    display: none;
+}
+
+.play-pause-btn svg.active, .mute-btn svg.active {
+    display: block;
+}
+
+.progress-container {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    position: relative;
+    width: 100%;
+    text-align: center;
+}
+
+.progress-bar {
+    flex: 1;
+    max-width: 400px;
+}
+
+.remaining-time, .total-time {
+    font-size: 0.75rem;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    white-space: nowrap;
+    position: relative;
+    top: 1px;
+    text-align: center;
+    line-height: 1;
+}
+
+.remaining-time {
+    color: var(--bone-white);
+    margin-right: 0.5rem;
+    font-weight: 500;
+}
+
+.total-time {
+    color: rgba(247, 245, 243, 0.5);
+    margin-left: 0.5rem;
+    font-weight: 400;
+}
+
+.progress-bar, .volume-slider {
+    width: 100%;
+    height: 8px;
+    -webkit-appearance: none;
+    appearance: none;
+    background: rgba(247, 245, 243, 0.1);
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+    transition: background 0.3s ease;
+}
+
+.progress-bar::-webkit-slider-thumb, .volume-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--gold);
+    border: 2px solid var(--bone-white);
+    box-shadow: 0 0 5px rgba(201, 169, 110, 0.5);
+    transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.progress-bar::-moz-range-thumb, .volume-slider::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--gold);
+    border: 2px solid var(--bone-white);
+    box-shadow: 0 0 5px rgba(201, 169, 110, 0.5);
+    transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.progress-bar::-moz-range-track, .volume-slider::-moz-range-track {
+    background: rgba(247, 245, 243, 0.1);
+    border-radius: 5px;
+}
+
+.progress-bar:hover::-webkit-slider-thumb, .volume-slider:hover::-webkit-slider-thumb,
+.progress-bar:hover::-moz-range-thumb, .volume-slider:hover::-moz-range-thumb {
+    background: #e6c085;
+    border-color: #e6c085;
+}
+
+
+.volume-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 200px;
+    text-align: center;
+}
+
+.volume-slider {
+    height: 6px;
+    background: rgba(74, 90, 58, 0.3);
+}
+
+@media (max-width: 768px) {
+    .custom-audio-player {
+        margin: 2rem auto;
+        padding: 0.75rem 1rem;
+    }
+
+    .player-controls {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.8rem;
+    }
+
+    .play-pause-btn svg, .mute-btn svg {
+        width: 24px;
+        height: 24px;
+    }
+
+    .progress-container {
+        width: 100%;
+        order: 1;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .progress-bar {
+        max-width: none;
+        width: 100%;
+    }
+
+    .remaining-time, .total-time {
+        position: static;
+        margin: 0;
+    }
+
+    .volume-container {
+        width: auto;
+        order: 2;
+    }
+
+    .time-display {
+        text-align: center;
+    }
+}
