@@ -226,19 +226,10 @@ function resetTimer() {
 function rotateFacesWithTimer() {
     const rotationTime = Date.now();
     
-    // Start timer on first rotation only
-    if (!timerStarted) {
-        debugLog('🔄⏱️ First face rotation - starting timer', {
-            rotationTime: new Date(rotationTime).toISOString().slice(11, 23)
-        });
-        startPerpetualTimer();
-        timerStarted = true;
-    } else {
-        debugLog('🔄⏱️ Face rotation with timer sync', {
-            rotationTime: new Date(rotationTime).toISOString().slice(11, 23),
-            timeSinceLastReset: `${(rotationTime - timerStartTime) / 1000}s`
-        });
-    }
+    debugLog('🔄⏱️ Face rotation with timer sync', {
+        rotationTime: new Date(rotationTime).toISOString().slice(11, 23),
+        timeSinceLastReset: `${(rotationTime - timerStartTime) / 1000}s`
+    });
     
     rotateFaces(); // Call existing rotation function
     timerStartTime = rotationTime; // Reset timer sync point to current time
@@ -255,7 +246,7 @@ function startFaceRotationWithTimer() {
         return;
     }
     
-    debugLog('🎬 Starting face rotation system (timer will start with first rotation)');
+    debugLog('🎬 Starting face rotation system and timer immediately');
     systemRunning = true;
     
     // Clear any existing interval to prevent duplicates
@@ -264,14 +255,17 @@ function startFaceRotationWithTimer() {
         clearInterval(timerInterval);
     }
     
+    // Start timer immediately when rotation system begins
+    startPerpetualTimer();
+    timerStarted = true;
+    
     // Start rotation synced with timer every 12 seconds
-    // Timer will start with the first rotation
     faceRotationInterval = setInterval(rotateFacesWithTimer, FACE_DURATION);
     
     debugLog('🎬 Face rotation system started', {
         intervalDuration: `${FACE_DURATION / 1000}s`,
         nextRotationAt: new Date(Date.now() + FACE_DURATION).toISOString().slice(11, 23),
-        note: 'Timer will start with first face rotation'
+        note: 'Timer started immediately with system'
     });
 }
 
