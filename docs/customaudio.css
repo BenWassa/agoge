@@ -13,6 +13,11 @@
     margin-bottom: 1rem;
 }
 
+/* Audio source URLs */
+.episode-1-audio {
+    --audio-src: url('podcasts/Agoge_Episode_1.mp3');
+}
+
 .custom-audio-player {
     max-width: 800px;
     margin: 0.5rem auto;

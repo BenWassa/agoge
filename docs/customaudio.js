@@ -1,10 +1,20 @@
 const audio = document.getElementById('episodeAudio');
+
+// Get audio source from CSS custom property
+const audioPlayer = document.querySelector('.custom-audio-player');
+const audioSrc = getComputedStyle(audioPlayer).getPropertyValue('--audio-src');
+if (audioSrc) {
+    // Remove 'url(' and ')' from the CSS url() value
+    const cleanSrc = audioSrc.replace(/^url\(['"]?/, '').replace(/['"]?\)$/, '');
+    audio.src = cleanSrc;
+}
+
 const playPauseBtn = document.getElementById('playPauseBtn');
 const playIcon = playPauseBtn.querySelector('.play-icon');
 const pauseIcon = playPauseBtn.querySelector('.pause-icon');
 const progressBar = document.getElementById('progressBar');
-const currentTimeSpan = document.getElementById('currentTime');
-const durationSpan = document.getElementById('duration');
+const remainingTimeSpan = document.getElementById('remainingTime');
+const totalTimeSpan = document.getElementById('totalTime');
 const volumeSlider = document.getElementById('volumeSlider');
 const muteBtn = document.getElementById('muteBtn');
 const volumeHighIcon = muteBtn.querySelector('.volume-high-icon');
@@ -21,7 +31,7 @@ function formatTime(seconds) {
 
 // Initialize player when audio metadata is loaded
 audio.addEventListener('loadedmetadata', () => {
-    durationSpan.textContent = formatTime(audio.duration);
+    totalTimeSpan.textContent = formatTime(audio.duration);
     progressBar.max = audio.duration;
     volumeSlider.value = audio.volume * 100; // Set initial volume slider position
 });
@@ -44,7 +54,7 @@ audio.addEventListener('timeupdate', () => {
     if (!isDraggingProgress) {
         progressBar.value = audio.currentTime;
     }
-    currentTimeSpan.textContent = formatTime(audio.currentTime);
+    remainingTimeSpan.textContent = formatTime(Math.max(0, audio.duration - audio.currentTime));
 });
 
 // Handle manual seeking on progress bar
@@ -57,7 +67,7 @@ progressBar.addEventListener('mouseup', () => {
 });
 // For direct input (e.g., keyboard or rapid click)
 progressBar.addEventListener('input', () => {
-     currentTimeSpan.textContent = formatTime(progressBar.value); // Update time while dragging
+     remainingTimeSpan.textContent = formatTime(Math.max(0, audio.duration - progressBar.value)); // Update time while dragging
 });
 
 
@@ -100,7 +110,7 @@ audio.addEventListener('ended', () => {
     playIcon.classList.add('active');
     audio.currentTime = 0; // Reset to start
     progressBar.value = 0;
-    currentTimeSpan.textContent = formatTime(0);
+    remainingTimeSpan.textContent = formatTime(audio.duration);
 });
 
 // Handle initial load state: if no duration, means audio not loaded yet.
@@ -109,7 +119,7 @@ audio.addEventListener('canplaythrough', () => {
     if (isNaN(audio.duration)) {
         // Not ready yet, wait for loadedmetadata
     } else {
-        durationSpan.textContent = formatTime(audio.duration);
+        totalTimeSpan.textContent = formatTime(audio.duration);
         progressBar.max = audio.duration;
         volumeSlider.value = audio.volume * 100;
     }
