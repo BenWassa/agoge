@@ -16,6 +16,7 @@
 
 html {
     scroll-behavior: smooth;
+    scroll-padding-top: 2rem;
 }
 
 body {
@@ -30,15 +31,22 @@ body {
         var(--deep-black) 100%);
     background-attachment: fixed;
     overflow-x: hidden;
+    scroll-padding-top: 2rem;
 }
 
 .section-container {
-    padding: 5rem 2rem;
+    padding: 4rem 2rem;
     max-width: 1200px;
     margin: 0 auto;
     text-align: center;
     position: relative;
     transition: all 0.8s ease-in-out;
+    scroll-margin-top: 2rem;
+}
+
+/* Add scroll margin to all sections */
+section {
+    scroll-margin-top: 3rem;
 }
 
 /* Section Title Styling */
@@ -48,12 +56,14 @@ body {
     font-weight: 700;
     color: var(--gold);
     margin-bottom: 2rem;
+    margin-top: 1rem;
     text-shadow: 
         2px 2px 6px rgba(0, 0, 0, 0.8),
         0 0 15px rgba(201, 169, 110, 0.2);
     letter-spacing: -0.02em;
     line-height: 1.1;
     position: relative;
+    scroll-margin-top: 2rem;
 }
 
 /* General Fade-in Animation */
