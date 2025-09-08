@@ -6,7 +6,7 @@ const totalFaces = faces.length;
 let faceRotationInterval;
 
 // Debug configuration
-const DEBUG_ENABLED = false; // Set to false to disable all debug logging
+const DEBUG_ENABLED = true; // Set to false to disable all debug logging
 
 // Debug function to log with timestamps
 function debugLog(message, data = null) {
