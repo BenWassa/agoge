@@ -48,7 +48,7 @@ function startFaceRotation() {
     // Clear any existing interval to prevent duplicates
     clearInterval(faceRotationInterval);
     // Start rotation after page load (or resume)
-    faceRotationInterval = setInterval(rotateFaces, 5000); // Rotate every 5 seconds
+    faceRotationInterval = setInterval(rotateFaces, 12000); // Rotate every 12 seconds for very slow, contemplative transitions
 }
 
 function pauseFaceRotation() {
@@ -75,8 +75,8 @@ document.addEventListener('DOMContentLoaded', function() {
         img.src = url;
     });
     
-    // Start rotation after a brief delay to allow initial rendering
-    setTimeout(startFaceRotation, 2000);
+    // Start rotation after a longer delay to allow initial rendering and show first face
+    setTimeout(startFaceRotation, 6000);
 });
 
 // Pause rotation when user hovers over hero section
