@@ -7,17 +7,19 @@
 
 .custom-audio-player {
     max-width: 800px;
-    margin: 4rem auto;
+    margin: 3rem auto;
     background: linear-gradient(135deg, rgba(35, 35, 35, 0.95) 0%, var(--charcoal) 100%);
-    border-radius: 12px;
-    padding: 1.5rem 2rem;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), inset 0 1px 3px rgba(201, 169, 110, 0.1);
-    border: 1px solid rgba(201, 169, 110, 0.15);
+    border-radius: 20px;
+    padding: 0.75rem 1.5rem;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    border: 2px solid rgba(247, 245, 243, 0.2);
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     position: relative;
     overflow: hidden;
+    min-height: 80px;
 }
 
 .custom-audio-player::before {
@@ -39,9 +41,13 @@
 .player-controls {
     display: flex;
     align-items: center;
+    justify-content: center;
     width: 100%;
-    gap: 1rem;
-    padding-top: 0.5rem;
+    gap: 1.5rem;
+    padding-top: 0.25rem;
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
 }
 
 .play-pause-btn, .mute-btn {
@@ -76,9 +82,40 @@
 .progress-container {
     flex-grow: 1;
     display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0.5rem;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    position: relative;
+    width: 100%;
+    text-align: center;
+}
+
+.progress-bar {
+    flex: 1;
+    max-width: 400px;
+}
+
+.remaining-time, .total-time {
+    font-size: 0.75rem;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    white-space: nowrap;
+    position: relative;
+    top: 1px;
+    text-align: center;
+    line-height: 1;
+}
+
+.remaining-time {
+    color: var(--bone-white);
+    margin-right: 0.5rem;
+    font-weight: 500;
+}
+
+.total-time {
+    color: rgba(247, 245, 243, 0.5);
+    margin-left: 0.5rem;
+    font-weight: 400;
 }
 
 .progress-bar, .volume-slider {
@@ -126,20 +163,14 @@
     border-color: #e6c085;
 }
 
-.time-display {
-    font-size: 0.85rem;
-    color: rgba(247, 245, 243, 0.7);
-    font-family: 'Inter', sans-serif;
-    text-align: right;
-    width: 100%;
-    white-space: nowrap;
-}
 
 .volume-container {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 0.5rem;
-    width: 150px;
+    width: 200px;
+    text-align: center;
 }
 
 .volume-slider {
@@ -149,8 +180,8 @@
 
 @media (max-width: 768px) {
     .custom-audio-player {
-        margin: 3rem auto;
-        padding: 1rem 1.2rem;
+        margin: 2rem auto;
+        padding: 0.75rem 1rem;
     }
 
     .player-controls {
@@ -167,6 +198,18 @@
     .progress-container {
         width: 100%;
         order: 1;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .progress-bar {
+        max-width: none;
+        width: 100%;
+    }
+
+    .remaining-time, .total-time {
+        position: static;
+        margin: 0;
     }
 
     .volume-container {
