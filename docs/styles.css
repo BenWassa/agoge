@@ -302,8 +302,9 @@ h4 {
     background-repeat: no-repeat;
     opacity: 0; /* hidden until activated */
     transform: scale(0.998) translateY(0px);
-    transition: opacity 2.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-                transform 2.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: opacity 4s cubic-bezier(0.23, 1, 0.32, 1),
+                transform 4s cubic-bezier(0.23, 1, 0.32, 1),
+                z-index 0s linear 2s; /* Delay z-index change until after fade completes */
     will-change: opacity, transform;
     z-index: 4;
     pointer-events: none;
@@ -330,7 +331,10 @@ h4 {
     opacity: 1;
     transform: scale(1.01) translateY(-3px); /* much more subtle lift */
     z-index: 6; /* bring active face above others */
-    animation: subtleZoomIn 12s ease-in-out infinite; /* gentle zoom during active state */
+    transition: opacity 4s cubic-bezier(0.23, 1, 0.32, 1),
+                transform 4s cubic-bezier(0.23, 1, 0.32, 1),
+                z-index 0s linear 0s; /* Immediate z-index change for active face */
+    animation: subtleZoomIn 12s ease-in-out infinite 4s; /* Start animation after transition completes */
 }
 
 @keyframes subtle-parallax {
@@ -343,7 +347,7 @@ h4 {
         transform: scale(1.01) translateY(-3px); 
     }
     50% { 
-        transform: scale(1.035) translateY(-5px); 
+        transform: scale(1.025) translateY(-4px); /* Even more subtle animation */
     }
 }
 
