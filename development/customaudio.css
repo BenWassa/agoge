@@ -10,7 +10,7 @@
     margin: 3rem auto;
     background: linear-gradient(135deg, rgba(35, 35, 35, 0.95) 0%, var(--charcoal) 100%);
     border-radius: 20px;
-    padding: 0.75rem 1.5rem;
+    padding: 0.5rem 1rem;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
     border: 2px solid rgba(247, 245, 243, 0.2);
     display: flex;
@@ -19,7 +19,7 @@
     justify-content: center;
     position: relative;
     overflow: hidden;
-    min-height: 80px;
+    min-height: 60px;
 }
 
 .custom-audio-player::before {
