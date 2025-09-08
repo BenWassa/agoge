@@ -105,11 +105,26 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 // Face timer functionality
 const timerProgress = document.querySelector('.timer-progress');
 let timerInterval;
-let startTime;
+let timerStartTime;
 const FACE_DURATION = 12000; // 12 seconds
 
-function startTimer() {
-    startTime = Date.now();
+function updateTimer() {
+    if (!timerProgress) return;
+    
+    const elapsed = Date.now() - timerStartTime;
+    const progress = (elapsed % FACE_DURATION) / FACE_DURATION;
+    const degrees = progress * 360;
+    
+    // Update the conic gradient to show progress
+    timerProgress.style.background = `conic-gradient(
+        var(--gold) 0deg,
+        var(--gold) ${degrees}deg,
+        transparent ${degrees}deg
+    )`;
+}
+
+function startPerpetualTimer() {
+    timerStartTime = Date.now();
     
     // Clear any existing timer
     if (timerInterval) {
@@ -117,24 +132,7 @@ function startTimer() {
     }
     
     // Update timer every 50ms for smooth animation
-    timerInterval = setInterval(() => {
-        const elapsed = Date.now() - startTime;
-        const progress = Math.min(elapsed / FACE_DURATION, 1);
-        const degrees = progress * 360;
-        
-        // Update the conic gradient to show progress
-        timerProgress.style.background = `conic-gradient(
-            var(--gold) 0deg,
-            var(--gold) ${degrees}deg,
-            transparent ${degrees}deg
-        )`;
-        
-        // If timer completes, reset for next cycle
-        if (progress >= 1) {
-            clearInterval(timerInterval);
-            // Timer will restart when next face rotation begins
-        }
-    }, 50);
+    timerInterval = setInterval(updateTimer, 50);
 }
 
 function resetTimer() {
@@ -150,20 +148,20 @@ function resetTimer() {
     }
 }
 
-// Enhanced face rotation with timer integration
+// Sync timer with face rotation by resetting timer start time on each rotation
 function rotateFacesWithTimer() {
     rotateFaces(); // Call existing rotation function
-    startTimer(); // Start the timer for the new face
+    timerStartTime = Date.now(); // Reset timer sync point to current time
 }
 
 function startFaceRotationWithTimer() {
     // Clear any existing interval to prevent duplicates
     clearInterval(faceRotationInterval);
     
-    // Start the timer for the current face
-    startTimer();
+    // Start the perpetual timer
+    startPerpetualTimer();
     
-    // Start rotation with timer every 12 seconds
+    // Start rotation synced with timer every 12 seconds
     faceRotationInterval = setInterval(rotateFacesWithTimer, FACE_DURATION);
 }
 
