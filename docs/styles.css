@@ -297,9 +297,9 @@ h4 {
     will-change: opacity, transform;
     z-index: 4;
     pointer-events: none;
-    /* Use a mask for a smooth, feathered edge vignette effect */
-    mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
-    -webkit-mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
+    /* A strong, multi-layered inset shadow to darken all edges uniformly */
+    box-shadow: inset 0 0 80px 40px rgba(8, 8, 8, 0.7), /* Inner, darker shadow */
+                inset 0 0 200px 100px rgba(8, 8, 8, 0.5); /* Outer, softer shadow */
 }
 
 /* Special transformation statement (slower, more deliberate) */
@@ -379,7 +379,7 @@ h4 {
 .hero-tagline {
     font-size: clamp(1rem, 2.5vw, 1.3rem);
     font-weight: 500; /* Stronger weight, removed italic */
-    margin-bottom: 1rem; /* Space before arrow */
+    margin-bottom: 0.10rem; /* Space before arrow */
     color: var(--bone-white);
     opacity: 0.9;
     max-width: 600px;
