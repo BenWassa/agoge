@@ -1142,9 +1142,23 @@ h4 {
 }
 
 .symbol-item .symbol-icon {
-    font-size: 2.5rem;
-    margin-bottom: 0.5rem;
+    display: block;
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 0.5rem auto;
     line-height: 1;
+}
+
+.symbol-item .symbol-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: brightness(0.9);
+    transition: filter 0.3s ease;
+}
+
+.symbol-item:hover .symbol-icon img {
+    filter: brightness(1.2);
 }
 
 .symbol-item span {
