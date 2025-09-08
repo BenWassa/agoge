@@ -102,6 +102,76 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
+// Face timer functionality
+const timerProgress = document.querySelector('.timer-progress');
+let timerInterval;
+let startTime;
+const FACE_DURATION = 12000; // 12 seconds
+
+function startTimer() {
+    startTime = Date.now();
+    
+    // Clear any existing timer
+    if (timerInterval) {
+        clearInterval(timerInterval);
+    }
+    
+    // Update timer every 50ms for smooth animation
+    timerInterval = setInterval(() => {
+        const elapsed = Date.now() - startTime;
+        const progress = Math.min(elapsed / FACE_DURATION, 1);
+        const degrees = progress * 360;
+        
+        // Update the conic gradient to show progress
+        timerProgress.style.background = `conic-gradient(
+            var(--gold) 0deg,
+            var(--gold) ${degrees}deg,
+            transparent ${degrees}deg
+        )`;
+        
+        // If timer completes, reset for next cycle
+        if (progress >= 1) {
+            clearInterval(timerInterval);
+            // Timer will restart when next face rotation begins
+        }
+    }, 50);
+}
+
+function resetTimer() {
+    if (timerInterval) {
+        clearInterval(timerInterval);
+    }
+    if (timerProgress) {
+        timerProgress.style.background = `conic-gradient(
+            var(--gold) 0deg,
+            var(--gold) 0deg,
+            transparent 0deg
+        )`;
+    }
+}
+
+// Enhanced face rotation with timer integration
+function rotateFacesWithTimer() {
+    rotateFaces(); // Call existing rotation function
+    startTimer(); // Start the timer for the new face
+}
+
+function startFaceRotationWithTimer() {
+    // Clear any existing interval to prevent duplicates
+    clearInterval(faceRotationInterval);
+    
+    // Start the timer for the current face
+    startTimer();
+    
+    // Start rotation with timer every 12 seconds
+    faceRotationInterval = setInterval(rotateFacesWithTimer, FACE_DURATION);
+}
+
+// Replace the original startFaceRotation calls with timer version
+// Override the original function
+const originalStartFaceRotation = startFaceRotation;
+startFaceRotation = startFaceRotationWithTimer;
+
 // Fade in animations on scroll
 const observerOptions = {
     threshold: 0.1, // Trigger when 10% of the element is visible
