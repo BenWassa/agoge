@@ -348,11 +348,11 @@ h4 {
 }
 
 /* Image paths for archetypal faces (relative to styles.css) */
-.face-1 { background-image: url('Maasai_man.png'); }
-.face-2 { background-image: url('Spartan_man.png'); }
-.face-3 { background-image: url('Japan_man.png'); }
-.face-4 { background-image: url('Yanomami_man.png'); }
-.face-5 { background-image: url('Persian_man.png'); }
+.face-1 { background-image: url('faces/Maasai_man.png'); }
+.face-2 { background-image: url('faces/Spartan_man.png'); }
+.face-3 { background-image: url('faces/Japan_man.png'); }
+.face-4 { background-image: url('faces/Yanomami_man.png'); }
+.face-5 { background-image: url('faces/Persian_man.png'); }
 
 .hero-overlay {
     position: absolute;
@@ -1025,10 +1025,10 @@ h4 {
 }
 
 /* Icon paths for pillar icons */
-.icon-strength { background-image: url('Icon_Strength.png'); }
-.icon-resilience { background-image: url('Icon_Resilience_1.png'); }
-.icon-morality { background-image: url('Icon_Morality.png'); }
-.icon-community { background-image: url('Icon_Community.png'); }
+.icon-strength { background-image: url('icons/Icon_Strength.png'); }
+.icon-resilience { background-image: url('icons/Icon_Resilience_1.png'); }
+.icon-morality { background-image: url('icons/Icon_Morality.png'); }
+.icon-community { background-image: url('icons/Icon_Community.png'); }
 
 .pillar-card h3 {
     font-family: 'Playfair Display', serif;
