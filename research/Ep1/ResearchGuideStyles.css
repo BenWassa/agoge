@@ -696,6 +696,14 @@ h4 {
     height: auto;
 }
 
+.episode-card .hook em {
+    font-style: italic;
+    color: var(--gold);
+    font-weight: 500;
+    white-space: nowrap ;
+    display: inline;
+}
+
 .episode-card .key-takeaways {
     font-size: 0.8rem;
     color: rgba(201, 169, 110, 0.9);
