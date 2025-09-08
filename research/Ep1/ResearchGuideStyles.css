@@ -957,13 +957,13 @@ h4 {
 
 .core-pillars-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
     margin-top: 1rem;
 }
 
-.core-pillars-grid:nth-of-type(2) {
-    grid-template-columns: repeat(3, 1fr) !important;
+.core-pillars-grid:first-of-type {
+    grid-template-columns: repeat(2, 1fr);
 }
 
 @media (max-width: 768px) {
@@ -973,7 +973,7 @@ h4 {
 }
 
 @media (max-width: 1024px) and (min-width: 769px) {
-    .core-pillars-grid:nth-of-type(2) {
+    .core-pillars-grid {
         grid-template-columns: repeat(2, 1fr);
     }
 }
