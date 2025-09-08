@@ -163,6 +163,7 @@ const timerProgress = document.querySelector('.timer-progress');
 let timerInterval;
 let timerStartTime;
 let systemRunning = false; // Prevent multiple instances
+let timerStarted = false; // Track if timer has been started
 const FACE_DURATION = 12000; // 12 seconds
 
 function updateTimer() {
@@ -224,10 +225,20 @@ function resetTimer() {
 // Sync timer with face rotation by resetting timer start time on each rotation
 function rotateFacesWithTimer() {
     const rotationTime = Date.now();
-    debugLog('🔄⏱️ Face rotation with timer sync', {
-        rotationTime: new Date(rotationTime).toISOString().slice(11, 23),
-        timeSinceLastReset: `${(rotationTime - timerStartTime) / 1000}s`
-    });
+    
+    // Start timer on first rotation only
+    if (!timerStarted) {
+        debugLog('🔄⏱️ First face rotation - starting timer', {
+            rotationTime: new Date(rotationTime).toISOString().slice(11, 23)
+        });
+        startPerpetualTimer();
+        timerStarted = true;
+    } else {
+        debugLog('🔄⏱️ Face rotation with timer sync', {
+            rotationTime: new Date(rotationTime).toISOString().slice(11, 23),
+            timeSinceLastReset: `${(rotationTime - timerStartTime) / 1000}s`
+        });
+    }
     
     rotateFaces(); // Call existing rotation function
     timerStartTime = rotationTime; // Reset timer sync point to current time
@@ -244,7 +255,7 @@ function startFaceRotationWithTimer() {
         return;
     }
     
-    debugLog('🎬 Starting face rotation system with timer');
+    debugLog('🎬 Starting face rotation system (timer will start with first rotation)');
     systemRunning = true;
     
     // Clear any existing interval to prevent duplicates
@@ -253,15 +264,14 @@ function startFaceRotationWithTimer() {
         clearInterval(timerInterval);
     }
     
-    // Start the perpetual timer
-    startPerpetualTimer();
-    
     // Start rotation synced with timer every 12 seconds
+    // Timer will start with the first rotation
     faceRotationInterval = setInterval(rotateFacesWithTimer, FACE_DURATION);
     
     debugLog('🎬 Face rotation system started', {
         intervalDuration: `${FACE_DURATION / 1000}s`,
-        nextRotationAt: new Date(Date.now() + FACE_DURATION).toISOString().slice(11, 23)
+        nextRotationAt: new Date(Date.now() + FACE_DURATION).toISOString().slice(11, 23),
+        note: 'Timer will start with first face rotation'
     });
 }
 
