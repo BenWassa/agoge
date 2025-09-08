@@ -5,6 +5,21 @@ const faces = document.querySelectorAll('.face');
 const totalFaces = faces.length;
 let faceRotationInterval;
 
+// Debug configuration
+const DEBUG_ENABLED = true; // Set to false to disable all debug logging
+
+// Debug function to log with timestamps
+function debugLog(message, data = null) {
+    if (!DEBUG_ENABLED) return;
+    
+    const timestamp = new Date().toISOString().slice(11, 23); // HH:MM:SS.mmm format
+    if (data) {
+        console.log(`[${timestamp}] ${message}`, data);
+    } else {
+        console.log(`[${timestamp}] ${message}`);
+    }
+}
+
 // Function to shuffle array using Fisher-Yates algorithm
 function shuffleArray(array) {
     const shuffled = [...array];
@@ -17,6 +32,8 @@ function shuffleArray(array) {
 
 // Initialize random face order
 function initializeRandomFaceOrder() {
+    debugLog('🎭 Initializing face system...');
+    
     // Create array of face indices [0, 1, 2, 3, 4]
     const faceIndices = Array.from({length: totalFaces}, (_, i) => i);
     
@@ -30,10 +47,20 @@ function initializeRandomFaceOrder() {
     faces.forEach(face => face.classList.remove('active'));
     
     faces[faceOrder[currentFaceIndex]].classList.add('active');
+    
+    debugLog('🎭 Face system initialized', {
+        totalFaces,
+        faceOrder,
+        currentFaceIndex,
+        activeFaceIndex: faceOrder[currentFaceIndex],
+        activeFaceClass: faces[faceOrder[currentFaceIndex]].className
+    });
 }
 
 function rotateFaces() {
     if (totalFaces === 0 || faceOrder.length === 0) return;
+    
+    const previousFaceIndex = faceOrder[currentFaceIndex];
     
     // Remove active class from current face
     faces[faceOrder[currentFaceIndex]].classList.remove('active');
@@ -43,13 +70,19 @@ function rotateFaces() {
     
     // Add active class to the new current face
     faces[faceOrder[currentFaceIndex]].classList.add('active');
+    
+    debugLog('🔄 Face rotated (basic function - no timer sync)', {
+        from: previousFaceIndex,
+        to: faceOrder[currentFaceIndex],
+        currentFaceIndex,
+        fromClass: faces[previousFaceIndex].className,
+        toClass: faces[faceOrder[currentFaceIndex]].className
+    });
 }
 
 function startFaceRotation() {
-    // Clear any existing interval to prevent duplicates
-    clearInterval(faceRotationInterval);
-    // Start rotation after page load (or resume)
-    faceRotationInterval = setInterval(rotateFaces, 12000); // Rotate every 12 seconds for very slow, contemplative transitions
+    // Redirect to timer version
+    startFaceRotationWithTimer();
 }
 
 function pauseFaceRotation() {
@@ -58,8 +91,18 @@ function pauseFaceRotation() {
 
 // Initialize face rotation when page loads
 document.addEventListener('DOMContentLoaded', function() {
+    debugLog('🚀 Page loaded - DOMContentLoaded fired');
+    debugLog('🚀 Page initialization starting...');
+    
     // Initialize random face order first
     initializeRandomFaceOrder();
+    
+    // Debug timer element availability
+    const timerElement = document.querySelector('.timer-progress');
+    debugLog('🚀 Timer element check', {
+        timerElementFound: !!timerElement,
+        timerElementClass: timerElement?.className || 'not found'
+    });
     
     // Preload images for smooth transitions
     // Paths are relative to the docs/index.html file (images organized in subfolders)
@@ -71,13 +114,20 @@ document.addEventListener('DOMContentLoaded', function() {
         'faces/Persian_man.png'
     ];
 
+    debugLog('🚀 Preloading images...', { imageCount: imageUrls.length });
+    
     imageUrls.forEach(url => {
         const img = new Image();
         img.src = url;
     });
     
+    debugLog('🚀 Starting rotation system in 6 seconds...');
+    
     // Start rotation after a longer delay to allow initial rendering and show first face
-    setTimeout(startFaceRotation, 6000);
+    setTimeout(() => {
+        debugLog('🚀 6-second delay complete - starting face rotation system');
+        startFaceRotation();
+    }, 6000);
 });
 
 // Pause rotation when user hovers over hero section
@@ -111,9 +161,20 @@ const FACE_DURATION = 12000; // 12 seconds
 function updateTimer() {
     if (!timerProgress) return;
     
-    const elapsed = Date.now() - timerStartTime;
+    const now = Date.now();
+    const elapsed = now - timerStartTime;
     const progress = (elapsed % FACE_DURATION) / FACE_DURATION;
     const degrees = progress * 360;
+    
+    // Log every 2 seconds for debugging
+    if (Math.floor(elapsed / 2000) !== Math.floor((elapsed - 50) / 2000)) {
+        debugLog('⏱️ Timer update', {
+            elapsed: `${(elapsed / 1000).toFixed(1)}s`,
+            progress: `${(progress * 100).toFixed(1)}%`,
+            degrees: `${degrees.toFixed(1)}°`,
+            nextRotationIn: `${((FACE_DURATION - (elapsed % FACE_DURATION)) / 1000).toFixed(1)}s`
+        });
+    }
     
     // Update the conic gradient to show progress
     timerProgress.style.background = `conic-gradient(
@@ -125,6 +186,10 @@ function updateTimer() {
 
 function startPerpetualTimer() {
     timerStartTime = Date.now();
+    debugLog('⏱️ Starting perpetual timer', {
+        startTime: new Date(timerStartTime).toISOString().slice(11, 23),
+        duration: `${FACE_DURATION / 1000}s`
+    });
     
     // Clear any existing timer
     if (timerInterval) {
@@ -136,6 +201,7 @@ function startPerpetualTimer() {
 }
 
 function resetTimer() {
+    debugLog('⏱️ Resetting timer');
     if (timerInterval) {
         clearInterval(timerInterval);
     }
@@ -150,11 +216,23 @@ function resetTimer() {
 
 // Sync timer with face rotation by resetting timer start time on each rotation
 function rotateFacesWithTimer() {
+    const rotationTime = Date.now();
+    debugLog('🔄⏱️ Face rotation with timer sync', {
+        rotationTime: new Date(rotationTime).toISOString().slice(11, 23),
+        timeSinceLastReset: `${(rotationTime - timerStartTime) / 1000}s`
+    });
+    
     rotateFaces(); // Call existing rotation function
-    timerStartTime = Date.now(); // Reset timer sync point to current time
+    timerStartTime = rotationTime; // Reset timer sync point to current time
+    
+    debugLog('🔄⏱️ Timer resynced', {
+        newStartTime: new Date(timerStartTime).toISOString().slice(11, 23)
+    });
 }
 
 function startFaceRotationWithTimer() {
+    debugLog('🎬 Starting face rotation system with timer');
+    
     // Clear any existing interval to prevent duplicates
     clearInterval(faceRotationInterval);
     
@@ -163,12 +241,12 @@ function startFaceRotationWithTimer() {
     
     // Start rotation synced with timer every 12 seconds
     faceRotationInterval = setInterval(rotateFacesWithTimer, FACE_DURATION);
+    
+    debugLog('🎬 Face rotation system started', {
+        intervalDuration: `${FACE_DURATION / 1000}s`,
+        nextRotationAt: new Date(Date.now() + FACE_DURATION).toISOString().slice(11, 23)
+    });
 }
-
-// Replace the original startFaceRotation calls with timer version
-// Override the original function
-const originalStartFaceRotation = startFaceRotation;
-startFaceRotation = startFaceRotationWithTimer;
 
 // Fade in animations on scroll
 const observerOptions = {
