@@ -936,14 +936,19 @@ h4 {
 .core-pillars-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 3rem;
+    gap: 4rem 6rem;
     margin-top: 2rem;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
 }
 
 @media (max-width: 768px) {
     .core-pillars-grid {
         grid-template-columns: 1fr;
-        gap: 2.5rem;
+        gap: 3rem;
+        max-width: 400px;
     }
     
     .pillar-icon {
@@ -959,11 +964,11 @@ h4 {
 .pillar-card {
     background: transparent;
     border-radius: 0;
-    padding: 1.5rem 0.5rem;
+    padding: 1rem 0;
     box-shadow: none;
     border: none;
     text-align: center;
-    min-height: 320px;
+    min-height: 300px;
     display: flex;
     flex-direction: column;
     justify-content: center;
