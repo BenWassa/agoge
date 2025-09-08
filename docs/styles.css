@@ -279,7 +279,7 @@ h4 {
 }
 
 .face {
-    /* Minimal/reset styling for assessment */
+    /* Faces are stacked; hide inactive ones by default and animate opacity/transform */
     position: absolute;
     top: 0;
     left: 0;
@@ -288,12 +288,15 @@ h4 {
     background-size: contain;
     background-position: center center;
     background-repeat: no-repeat;
-    opacity: 1;
-    transition: none;
+    opacity: 0; /* hidden until activated */
+    transform: scale(0.995) translateY(0px);
+    transition: opacity 0.9s cubic-bezier(0.2, 0.8, 0.2, 1),
+                transform 0.9s cubic-bezier(0.2, 0.8, 0.2, 1);
+    will-change: opacity, transform;
     filter: none;
-    transform: none;
     animation: none;
     z-index: 4;
+    pointer-events: none;
 }
 
 /* Special transformation statement (slower, more deliberate) */
@@ -312,6 +315,8 @@ h4 {
 
 .face.active {
     opacity: 1;
+    transform: scale(1.02) translateY(-6px); /* subtle lift */
+    z-index: 6; /* bring active face above others */
 }
 
 @keyframes subtle-parallax {
