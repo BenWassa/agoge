@@ -221,9 +221,60 @@ When he stood again, unsteady but proud, the elders pressed a necklace of jaguar
 
 ## 7. The Mask and the Name (Japanese Genpuku)
 
-The lanterns glowed softly in the hall of the lord’s residence. Tatami mats whispered underfoot as the gathered retainers bowed their heads. At the center knelt **Hirotada**, fourteen years of age, his hair freshly bound, his childhood kimono exchanged for plain white robes. His heart raced, for tonight he would cross the threshold into manhood.  
+The lanterns glowed softly in the hall of the lord’s residence. Tatami mats whispered underfoot as the gathered retainers bowed their heads. At the center knelt **Hirotada**, fourteen years of age, his hair freshly bound, his childhood kimono exchanged for plain white robes. His heart raced, for tonight he would cross the threshold into manhood.
 
-The ceremony of **genpuku** began. His sponsor — a senior samurai with years of battle etched into his face — placed before him the **eboshi**, the black cap worn by adults of rank.  
+The ceremony of **genpuku** began. His sponsor — a senior samurai with years of battle etched into his face — placed before him the **eboshi**, the black cap worn by adults of rank.
 
-“From this day,” the sponsor intoned, “you are no longer a child. You bear the weight of your house and
+“From this day,” the sponsor intoned, “you are no longer a child. You bear the weight of your house and your ancestors. Stand.”
 
+Hirotada rose on shaking knees. The eboshi was set upon his head, cool silk pressing down like the weight of responsibility itself.
+
+Next came the sword. Not a child’s practice blade, but a true katana, its lacquered scabbard gleaming in the torchlight. His hands trembled as he accepted it. The hall was silent but for the rustle of clothing, the breath of expectation.
+
+The lord himself stepped forward. With a brush, he inscribed a new name onto paper: **Masayori** — “righteous and steadfast.” Hirotada bowed low, forehead to the mat, as the name was spoken aloud. From that moment, his childhood identity was gone. Masayori would rise in its place.
+
+Outside, the attendants struck drums. A chorus of young men, also newly named, recited verses from the *Iroha*, their voices weaving discipline with poetry:
+
+*“Though colors fade, though flowers fall,
+We walk the path of duty.
+Steadfast as the pine,
+Sharp as the blade.”*
+
+Masayori felt a shiver. The sword at his side was not only weapon but mirror, demanding that his life be as polished, as precise. He bowed once more, then turned to face the assembly as a man.
+
+His mother, watching from the shadowed corridor, let a single tear fall — not of sorrow, but of pride. Her boy had been taken; her warrior had returned.
+
+---
+
+## 8. The Oath of the Bow (Persian Initiation)
+
+The sun rose over Persepolis, gilding the columns with fire. In the training ground below, a line of boys stood waiting, each thin from weeks of drill, each cloaked in simple wool. At the center was **Ardeshir**, thirteen summers old, his face streaked with dust and sweat.
+
+Today, he would prove himself before the satrap and the priests of Ahura Mazda.
+
+The master of arms barked the first trial: **riding**. Horses snorted, hooves striking earth. Ardeshir swung onto the back of his mount, bareback, no saddle. At a signal, the boys raced across the sand. Some slipped, tumbling. Ardeshir clenched his thighs until his muscles screamed, guiding the horse with knees alone. When he leapt down at full gallop and landed steady, the crowd roared approval.
+
+Next came **archery**. Targets were set at staggering distances, painted with circles of red and blue. Each boy was given a bow taller than himself. Ardeshir’s first arrow wavered, falling short. Shame burned him. He closed his eyes, whispered a prayer to *Mithra*, guardian of contracts, then drew again. The second shot flew straight and struck the center.
+
+The master nodded.
+
+At last came **truth**. A Magus priest stepped forward, holding in his hands a clay tablet inscribed with a false account of tribute. “Speak, boy,” the priest commanded. “The lie is before you. What will you say?”
+
+Ardeshir felt the weight of all eyes upon him. His throat was dry, but his voice was firm:
+
+*“Asha is the way of truth. Druj is the lie. This account is false, and to conceal it would shame me before men and gods alike.”*
+
+The priest broke the tablet on the ground and raised his arms. “He has chosen truth.”
+
+The satrap approached, placing a hand on Ardeshir’s shoulder. From a servant he took a bow, polished and strong, carved with the lion of Persia. He laid it in the boy’s hands.
+
+“You are now a warrior of the empire. Ride with swiftness. Shoot with precision. Speak with truth.”
+
+Drums thundered, and the assembly sang an ancient verse:
+
+*“To ride is to master the earth,
+To shoot is to guard the realm,
+To speak truth is to honor the gods.
+So stands the man of Persia.”*
+
+Ardeshir bowed deeply, the bow heavy in his hands, his heart ablaze. He had entered the ground as a boy; he left it carrying empire in his chest.

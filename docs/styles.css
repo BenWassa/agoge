@@ -299,8 +299,9 @@ h4 {
     animation: none;
     z-index: 4;
     pointer-events: none;
-    /* Prepared for vignette box-shadow effect */
-    box-shadow: none; /* Will be added later for vignette */
+    /* Vignette effect to soften edges and blend with background */
+    box-shadow: inset 0 0 150px 80px rgba(8, 8, 8, 0.4),
+                inset 0 0 300px 120px rgba(0, 0, 0, 0.25);
     overflow: hidden; /* Ensures clean edges for vignette effect */
 }
 
