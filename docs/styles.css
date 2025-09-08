@@ -946,12 +946,21 @@ h4 {
 }
 
 .pillar-icon {
-    font-size: 3rem;
-    color: var(--gold);
-    margin-bottom: 1rem;
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 1rem auto;
     display: block;
-    line-height: 1;
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+    filter: brightness(0) saturate(100%) invert(84%) sepia(21%) saturate(1178%) hue-rotate(17deg) brightness(92%) contrast(86%);
 }
+
+/* Icon paths for pillar icons */
+.icon-strength { background-image: url('Icon_Strength.png'); }
+.icon-resilience { background-image: url('Icon_Resilience_1.png'); }
+.icon-morality { background-image: url('Icon_Morality.png'); }
+.icon-community { background-image: url('Icon_Community.png'); }
 
 .pillar-card h3 {
     font-family: 'Playfair Display', serif;
