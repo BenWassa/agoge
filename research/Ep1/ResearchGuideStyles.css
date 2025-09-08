@@ -54,6 +54,7 @@ body {
     position: relative;
     backdrop-filter: blur(2px);
     box-shadow: 0 8px 32px rgba(201, 169, 110, 0.1);
+    padding-top: 3rem; /* Space for the research brief label */
 }
 
 .hero-summary-box::before {
@@ -68,6 +69,53 @@ body {
         var(--earth-green) 50%, 
         var(--gold) 100%);
     border-radius: 14px 14px 0 0;
+}
+
+/* Research Brief Label */
+.research-brief-label {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background: rgba(247, 245, 243, 0.1);
+    color: rgba(247, 245, 243, 0.7);
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border: 1px solid rgba(184, 134, 11, 0.3);
+    z-index: 1;
+}
+
+/* Episode Title Block */
+.episode-title-block {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.episode-prefix {
+    display: block;
+    color: rgba(247, 245, 243, 0.7);
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.25rem;
+}
+
+.main-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700;
+    color: var(--gold);
+    margin: 0;
+    line-height: 1.2;
+    text-shadow: 
+        2px 2px 6px rgba(0, 0, 0, 0.8),
+        0 0 15px rgba(201, 169, 110, 0.2);
+    letter-spacing: -0.02em;
 }
 
 .hero-summary-box .section-title {
@@ -1087,6 +1135,17 @@ h4 {
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
+    .research-brief-label {
+        position: static;
+        display: block;
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+    
+    .hero-summary-box {
+        padding-top: 1rem;
+    }
+    
     .section-container {
         padding: 4rem 1.5rem;
     }
