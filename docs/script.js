@@ -17,7 +17,7 @@ function shuffleArray(array) {
 
 // Initialize random face order
 function initializeRandomFaceOrder() {
-    // Create array of face indices [0, 1, 2, 3, 4, 5]
+    // Create array of face indices [0, 1, 2, 3, 4]
     const faceIndices = Array.from({length: totalFaces}, (_, i) => i);
     
     // Shuffle the order
@@ -28,6 +28,15 @@ function initializeRandomFaceOrder() {
     
     // Set the initial active face
     faces.forEach(face => face.classList.remove('active'));
+    
+    // Debug: Log the initialization
+    console.log('Face system initialized:', {
+        totalFaces,
+        faceOrder,
+        currentFaceIndex,
+        activeFace: faceOrder[currentFaceIndex]
+    });
+    
     faces[faceOrder[currentFaceIndex]].classList.add('active');
 }
 
@@ -42,6 +51,13 @@ function rotateFaces() {
     
     // Add active class to the new current face
     faces[faceOrder[currentFaceIndex]].classList.add('active');
+    
+    // Debug: Log the rotation
+    console.log('Face rotated to:', {
+        currentFaceIndex,
+        activeFace: faceOrder[currentFaceIndex],
+        faceElement: faces[faceOrder[currentFaceIndex]]
+    });
 }
 
 function startFaceRotation() {
