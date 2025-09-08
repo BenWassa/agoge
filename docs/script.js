@@ -61,15 +61,15 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeRandomFaceOrder();
     
     // Preload images for smooth transitions
-    // Paths are relative to the index.html file
+    // Paths are relative to the docs/index.html file (images copied into docs/)
     const imageUrls = [
-        'assets/faces/Maasai_man.png',
-        'assets/faces/Spartan_man.png', 
-        'assets/faces/Japan_man.png',
-        'assets/faces/Yanomami_man.png',
-        'assets/faces/Persian_man.png'
+        'Maasai_man.png',
+        'Spartan_man.png',
+        'Japan_man.png',
+        'Yanomami_man.png',
+        'Persian_man.png'
     ];
-    
+
     imageUrls.forEach(url => {
         const img = new Image();
         img.src = url;
