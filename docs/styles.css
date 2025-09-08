@@ -491,7 +491,7 @@ h4 {
 }
 
 .manifesto-text {
-    font-size: 0.8rem;
+    font-size: 1rem;
     line-height: 1.8;
     margin-bottom: 2rem;
     color: rgba(247, 245, 243, 0.9);
@@ -1464,7 +1464,7 @@ h4 {
     }
 
     .manifesto-text {
-        font-size: 0.75rem;
+        font-size: 0.9rem;
     }
 
     .pull-quote {
