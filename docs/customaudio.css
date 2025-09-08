@@ -5,9 +5,17 @@
     --earth-green: #4a5a3a;
 }
 
+/* Override podcast-embed styling when it contains custom audio player */
+.podcast-embed:has(.custom-audio-player) {
+    background: transparent;
+    border: none;
+    padding: 0;
+    margin-bottom: 1rem;
+}
+
 .custom-audio-player {
     max-width: 800px;
-    margin: 3rem auto;
+    margin: 0.5rem auto;
     background: linear-gradient(135deg, rgba(35, 35, 35, 0.95) 0%, var(--charcoal) 100%);
     border-radius: 20px;
     padding: 0.5rem 1rem;
