@@ -1,9 +1,3 @@
-Perfect — I see what you’re aiming for: a **single Episode 2 skeleton doc** that blends the **commissions (2A + 2B)**, the **compiled research brief**, and the **detailed source PDFs**.
-
-Here’s a proposed **Episode 2 Skeleton Structure** that sets up everything cleanly for writing/recording:
-
----
-
 # **Episode 2: Wisdom of the Elders — Skeleton Structure**
 
 ## 1. Episode Overview
