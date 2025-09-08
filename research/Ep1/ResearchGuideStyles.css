@@ -687,21 +687,21 @@ h4 {
     font-size: 0.9rem;
     color: rgba(247, 245, 243, 0.85);
     margin-bottom: 1rem;
-    line-height: 1.5;
+    line-height: 1.6;
     flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    min-height: fit-content;
-    height: auto;
+    display: block;
+    text-align: left;
+    word-spacing: 0.1em;
+    hyphens: none;
 }
 
 .episode-card .hook em {
     font-style: italic;
     color: var(--gold);
     font-weight: 500;
-    white-space: nowrap ;
     display: inline;
+    word-break: keep-all;
+    hyphens: none;
 }
 
 .episode-card .key-takeaways {
