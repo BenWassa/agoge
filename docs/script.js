@@ -82,11 +82,17 @@ function rotateFaces() {
 
 function startFaceRotation() {
     // Redirect to timer version
+    debugLog('🎯 startFaceRotation() called');
     startFaceRotationWithTimer();
 }
 
 function pauseFaceRotation() {
+    debugLog('🛑 Stopping face rotation system');
     clearInterval(faceRotationInterval);
+    if (timerInterval) {
+        clearInterval(timerInterval);
+    }
+    systemRunning = false;
 }
 
 // Initialize face rotation when page loads
@@ -156,6 +162,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 const timerProgress = document.querySelector('.timer-progress');
 let timerInterval;
 let timerStartTime;
+let systemRunning = false; // Prevent multiple instances
 const FACE_DURATION = 12000; // 12 seconds
 
 function updateTimer() {
@@ -231,10 +238,20 @@ function rotateFacesWithTimer() {
 }
 
 function startFaceRotationWithTimer() {
+    // Prevent multiple instances
+    if (systemRunning) {
+        debugLog('🚫 Timer system already running - ignoring duplicate start request');
+        return;
+    }
+    
     debugLog('🎬 Starting face rotation system with timer');
+    systemRunning = true;
     
     // Clear any existing interval to prevent duplicates
     clearInterval(faceRotationInterval);
+    if (timerInterval) {
+        clearInterval(timerInterval);
+    }
     
     // Start the perpetual timer
     startPerpetualTimer();
