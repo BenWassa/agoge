@@ -20,7 +20,7 @@ html {
 
 body {
     font-family: 'Inter', sans-serif;
-    line-height: 1.6;
+    line-height: 1.5;
     color: var(--bone-white);
     background: linear-gradient(180deg, 
         var(--deep-black) 0%, 
@@ -33,7 +33,7 @@ body {
 }
 
 .section-container {
-    padding: 5rem 2rem;
+    padding: 2rem 1rem;
     max-width: 1200px;
     margin: 0 auto;
     text-align: center;
@@ -47,7 +47,7 @@ body {
     font-size: clamp(2.5rem, 6vw, 4.5rem);
     font-weight: 700;
     color: var(--gold);
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     text-shadow: 
         2px 2px 6px rgba(0, 0, 0, 0.8),
         0 0 15px rgba(201, 169, 110, 0.2);
@@ -77,7 +77,7 @@ body {
     font-weight: 600;
     color: rgba(247, 245, 243, 0.7);
     margin-bottom: 1.5rem;
-    margin-top: 4rem;
+    margin-top: 2rem;
     text-transform: uppercase;
     letter-spacing: 0.05em;
     text-align: center;
@@ -92,8 +92,8 @@ body {
         rgba(35, 35, 35, 0.95) 50%,
         rgba(40, 40, 40, 0.9) 100%);
     border-radius: 20px;
-    padding: 3rem;
-    margin: 1.5rem 0 4rem 0;
+    padding: 1.5rem;
+    margin: 1rem 0 2rem 0;
     border: 2px solid rgba(201, 169, 110, 0.2);
     box-shadow: 
         0 12px 40px rgba(0, 0, 0, 0.4),
@@ -136,7 +136,7 @@ h3 {
     font-family: 'Playfair Display', serif;
     color: var(--gold);
     font-size: 1.4rem;
-    margin-bottom: 0.4rem;
+    margin-bottom: 0.5rem;
     font-weight: 700;
     letter-spacing: -0.02em;
 }
@@ -147,7 +147,7 @@ h4 {
     color: rgba(247, 245, 243, 0.7);
     font-size: 0.85rem;
     font-weight: 500;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
     text-transform: uppercase;
     letter-spacing: 0.05em;
 }
@@ -482,10 +482,19 @@ h4 {
 
 .manifesto-text {
     font-size: 1.15rem;
-    line-height: 1.8;
-    margin-bottom: 2rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
     color: rgba(247, 245, 243, 0.9);
     text-align: left;
+}
+
+.manifesto-text ul {
+    margin: 0;
+    padding-left: 1.5rem;
+}
+
+.manifesto-text li {
+    margin-bottom: 0.5rem;
 }
 
 .pull-quote {
@@ -493,8 +502,8 @@ h4 {
     font-size: 1.8rem;
     font-style: italic;
     color: var(--gold);
-    margin: 4rem auto; /* Center the quote */
-    padding: 2.5rem 3rem;
+    margin: 2rem auto; /* Center the quote */
+    padding: 1.5rem 2rem;
     border-left: 5px solid var(--gold);
     background: rgba(201, 169, 110, 0.08);
     position: relative;
@@ -739,8 +748,8 @@ h4 {
 .episodes-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 2rem;
-    margin-top: 3rem;
+    gap: 1rem;
+    margin-top: 1.5rem;
     max-width: 1000px;
     margin-left: auto;
     margin-right: auto;
@@ -748,7 +757,7 @@ h4 {
 
 @media (max-width: 768px) {
     .episodes-grid {
-        gap: 1.5rem;
+        gap: 1rem;
     }
 
     .episode-card {
@@ -759,14 +768,14 @@ h4 {
 .episode-card {
     background: linear-gradient(135deg, var(--charcoal) 0%, rgba(31, 31, 31, 0.95) 100%);
     border-radius: 16px;
-    padding: 2rem;
+    padding: 1.5rem;
     text-align: left;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
     border: 1px solid rgba(201, 169, 110, 0.15);
     transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
     position: relative;
     overflow: hidden;
-    min-height: 320px;
+    min-height: 280px;
     display: flex;
     flex-direction: column;
 }
@@ -926,7 +935,7 @@ h4 {
 .core-pillars-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
+    gap: 1rem;
     margin-top: 1rem;
 }
 
@@ -939,7 +948,7 @@ h4 {
 .pillar-card {
     background: var(--charcoal);
     border-radius: 12px;
-    padding: 2rem;
+    padding: 1.5rem;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     border: 1px solid rgba(201, 169, 110, 0.08);
     text-align: center;
@@ -970,7 +979,7 @@ h4 {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 1.5rem;
+    gap: 1rem;
     margin-top: 1.5rem;
     flex-wrap: wrap;
 }
