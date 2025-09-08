@@ -939,15 +939,20 @@ h4 {
 .pillar-card {
     background: var(--charcoal);
     border-radius: 12px;
-    padding: 2rem;
+    padding: 1.5rem;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     border: 1px solid rgba(201, 169, 110, 0.08);
     text-align: center;
+    min-height: 280px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
 }
 
 .pillar-icon {
-    width: 64px;
-    height: 64px;
+    width: 128px;
+    height: 128px;
     margin: 0 auto 1rem auto;
     display: block;
     background-size: contain;
@@ -971,8 +976,10 @@ h4 {
 
 .pillar-card p {
     font-size: 0.95rem;
-    color: rgba(247, 245, 243, 0.85);
+    color: rgba(247, 245, 243, 0.6);
     line-height: 1.7;
+    margin-top: auto;
+    text-align: center;
 }
 
 .van-gennep-diagram {
