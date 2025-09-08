@@ -5,27 +5,21 @@
     --earth-green: #4a5a3a;
 }
 
-/* Custom Audio Player Styles */
 .custom-audio-player {
     max-width: 800px;
-    margin: 4rem auto; /* Center the player and give it some space */
-    background: linear-gradient(135deg, 
-        rgba(35, 35, 35, 0.95) 0%, 
-        var(--charcoal) 100%);
+    margin: 4rem auto;
+    background: linear-gradient(135deg, rgba(35, 35, 35, 0.95) 0%, var(--charcoal) 100%);
     border-radius: 12px;
     padding: 1.5rem 2rem;
-    box-shadow: 
-        0 8px 32px rgba(0, 0, 0, 0.4),
-        inset 0 1px 3px rgba(201, 169, 110, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), inset 0 1px 3px rgba(201, 169, 110, 0.1);
     border: 1px solid rgba(201, 169, 110, 0.15);
     display: flex;
     flex-direction: column;
     align-items: center;
     position: relative;
-    overflow: hidden; /* For pseudo-element */
+    overflow: hidden;
 }
 
-/* Gold line at the top, similar to subsection-container */
 .custom-audio-player::before {
     content: '';
     position: absolute;
@@ -33,17 +27,13 @@
     left: 0;
     right: 0;
     height: 3px;
-    background: linear-gradient(90deg, 
-        transparent 0%, 
-        var(--gold) 25%, 
-        var(--gold) 75%, 
-        transparent 100%);
+    background: linear-gradient(90deg, transparent 0%, var(--gold) 25%, var(--gold) 75%, transparent 100%);
     border-radius: 10px 10px 0 0;
     opacity: 0.7;
 }
 
 .custom-audio-player audio {
-    display: none; /* Hide the default audio element */
+    display: none;
 }
 
 .player-controls {
@@ -51,7 +41,7 @@
     align-items: center;
     width: 100%;
     gap: 1rem;
-    padding-top: 0.5rem; /* Space below the gold line */
+    padding-top: 0.5rem;
 }
 
 .play-pause-btn, .mute-btn {
@@ -68,15 +58,15 @@
 }
 
 .play-pause-btn:hover, .mute-btn:hover {
-    color: #e6c085; /* Lighter gold on hover */
+    color: #e6c085;
     transform: scale(1.05);
 }
 
 .play-pause-btn svg, .mute-btn svg {
     width: 28px;
     height: 28px;
-    fill: currentColor; /* Use the button's color for the SVG */
-    display: none; /* Hide by default, active class will show */
+    fill: currentColor;
+    display: none;
 }
 
 .play-pause-btn svg.active, .mute-btn svg.active {
@@ -93,19 +83,17 @@
 
 .progress-bar, .volume-slider {
     width: 100%;
-    height: 8px; /* Thinner for a sleek look */
+    height: 8px;
     -webkit-appearance: none;
     appearance: none;
-    background: rgba(247, 245, 243, 0.1); /* Light track for progress */
+    background: rgba(247, 245, 243, 0.1);
     border-radius: 5px;
     cursor: pointer;
     outline: none;
     transition: background 0.3s ease;
 }
 
-/* Thumb for progress and volume sliders */
-.progress-bar::-webkit-slider-thumb,
-.volume-slider::-webkit-slider-thumb {
+.progress-bar::-webkit-slider-thumb, .volume-slider::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
     width: 18px;
@@ -117,8 +105,7 @@
     transition: background 0.3s ease, border-color 0.3s ease;
 }
 
-.progress-bar::-moz-range-thumb,
-.volume-slider::-moz-range-thumb {
+.progress-bar::-moz-range-thumb, .volume-slider::-moz-range-thumb {
     width: 18px;
     height: 18px;
     border-radius: 50%;
@@ -128,25 +115,16 @@
     transition: background 0.3s ease, border-color 0.3s ease;
 }
 
-/* Track for progress and volume sliders (Firefox) */
-.progress-bar::-moz-range-track,
-.volume-slider::-moz-range-track {
+.progress-bar::-moz-range-track, .volume-slider::-moz-range-track {
     background: rgba(247, 245, 243, 0.1);
     border-radius: 5px;
 }
 
-.progress-bar:hover::-webkit-slider-thumb,
-.volume-slider:hover::-webkit-slider-thumb {
-    background: #e6c085; /* Lighter gold on hover */
+.progress-bar:hover::-webkit-slider-thumb, .volume-slider:hover::-webkit-slider-thumb,
+.progress-bar:hover::-moz-range-thumb, .volume-slider:hover::-moz-range-thumb {
+    background: #e6c085;
     border-color: #e6c085;
 }
-
-.progress-bar:hover::-moz-range-thumb,
-.volume-slider:hover::-moz-range-thumb {
-    background: #e6c085; /* Lighter gold on hover */
-    border-color: #e6c085;
-}
-
 
 .time-display {
     font-size: 0.85rem;
@@ -154,22 +132,21 @@
     font-family: 'Inter', sans-serif;
     text-align: right;
     width: 100%;
-    white-space: nowrap; /* Prevent time from wrapping */
+    white-space: nowrap;
 }
 
 .volume-container {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    width: 150px; /* Fixed width for volume for consistency */
+    width: 150px;
 }
 
 .volume-slider {
     height: 6px;
-    background: rgba(74, 90, 58, 0.3); /* Earth green for volume track */
+    background: rgba(74, 90, 58, 0.3);
 }
 
-/* Responsive adjustments for audio player */
 @media (max-width: 768px) {
     .custom-audio-player {
         margin: 3rem auto;
@@ -189,12 +166,12 @@
 
     .progress-container {
         width: 100%;
-        order: 1; /* Place progress bar above volume on small screens */
+        order: 1;
     }
 
     .volume-container {
-        width: auto; /* Auto width on smaller screens */
-        order: 2; /* Place volume below progress */
+        width: auto;
+        order: 2;
     }
 
     .time-display {

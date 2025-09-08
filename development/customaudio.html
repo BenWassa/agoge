@@ -34,39 +34,24 @@
         /* Custom Audio Player Styles */
         .custom-audio-player {
             max-width: 800px;
-            margin: 4rem auto; /* Center the player and give it some space */
-            background: linear-gradient(135deg, 
-                rgba(35, 35, 35, 0.95) 0%, 
+            margin: 3rem auto; /* Center the player and give it some space */
+            background: linear-gradient(135deg,
+                rgba(35, 35, 35, 0.95) 0%,
                 var(--charcoal) 100%);
-            border-radius: 12px;
-            padding: 1.5rem 2rem;
-            box-shadow: 
-                0 8px 32px rgba(0, 0, 0, 0.4),
-                inset 0 1px 3px rgba(201, 169, 110, 0.1);
-            border: 1px solid rgba(201, 169, 110, 0.15);
+            border-radius: 20px;
+            padding: 0.75rem 1.5rem;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+            border: 2px solid rgba(247, 245, 243, 0.2);
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center;
             position: relative;
             overflow: hidden; /* For pseudo-element */
+            min-height: 80px; /* Ensure consistent height */
         }
 
-        /* Gold line at the top, similar to subsection-container */
-        .custom-audio-player::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, 
-                transparent 0%, 
-                var(--gold) 25%, 
-                var(--gold) 75%, 
-                transparent 100%);
-            border-radius: 10px 10px 0 0;
-            opacity: 0.7;
-        }
+
 
         .custom-audio-player audio {
             display: none; /* Hide the default audio element */
@@ -75,9 +60,13 @@
         .player-controls {
             display: flex;
             align-items: center;
+            justify-content: center;
             width: 100%;
-            gap: 1rem;
-            padding-top: 0.5rem; /* Space below the gold line */
+            gap: 1.5rem;
+            padding-top: 0.25rem;
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
         }
 
         .play-pause-btn, .mute-btn {
@@ -112,9 +101,38 @@
         .progress-container {
             flex-grow: 1;
             display: flex;
-            flex-direction: column;
-            align-items: stretch;
-            gap: 0.5rem;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            position: relative;
+            width: 100%;
+            text-align: center;
+        }
+
+        .progress-bar {
+            flex: 1;
+            max-width: 400px;
+        }
+
+        .remaining-time, .total-time {
+            font-size: 0.75rem;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            white-space: nowrap;
+            position: relative;
+            top: 1px; /* Fine-tune alignment with progress bar */
+            text-align: center;
+            line-height: 1;
+        }
+
+        .remaining-time {
+            color: var(--bone-white);
+            margin-right: 0.5rem;
+        }
+
+        .total-time {
+            color: rgba(247, 245, 243, 0.5);
+            margin-left: 0.5rem;
         }
 
         .progress-bar, .volume-slider {
@@ -174,20 +192,25 @@
         }
 
 
-        .time-display {
-            font-size: 0.85rem;
-            color: rgba(247, 245, 243, 0.7);
-            font-family: 'Inter', sans-serif;
-            text-align: right;
-            width: 100%;
-            white-space: nowrap; /* Prevent time from wrapping */
+
+
+        .remaining-time {
+            color: var(--bone-white);
+            font-weight: 500;
+        }
+
+        .total-time {
+            color: rgba(247, 245, 243, 0.5);
+            font-weight: 400;
         }
 
         .volume-container {
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 0.5rem;
             width: 150px; /* Fixed width for volume for consistency */
+            text-align: center;
         }
 
         .volume-slider {
@@ -198,8 +221,8 @@
         /* Responsive adjustments for audio player */
         @media (max-width: 768px) {
             .custom-audio-player {
-                margin: 3rem auto;
-                padding: 1rem 1.2rem;
+                margin: 2rem auto;
+                padding: 0.75rem 1rem;
             }
 
             .player-controls {
@@ -216,6 +239,18 @@
             .progress-container {
                 width: 100%;
                 order: 1; /* Place progress bar above volume on small screens */
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .progress-bar {
+                max-width: none;
+                width: 100%;
+            }
+
+            .remaining-time, .total-time {
+                position: static;
+                margin: 0;
             }
 
             .volume-container {
@@ -243,10 +278,9 @@
                 </button>
 
                 <div class="progress-container">
+                    <span id="remainingTime" class="remaining-time">00:00</span>
                     <input type="range" id="progressBar" class="progress-bar" value="0" min="0" max="100">
-                    <div class="time-display">
-                        <span id="currentTime">00:00</span> / <span id="duration">00:00</span>
-                    </div>
+                    <span id="totalTime" class="total-time">00:00</span>
                 </div>
 
                 <div class="volume-container">
@@ -266,8 +300,8 @@
         const playIcon = playPauseBtn.querySelector('.play-icon');
         const pauseIcon = playPauseBtn.querySelector('.pause-icon');
         const progressBar = document.getElementById('progressBar');
-        const currentTimeSpan = document.getElementById('currentTime');
-        const durationSpan = document.getElementById('duration');
+        const remainingTimeSpan = document.getElementById('remainingTime');
+        const totalTimeSpan = document.getElementById('totalTime');
         const volumeSlider = document.getElementById('volumeSlider');
         const muteBtn = document.getElementById('muteBtn');
         const volumeHighIcon = muteBtn.querySelector('.volume-high-icon');
@@ -284,9 +318,11 @@
 
         // Initialize player when audio metadata is loaded
         audio.addEventListener('loadedmetadata', () => {
-            durationSpan.textContent = formatTime(audio.duration);
+            totalTimeSpan.textContent = formatTime(audio.duration);
             progressBar.max = audio.duration;
             volumeSlider.value = audio.volume * 100; // Set initial volume slider position
+            // Initialize remaining time
+            remainingTimeSpan.textContent = formatTime(audio.duration);
         });
 
         // Play/Pause functionality
@@ -302,12 +338,13 @@
             }
         });
 
-        // Update progress bar and current time
+        // Update progress bar and remaining time
         audio.addEventListener('timeupdate', () => {
             if (!isDraggingProgress) {
                 progressBar.value = audio.currentTime;
             }
-            currentTimeSpan.textContent = formatTime(audio.currentTime);
+            const remaining = audio.duration - audio.currentTime;
+            remainingTimeSpan.textContent = formatTime(remaining);
         });
 
         // Handle manual seeking on progress bar
@@ -320,7 +357,8 @@
         });
         // For direct input (e.g., keyboard or rapid click)
         progressBar.addEventListener('input', () => {
-             currentTimeSpan.textContent = formatTime(progressBar.value); // Update time while dragging
+             const remaining = audio.duration - progressBar.value;
+             remainingTimeSpan.textContent = formatTime(remaining); // Update time while dragging
         });
 
 
@@ -363,7 +401,7 @@
             playIcon.classList.add('active');
             audio.currentTime = 0; // Reset to start
             progressBar.value = 0;
-            currentTimeSpan.textContent = formatTime(0);
+            remainingTimeSpan.textContent = formatTime(audio.duration);
         });
 
         // Handle initial load state: if no duration, means audio not loaded yet.
@@ -372,7 +410,7 @@
             if (isNaN(audio.duration)) {
                 // Not ready yet, wait for loadedmetadata
             } else {
-                durationSpan.textContent = formatTime(audio.duration);
+                totalTimeSpan.textContent = formatTime(audio.duration);
                 progressBar.max = audio.duration;
                 volumeSlider.value = audio.volume * 100;
             }
