@@ -251,9 +251,11 @@ h4 {
 .archetypal-faces {
     position: absolute;
     top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100vh; /* Square container based on viewport height */
+    height: 100vh; /* Full hero height */
+    max-width: 100vw; /* Prevent horizontal overflow */
     z-index: 3;
     pointer-events: none; /* Allows click-through to elements beneath if any */
 }
@@ -285,7 +287,7 @@ h4 {
     left: 0;
     width: 100%;
     height: 100%;
-    background-size: contain;
+    background-size: cover; /* Fills the square container completely */
     background-position: center center;
     background-repeat: no-repeat;
     opacity: 0; /* hidden until activated */
@@ -297,6 +299,9 @@ h4 {
     animation: none;
     z-index: 4;
     pointer-events: none;
+    /* Prepared for vignette box-shadow effect */
+    box-shadow: none; /* Will be added later for vignette */
+    overflow: hidden; /* Ensures clean edges for vignette effect */
 }
 
 /* Special transformation statement (slower, more deliberate) */
@@ -317,11 +322,21 @@ h4 {
     opacity: 1;
     transform: scale(1.01) translateY(-3px); /* much more subtle lift */
     z-index: 6; /* bring active face above others */
+    animation: subtleZoomIn 12s ease-in-out infinite; /* gentle zoom during active state */
 }
 
 @keyframes subtle-parallax {
     0% { transform: scale(1.0) translateY(0px); }
     100% { transform: scale(1.03) translateY(-8px); } /* Slight movement */
+}
+
+@keyframes subtleZoomIn {
+    0%, 100% { 
+        transform: scale(1.01) translateY(-3px); 
+    }
+    50% { 
+        transform: scale(1.035) translateY(-5px); 
+    }
 }
 
 /* Image paths for archetypal faces (relative to styles.css) */
