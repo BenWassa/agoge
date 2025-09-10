@@ -6,7 +6,7 @@ const totalFaces = faces.length;
 let faceRotationInterval;
 
 // Debug configuration
-const DEBUG_ENABLED = false; // Set to false to disable all debug logging
+const DEBUG_ENABLED = true; // Set to false to disable all debug logging
 
 // Debug function to log with timestamps
 function debugLog(message, data = null) {
@@ -94,6 +94,26 @@ function pauseFaceRotation() {
     }
     systemRunning = false;
 }
+
+// Handle page visibility changes to maintain rotation when switching tabs
+document.addEventListener('visibilitychange', function() {
+    if (document.hidden) {
+        // Page is now hidden (user switched tabs or minimized)
+        debugLog('👁️ Page hidden - pausing rotation');
+        if (systemRunning) {
+            pauseFaceRotation();
+        }
+    } else {
+        // Page is now visible again
+        debugLog('👁️ Page visible - resuming rotation');
+        if (timerStarted && !systemRunning) {
+            // Only restart if the system was previously started
+            setTimeout(() => {
+                startFaceRotation();
+            }, 500); // Small delay to ensure page is fully active
+        }
+    }
+});
 
 // Initialize face rotation when page loads
 document.addEventListener('DOMContentLoaded', function() {
