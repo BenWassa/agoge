@@ -57,7 +57,7 @@ body {
     padding-top: 3rem; /* Space for the research brief label */
 }
 
-.hero-summary-box::before {
+.hero-summary-box:before {
     content: '';
     position: absolute;
     top: 0;
@@ -76,7 +76,7 @@ body {
     position: absolute;
     top: 1rem;
     left: 1rem;
-    background: rgba(247, 245, 243, 0.1);
+    background: transparent;
     color: rgba(247, 245, 243, 0.7);
     padding: 0.5rem 1rem;
     border-radius: 4px;
