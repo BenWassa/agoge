@@ -1,126 +1,124 @@
-const audio = document.getElementById('episodeAudio');
+document.addEventListener('DOMContentLoaded', () => {
+    const players = document.querySelectorAll('.custom-audio-player');
 
-// Get audio source from CSS custom property
-const audioPlayer = document.querySelector('.custom-audio-player');
-const audioSrc = getComputedStyle(audioPlayer).getPropertyValue('--audio-src');
-if (audioSrc) {
-    // Remove 'url(' and ')' from the CSS url() value
-    const cleanSrc = audioSrc.replace(/^url\(['"]?/, '').replace(/['"]?\)$/, '');
-    audio.src = cleanSrc;
-}
-
-const playPauseBtn = document.getElementById('playPauseBtn');
-const playIcon = playPauseBtn.querySelector('.play-icon');
-const pauseIcon = playPauseBtn.querySelector('.pause-icon');
-const progressBar = document.getElementById('progressBar');
-const remainingTimeSpan = document.getElementById('remainingTime');
-const totalTimeSpan = document.getElementById('totalTime');
-const volumeSlider = document.getElementById('volumeSlider');
-const muteBtn = document.getElementById('muteBtn');
-const volumeHighIcon = muteBtn.querySelector('.volume-high-icon');
-const volumeMuteIcon = muteBtn.querySelector('.volume-mute-icon');
-
-let isDraggingProgress = false;
-let lastVolume = 1; // Store last volume for mute/unmute
-
-function formatTime(seconds) {
-    const minutes = Math.floor(seconds / 60);
-    const secs = Math.floor(seconds % 60);
-    return `${minutes < 10 ? '0' : ''}${minutes}:${secs < 10 ? '0' : ''}${secs}`;
-}
-
-// Initialize player when audio metadata is loaded
-audio.addEventListener('loadedmetadata', () => {
-    totalTimeSpan.textContent = formatTime(audio.duration);
-    progressBar.max = audio.duration;
-    volumeSlider.value = audio.volume * 100; // Set initial volume slider position
+    players.forEach(player => {
+        initializeAudioPlayer(player);
+    });
 });
 
-// Play/Pause functionality
-playPauseBtn.addEventListener('click', () => {
-    if (audio.paused) {
-        audio.play();
-        playIcon.classList.remove('active');
-        pauseIcon.classList.add('active');
-    } else {
-        audio.pause();
-        pauseIcon.classList.remove('active');
-        playIcon.classList.add('active');
+function initializeAudioPlayer(player) {
+    const audio = player.querySelector('.episode-audio');
+    const playPauseBtn = player.querySelector('.play-pause-btn');
+    const playIcon = playPauseBtn.querySelector('.play-icon');
+    const pauseIcon = playPauseBtn.querySelector('.pause-icon');
+    const progressBar = player.querySelector('.progress-bar');
+    const remainingTimeSpan = player.querySelector('.remaining-time');
+    const totalTimeSpan = player.querySelector('.total-time');
+    const volumeSlider = player.querySelector('.volume-slider');
+    const muteBtn = player.querySelector('.mute-btn');
+    const volumeHighIcon = muteBtn.querySelector('.volume-high-icon');
+    const volumeMuteIcon = muteBtn.querySelector('.volume-mute-icon');
+
+    const audioSrc = player.dataset.src;
+    if (audioSrc) {
+        audio.src = audioSrc;
     }
-});
 
-// Update progress bar and current time
-audio.addEventListener('timeupdate', () => {
-    if (!isDraggingProgress) {
-        progressBar.value = audio.currentTime;
+    let isDraggingProgress = false;
+    let lastVolume = 1;
+
+    function formatTime(seconds) {
+        const minutes = Math.floor(seconds / 60);
+        const secs = Math.floor(seconds % 60);
+        return `${minutes < 10 ? '0' : ''}${minutes}:${secs < 10 ? '0' : ''}${secs}`;
     }
-    remainingTimeSpan.textContent = formatTime(Math.max(0, audio.duration - audio.currentTime));
-});
 
-// Handle manual seeking on progress bar
-progressBar.addEventListener('mousedown', () => {
-    isDraggingProgress = true;
-});
-progressBar.addEventListener('mouseup', () => {
-    isDraggingProgress = false;
-    audio.currentTime = progressBar.value;
-});
-// For direct input (e.g., keyboard or rapid click)
-progressBar.addEventListener('input', () => {
-     remainingTimeSpan.textContent = formatTime(Math.max(0, audio.duration - progressBar.value)); // Update time while dragging
-});
-
-
-// Volume control
-volumeSlider.addEventListener('input', () => {
-    audio.volume = volumeSlider.value / 100;
-    if (audio.volume === 0) {
-        audio.muted = true;
-        volumeHighIcon.classList.remove('active');
-        volumeMuteIcon.classList.add('active');
-    } else {
-        audio.muted = false;
-        volumeMuteIcon.classList.remove('active');
-        volumeHighIcon.classList.add('active');
-        lastVolume = audio.volume; // Update last volume if not muted
-    }
-});
-
-// Mute/Unmute functionality
-muteBtn.addEventListener('click', () => {
-    if (audio.muted) {
-        audio.muted = false;
-        audio.volume = lastVolume > 0 ? lastVolume : 0.5; // Restore previous or default
-        volumeSlider.value = audio.volume * 100;
-        volumeMuteIcon.classList.remove('active');
-        volumeHighIcon.classList.add('active');
-    } else {
-        audio.muted = true;
-        lastVolume = audio.volume; // Save current volume before muting
-        audio.volume = 0;
-        volumeSlider.value = 0;
-        volumeHighIcon.classList.remove('active');
-        volumeMuteIcon.classList.add('active');
-    }
-});
-
-// Update UI if audio ends
-audio.addEventListener('ended', () => {
-    pauseIcon.classList.remove('active');
-    playIcon.classList.add('active');
-    audio.currentTime = 0; // Reset to start
-    progressBar.value = 0;
-    remainingTimeSpan.textContent = formatTime(audio.duration);
-});
-
-// Handle initial load state: if no duration, means audio not loaded yet.
-// Also ensure default volume slider matches audio's default (which is usually 1)
-audio.addEventListener('canplaythrough', () => {
-    if (isNaN(audio.duration)) {
-        // Not ready yet, wait for loadedmetadata
-    } else {
+    audio.addEventListener('loadedmetadata', () => {
         totalTimeSpan.textContent = formatTime(audio.duration);
         progressBar.max = audio.duration;
+        remainingTimeSpan.textContent = formatTime(audio.duration);
         volumeSlider.value = audio.volume * 100;
-    }
-});
+    });
+
+    playPauseBtn.addEventListener('click', () => {
+        if (audio.paused) {
+            audio.play();
+        } else {
+            audio.pause();
+        }
+    });
+
+    audio.addEventListener('play', () => {
+        playIcon.style.display = 'none';
+        pauseIcon.style.display = 'block';
+    });
+
+    audio.addEventListener('pause', () => {
+        pauseIcon.style.display = 'none';
+        playIcon.style.display = 'block';
+    });
+
+    audio.addEventListener('timeupdate', () => {
+        if (!isDraggingProgress) {
+            progressBar.value = audio.currentTime;
+        }
+        const remaining = audio.duration - audio.currentTime;
+        remainingTimeSpan.textContent = formatTime(remaining > 0 ? remaining : 0);
+    });
+
+    progressBar.addEventListener('mousedown', () => {
+        isDraggingProgress = true;
+    });
+
+    progressBar.addEventListener('mouseup', () => {
+        isDraggingProgress = false;
+        audio.currentTime = progressBar.value;
+    });
+
+    progressBar.addEventListener('input', () => {
+        const remaining = audio.duration - progressBar.value;
+        remainingTimeSpan.textContent = formatTime(remaining > 0 ? remaining : 0);
+    });
+
+    volumeSlider.addEventListener('input', () => {
+        audio.volume = volumeSlider.value / 100;
+        audio.muted = audio.volume === 0;
+    });
+
+    audio.addEventListener('volumechange', () => {
+        if (audio.muted || audio.volume === 0) {
+            volumeHighIcon.style.display = 'none';
+            volumeMuteIcon.style.display = 'block';
+            volumeSlider.value = 0;
+        } else {
+            volumeMuteIcon.style.display = 'none';
+            volumeHighIcon.style.display = 'block';
+            volumeSlider.value = audio.volume * 100;
+            lastVolume = audio.volume;
+        }
+    });
+
+    muteBtn.addEventListener('click', () => {
+        if (audio.muted) {
+            audio.muted = false;
+            audio.volume = lastVolume > 0 ? lastVolume : 0.5;
+        } else {
+            lastVolume = audio.volume;
+            audio.muted = true;
+        }
+    });
+
+    audio.addEventListener('ended', () => {
+        pauseIcon.style.display = 'none';
+        playIcon.style.display = 'block';
+        audio.currentTime = 0;
+        progressBar.value = 0;
+        remainingTimeSpan.textContent = formatTime(audio.duration);
+    });
+
+    // Set initial icon states
+    playIcon.style.display = 'block';
+    pauseIcon.style.display = 'none';
+    volumeHighIcon.style.display = 'block';
+    volumeMuteIcon.style.display = 'none';
+}

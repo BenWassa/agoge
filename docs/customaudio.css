@@ -13,22 +13,6 @@
     margin-bottom: 1rem;
 }
 
-/* Audio source URLs */
-.episode-1-audio {
-    --audio-src: url('podcasts/Episode_1.mp3');
-}
-.episode-2-audio {
-    --audio-src: url('podcasts/Episode_2.mp3');
-}
-.episode-3-audio {
-    --audio-src: url('podcasts/Episode_3.mp3');
-}
-.episode-4-audio {
-    --audio-src: url('podcasts/Episode_4.mp3');
-}
-
-
-
 .custom-audio-player {
     max-width: 800px;
     margin: 0.5rem auto;
