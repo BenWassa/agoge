@@ -95,26 +95,30 @@
 
                 <!-- Introduction Episode Card -->
                 <div class="episode-card fade-in episode-intro">
-                    <h3>Introduction to the Agoge</h3>
-                    <div class="podcast-embed">
-                        <div class="custom-audio-player" data-src="podcasts/SeasonIntro.mp3">
-                            <audio class="episode-audio" preload="metadata"></audio>
-                            <div class="player-controls">
-                                <button class="play-pause-btn" aria-label="Play/Pause">
-                                    <svg class="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                                    <svg class="pause-icon" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
-                                </button>
-                                <div class="progress-container">
-                                    <span class="remaining-time">00:00</span>
-                                    <input type="range" class="progress-bar" value="0" min="0" max="100">
-                                    <span class="total-time">00:00</span>
-                                </div>
-                                <div class="volume-container">
-                                    <button class="mute-btn" aria-label="Mute/Unmute">
-                                        <svg class="volume-high-icon" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
-                                        <svg class="volume-mute-icon" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/></svg>
+                    <button class="episode-header" aria-expanded="false">
+                        <h3>Introduction to the Agoge</h3>
+                    </button>
+                    <div class="episode-content">
+                        <div class="podcast-embed">
+                            <div class="custom-audio-player" data-src="podcasts/SeasonIntro.mp3">
+                                <audio class="episode-audio" preload="metadata"></audio>
+                                <div class="player-controls">
+                                    <button class="play-pause-btn" aria-label="Play/Pause">
+                                        <svg class="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                        <svg class="pause-icon" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
                                     </button>
-                                    <input type="range" class="volume-slider" value="100" min="0" max="100">
+                                    <div class="progress-container">
+                                        <span class="remaining-time">00:00</span>
+                                        <input type="range" class="progress-bar" value="0" min="0" max="100">
+                                        <span class="total-time">00:00</span>
+                                    </div>
+                                    <div class="volume-container">
+                                        <button class="mute-btn" aria-label="Mute/Unmute">
+                                            <svg class="volume-high-icon" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+                                            <svg class="volume-mute-icon" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/></svg>
+                                        </button>
+                                        <input type="range" class="volume-slider" value="100" min="0" max="100">
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -123,142 +127,158 @@
 
                 <!-- Episode Card 1 -->
                 <div class="episode-card fade-in">
-                    <h3>Episode 1: Thresholds & Transformations</h3>
-                    <h4>The Psychology of Growing Up</h4>
-                    <p class="hook">Why humans invented thresholds: how liminality, ordeal, and recognition rewire adolescent identity and resolve “Who am I?” into a stable adult self.</p>
-                    <div class="key-takeaways">
-                        <strong>Key Takeaways:</strong> Liminality as a reset • Identity vs. Role Confusion • Earned confidence through ordeal • Moral catalysis
-                    </div>
-                    <div class="podcast-embed">
-                        <div class="custom-audio-player" data-src="podcasts/Episode_1.mp3">
-                            <audio class="episode-audio" preload="metadata"></audio>
-                            <div class="player-controls">
-                                <button class="play-pause-btn" aria-label="Play/Pause">
-                                    <svg class="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                                    <svg class="pause-icon" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
-                                </button>
-                                <div class="progress-container">
-                                    <span class="remaining-time">00:00</span>
-                                    <input type="range" class="progress-bar" value="0" min="0" max="100">
-                                    <span class="total-time">00:00</span>
-                                </div>
-                                <div class="volume-container">
-                                    <button class="mute-btn" aria-label="Mute/Unmute">
-                                        <svg class="volume-high-icon" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
-                                        <svg class="volume-mute-icon" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/></svg>
+                    <button class="episode-header" aria-expanded="false">
+                        <h3>Episode 1: Thresholds & Transformations</h3>
+                    </button>
+                    <div class="episode-content">
+                        <h4>The Psychology of Growing Up</h4>
+                        <p class="hook">Why humans invented thresholds: how liminality, ordeal, and recognition rewire adolescent identity and resolve “Who am I?” into a stable adult self.</p>
+                        <div class="key-takeaways">
+                            <strong>Key Takeaways:</strong> Liminality as a reset • Identity vs. Role Confusion • Earned confidence through ordeal • Moral catalysis
+                        </div>
+                        <div class="podcast-embed">
+                            <div class="custom-audio-player" data-src="podcasts/Episode_1.mp3">
+                                <audio class="episode-audio" preload="metadata"></audio>
+                                <div class="player-controls">
+                                    <button class="play-pause-btn" aria-label="Play/Pause">
+                                        <svg class="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                        <svg class="pause-icon" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
                                     </button>
-                                    <input type="range" class="volume-slider" value="100" min="0" max="100">
+                                    <div class="progress-container">
+                                        <span class="remaining-time">00:00</span>
+                                        <input type="range" class="progress-bar" value="0" min="0" max="100">
+                                        <span class="total-time">00:00</span>
+                                    </div>
+                                    <div class="volume-container">
+                                        <button class="mute-btn" aria-label="Mute/Unmute">
+                                            <svg class="volume-high-icon" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+                                            <svg class="volume-mute-icon" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/></svg>
+                                        </button>
+                                        <input type="range" class="volume-slider" value="100" min="0" max="100">
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                        <a href="Episode1_Psychology_Brief.pdf" class="research-link" download="Episode1_Psychology_Brief.pdf">Research Brief: Thresholds & Transformations</a>
+                        <div class="symbolic-artwork">Symbolic Artwork: Broken Chains</div>
                     </div>
-                    <a href="Episode1_Psychology_Brief.pdf" class="research-link" download="Episode1_Psychology_Brief.pdf">Research Brief: Thresholds & Transformations</a>
-                    <div class="symbolic-artwork">Symbolic Artwork: Broken Chains</div>
                 </div>
 
                 <!-- Episode Card 2 -->
                 <div class="episode-card fade-in">
-                    <h3>Episode 2: Wisdom of the Elders</h3>
-                    <h4>The Anthropology of Rites</h4>
-                    <p class="hook">From bullet ants to Spartan drills: the concrete structures, symbols, and social functions cultures have used to manufacture adults.</p>
-                    <div class="key-takeaways">
-                        <strong>Key Takeaways:</strong> Separation–Liminality–Reintegration • Ritual steps and symbols • Cross-cultural universals • Social purpose of ordeal
-                    </div>
-                    <div class="podcast-embed">
-                        <div class="custom-audio-player" data-src="podcasts/Episode_2.mp3">
-                            <audio class="episode-audio" preload="metadata"></audio>
-                            <div class="player-controls">
-                                <button class="play-pause-btn" aria-label="Play/Pause">
-                                    <svg class="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                                    <svg class="pause-icon" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
-                                </button>
-                                <div class="progress-container">
-                                    <span class="remaining-time">00:00</span>
-                                    <input type="range" class="progress-bar" value="0" min="0" max="100">
-                                    <span class="total-time">00:00</span>
-                                </div>
-                                <div class="volume-container">
-                                    <button class="mute-btn" aria-label="Mute/Unmute">
-                                        <svg class="volume-high-icon" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
-                                        <svg class="volume-mute-icon" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/></svg>
+                    <button class="episode-header" aria-expanded="false">
+                        <h3>Episode 2: Wisdom of the Elders</h3>
+                    </button>
+                    <div class="episode-content">
+                        <h4>The Anthropology of Rites</h4>
+                        <p class="hook">From bullet ants to Spartan drills: the concrete structures, symbols, and social functions cultures have used to manufacture adults.</p>
+                        <div class="key-takeaways">
+                            <strong>Key Takeaways:</strong> Separation–Liminality–Reintegration • Ritual steps and symbols • Cross-cultural universals • Social purpose of ordeal
+                        </div>
+                        <div class="podcast-embed">
+                            <div class="custom-audio-player" data-src="podcasts/Episode_2.mp3">
+                                <audio class="episode-audio" preload="metadata"></audio>
+                                <div class="player-controls">
+                                    <button class="play-pause-btn" aria-label="Play/Pause">
+                                        <svg class="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                        <svg class="pause-icon" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
                                     </button>
-                                    <input type="range" class="volume-slider" value="100" min="0" max="100">
+                                    <div class="progress-container">
+                                        <span class="remaining-time">00:00</span>
+                                        <input type="range" class="progress-bar" value="0" min="0" max="100">
+                                        <span class="total-time">00:00</span>
+                                    </div>
+                                    <div class="volume-container">
+                                        <button class="mute-btn" aria-label="Mute/Unmute">
+                                            <svg class="volume-high-icon" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+                                            <svg class="volume-mute-icon" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/></svg>
+                                        </button>
+                                        <input type="range" class="volume-slider" value="100" min="0" max="100">
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                        <a href="Episode2_Anthropology_Brief.pdf" class="research-link" download="Episode2_Anthropology_Brief.pdf">Research Brief: Wisdom of the Elders</a>
+                        <div class="symbolic-artwork">Symbolic Artwork: Labyrinth</div>
                     </div>
-                    <a href="Episode2_Anthropology_Brief.pdf" class="research-link" download="Episode2_Anthropology_Brief.pdf">Research Brief: Wisdom of the Elders</a>
-                    <div class="symbolic-artwork">Symbolic Artwork: Labyrinth</div>
                 </div>
 
                 <!-- Episode Card 3 -->
                 <div class="episode-card fade-in">
-                    <h3>Episode 3: The Soul of the Rite</h3>
-                    <h4>Myth, Archetypes & Sacred Story</h4>
-                    <p class="hook">Why rituals take the forms they do: the sacred narratives and archetypes that give ordeals their cosmic significance.</p>
-                    <div class="key-takeaways">
-                        <strong>Key Takeaways:</strong> Hero’s Journey (Campbell) • Sacred time (Eliade) • Archetypes (Jung) • Mythic charters of cultures
-                    </div>
-                    <div class="podcast-embed">
-                        <div class="custom-audio-player" data-src="podcasts/Episode_3.mp3">
-                            <audio class="episode-audio" preload="metadata"></audio>
-                            <div class="player-controls">
-                                <button class="play-pause-btn" aria-label="Play/Pause">
-                                    <svg class="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                                    <svg class="pause-icon" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
-                                </button>
-                                <div class="progress-container">
-                                    <span class="remaining-time">00:00</span>
-                                    <input type="range" class="progress-bar" value="0" min="0" max="100">
-                                    <span class="total-time">00:00</span>
-                                </div>
-                                <div class="volume-container">
-                                    <button class="mute-btn" aria-label="Mute/Unmute">
-                                        <svg class="volume-high-icon" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
-                                        <svg class="volume-mute-icon" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/></svg>
+                    <button class="episode-header" aria-expanded="false">
+                        <h3>Episode 3: The Soul of the Rite</h3>
+                    </button>
+                    <div class="episode-content">
+                        <h4>Myth, Archetypes & Sacred Story</h4>
+                        <p class="hook">Why rituals take the forms they do: the sacred narratives and archetypes that give ordeals their cosmic significance.</p>
+                        <div class="key-takeaways">
+                            <strong>Key Takeaways:</strong> Hero’s Journey (Campbell) • Sacred time (Eliade) • Archetypes (Jung) • Mythic charters of cultures
+                        </div>
+                        <div class="podcast-embed">
+                            <div class="custom-audio-player" data-src="podcasts/Episode_3.mp3">
+                                <audio class="episode-audio" preload="metadata"></audio>
+                                <div class="player-controls">
+                                    <button class="play-pause-btn" aria-label="Play/Pause">
+                                        <svg class="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                        <svg class="pause-icon" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
                                     </button>
-                                    <input type="range" class="volume-slider" value="100" min="0" max="100">
+                                    <div class="progress-container">
+                                        <span class="remaining-time">00:00</span>
+                                        <input type="range" class="progress-bar" value="0" min="0" max="100">
+                                        <span class="total-time">00:00</span>
+                                    </div>
+                                    <div class="volume-container">
+                                        <button class="mute-btn" aria-label="Mute/Unmute">
+                                            <svg class="volume-high-icon" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+                                            <svg class="volume-mute-icon" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/></svg>
+                                        </button>
+                                        <input type="range" class="volume-slider" value="100" min="0" max="100">
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                        <a href="Episode3_Myth_Brief.pdf" class="research-link" download="Episode3_Myth_Brief.pdf">Research Brief: The Soul of the Rite</a>
+                        <div class="symbolic-artwork">Symbolic Artwork: Ouroboros</div>
                     </div>
-                    <a href="Episode3_Myth_Brief.pdf" class="research-link" download="Episode3_Myth_Brief.pdf">Research Brief: The Soul of the Rite</a>
-                    <div class="symbolic-artwork">Symbolic Artwork: Ouroboros</div>
                 </div>
 
                 <!-- Episode Card 4 -->
                 <div class="episode-card fade-in">
-                    <h3>Episode 4: Virtue After the Fire</h3>
-                    <h4>The Philosophy of Adversity</h4>
-                    <p class="hook">Adversity as the crucible of character: how philosophical traditions—from Stoicism to Confucianism—frame suffering as the pathway to virtue.</p>
-                    <div class="key-takeaways">
-                        <strong>Key Takeaways:</strong> Stoic endurance • Aristotelian habituation • Nietzschean self-overcoming • Confucian duty under trial
-                    </div>
-                    <div class="podcast-embed">
-                        <div class="custom-audio-player" data-src="podcasts/Episode_4.mp3">
-                            <audio class="episode-audio" preload="metadata"></audio>
-                            <div class="player-controls">
-                                <button class="play-pause-btn" aria-label="Play/Pause">
-                                    <svg class="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                                    <svg class="pause-icon" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
-                                </button>
-                                <div class="progress-container">
-                                    <span class="remaining-time">00:00</span>
-                                    <input type="range" class="progress-bar" value="0" min="0" max="100">
-                                    <span class="total-time">00:00</span>
-                                </div>
-                                <div class="volume-container">
-                                    <button class="mute-btn" aria-label="Mute/Unmute">
-                                        <svg class="volume-high-icon" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
-                                        <svg class="volume-mute-icon" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/></svg>
+                    <button class="episode-header" aria-expanded="false">
+                        <h3>Episode 4: Virtue After the Fire</h3>
+                    </button>
+                    <div class="episode-content">
+                        <h4>The Philosophy of Adversity</h4>
+                        <p class="hook">Adversity as the crucible of character: how philosophical traditions—from Stoicism to Confucianism—frame suffering as the pathway to virtue.</p>
+                        <div class="key-takeaways">
+                            <strong>Key Takeaways:</strong> Stoic endurance • Aristotelian habituation • Nietzschean self-overcoming • Confucian duty under trial
+                        </div>
+                        <div class="podcast-embed">
+                            <div class="custom-audio-player" data-src="podcasts/Episode_4.mp3">
+                                <audio class="episode-audio" preload="metadata"></audio>
+                                <div class="player-controls">
+                                    <button class="play-pause-btn" aria-label="Play/Pause">
+                                        <svg class="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                        <svg class="pause-icon" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
                                     </button>
-                                    <input type="range" class="volume-slider" value="100" min="0" max="100">
+                                    <div class="progress-container">
+                                        <span class="remaining-time">00:00</span>
+                                        <input type="range" class="progress-bar" value="0" min="0" max="100">
+                                        <span class="total-time">00:00</span>
+                                    </div>
+                                    <div class="volume-container">
+                                        <button class="mute-btn" aria-label="Mute/Unmute">
+                                            <svg class="volume-high-icon" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+                                            <svg class="volume-mute-icon" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/></svg>
+                                        </button>
+                                        <input type="range" class="volume-slider" value="100" min="0" max="100">
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                        <a href="Episode4_Philosophy_Brief.pdf" class="research-link" download="Episode4_Philosophy_Brief.pdf">Research Brief: Virtue After the Fire</a>
+                        <div class="symbolic-artwork">Symbolic Artwork: Shield</div>
                     </div>
-                    <a href="Episode4_Philosophy_Brief.pdf" class="research-link" download="Episode4_Philosophy_Brief.pdf">Research Brief: Virtue After the Fire</a>
-                    <div class="symbolic-artwork">Symbolic Artwork: Shield</div>
                 </div>
 
             </div>
