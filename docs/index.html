@@ -93,6 +93,34 @@
             <h2 class="section-title fade-in">The Episodes: Chapters of Transformation</h2>
             <div class="episodes-grid">
 
+                <!-- Introduction Episode Card -->
+                <div class="episode-card fade-in episode-intro">
+                    <h3>Introduction to the Agoge</h3>
+                    <div class="podcast-embed">
+                        <div class="custom-audio-player" data-src="podcasts/SeasonIntro.mp3">
+                            <audio class="episode-audio" preload="metadata"></audio>
+                            <div class="player-controls">
+                                <button class="play-pause-btn" aria-label="Play/Pause">
+                                    <svg class="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                    <svg class="pause-icon" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                                </button>
+                                <div class="progress-container">
+                                    <span class="remaining-time">00:00</span>
+                                    <input type="range" class="progress-bar" value="0" min="0" max="100">
+                                    <span class="total-time">00:00</span>
+                                </div>
+                                <div class="volume-container">
+                                    <button class="mute-btn" aria-label="Mute/Unmute">
+                                        <svg class="volume-high-icon" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+                                        <svg class="volume-mute-icon" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/></svg>
+                                    </button>
+                                    <input type="range" class="volume-slider" value="100" min="0" max="100">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Episode Card 1 -->
                 <div class="episode-card fade-in">
                     <h3>Episode 1: Thresholds & Transformations</h3>
