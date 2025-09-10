@@ -164,27 +164,57 @@ document.addEventListener('DOMContentLoaded', function() {
     }, 6000);
 });
 
+// Mouse hover behavior disabled to prevent interruptions during scrolling
+// The face rotation will continue uninterrupted for a better user experience
+/*
 // Pause rotation when user hovers over hero section (only after system has started)
+// Add debouncing to prevent rapid start/stop cycles
+let hoverTimeout;
+const HOVER_DELAY = 1000; // 1 second delay before pausing/resuming
+
 const heroSection = document.querySelector('.hero-section');
 if (heroSection) {
     heroSection.addEventListener('mouseenter', () => {
         debugLog('🖱️ Mouse entered hero section', { systemRunning });
+        
+        // Clear any pending resume timeout
+        if (hoverTimeout) {
+            clearTimeout(hoverTimeout);
+            hoverTimeout = null;
+        }
+        
+        // Only pause if system is running and after a delay
         if (systemRunning) {
-            pauseFaceRotation();
+            hoverTimeout = setTimeout(() => {
+                if (systemRunning) {
+                    debugLog('🖱️ Pausing rotation after hover delay');
+                    pauseFaceRotation();
+                }
+            }, HOVER_DELAY);
         }
     });
+    
     heroSection.addEventListener('mouseleave', () => {
         debugLog('🖱️ Mouse left hero section', { systemRunning, timerStarted });
-        if (!systemRunning) {
-            // Don't start if system hasn't been initialized yet
-            if (!timerStarted) {
-                debugLog('🖱️ System not yet initialized, skipping restart');
-                return;
-            }
-            startFaceRotation();
+        
+        // Clear any pending pause timeout
+        if (hoverTimeout) {
+            clearTimeout(hoverTimeout);
+            hoverTimeout = null;
+        }
+        
+        // Only restart if system was initialized and is not currently running
+        if (!systemRunning && timerStarted) {
+            hoverTimeout = setTimeout(() => {
+                if (!systemRunning && timerStarted) {
+                    debugLog('🖱️ Resuming rotation after leave delay');
+                    startFaceRotation();
+                }
+            }, 500); // Shorter delay for resuming
         }
     });
 }
+*/
 
 // Smooth scrolling for all anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
