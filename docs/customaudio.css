@@ -208,8 +208,9 @@
 }
 
 .episode-card.episode-intro h3 {
-    /* Use same styling as other episode titles - no special styling */
+    /* Use same styling as other episode titles but with centered alignment */
     margin-bottom: 0.75rem;
+    text-align: center;
 }
 
 .episode-card.episode-intro .custom-audio-player {

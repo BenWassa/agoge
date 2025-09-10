@@ -95,30 +95,26 @@
 
                 <!-- Introduction Episode Card -->
                 <div class="episode-card fade-in episode-intro">
-                    <button class="episode-header" aria-expanded="false">
-                        <h3>Introduction to the Agoge</h3>
-                    </button>
-                    <div class="episode-content">
-                        <div class="podcast-embed">
-                            <div class="custom-audio-player" data-src="podcasts/SeasonIntro.mp3">
-                                <audio class="episode-audio" preload="metadata"></audio>
-                                <div class="player-controls">
-                                    <button class="play-pause-btn" aria-label="Play/Pause">
-                                        <svg class="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                                        <svg class="pause-icon" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                    <h3>Introduction to the Agoge</h3>
+                    <div class="podcast-embed">
+                        <div class="custom-audio-player" data-src="podcasts/SeasonIntro.mp3">
+                            <audio class="episode-audio" preload="metadata"></audio>
+                            <div class="player-controls">
+                                <button class="play-pause-btn" aria-label="Play/Pause">
+                                    <svg class="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                    <svg class="pause-icon" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                                </button>
+                                <div class="progress-container">
+                                    <span class="remaining-time">00:00</span>
+                                    <input type="range" class="progress-bar" value="0" min="0" max="100">
+                                    <span class="total-time">00:00</span>
+                                </div>
+                                <div class="volume-container">
+                                    <button class="mute-btn" aria-label="Mute/Unmute">
+                                        <svg class="volume-high-icon" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+                                        <svg class="volume-mute-icon" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/></svg>
                                     </button>
-                                    <div class="progress-container">
-                                        <span class="remaining-time">00:00</span>
-                                        <input type="range" class="progress-bar" value="0" min="0" max="100">
-                                        <span class="total-time">00:00</span>
-                                    </div>
-                                    <div class="volume-container">
-                                        <button class="mute-btn" aria-label="Mute/Unmute">
-                                            <svg class="volume-high-icon" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
-                                            <svg class="volume-mute-icon" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/></svg>
-                                        </button>
-                                        <input type="range" class="volume-slider" value="100" min="0" max="100">
-                                    </div>
+                                    <input type="range" class="volume-slider" value="100" min="0" max="100">
                                 </div>
                             </div>
                         </div>
@@ -128,7 +124,11 @@
                 <!-- Episode Card 1 -->
                 <div class="episode-card fade-in">
                     <button class="episode-header" aria-expanded="false">
-                        <h3>Episode 1: Thresholds & Transformations</h3>
+                        <div class="episode-number">01</div>
+                        <svg class="episode-divider" viewBox="0 0 2 60" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M1 0C1 0 1 15 1 30C1 45 1 60 1 60" stroke="currentColor" stroke-width="1" fill="none" opacity="0.3"/>
+                        </svg>
+                        <h3>Thresholds & Transformations</h3>
                     </button>
                     <div class="episode-content">
                         <h4>The Psychology of Growing Up</h4>
@@ -167,7 +167,11 @@
                 <!-- Episode Card 2 -->
                 <div class="episode-card fade-in">
                     <button class="episode-header" aria-expanded="false">
-                        <h3>Episode 2: Wisdom of the Elders</h3>
+                        <div class="episode-number">02</div>
+                        <svg class="episode-divider" viewBox="0 0 2 60" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M1 0C1 0 1 15 1 30C1 45 1 60 1 60" stroke="currentColor" stroke-width="1" fill="none" opacity="0.3"/>
+                        </svg>
+                        <h3>Wisdom of the Elders</h3>
                     </button>
                     <div class="episode-content">
                         <h4>The Anthropology of Rites</h4>
@@ -206,7 +210,11 @@
                 <!-- Episode Card 3 -->
                 <div class="episode-card fade-in">
                     <button class="episode-header" aria-expanded="false">
-                        <h3>Episode 3: The Soul of the Rite</h3>
+                        <div class="episode-number">03</div>
+                        <svg class="episode-divider" viewBox="0 0 2 60" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M1 0C1 0 1 15 1 30C1 45 1 60 1 60" stroke="currentColor" stroke-width="1" fill="none" opacity="0.3"/>
+                        </svg>
+                        <h3>The Soul of the Rite</h3>
                     </button>
                     <div class="episode-content">
                         <h4>Myth, Archetypes & Sacred Story</h4>
@@ -245,7 +253,11 @@
                 <!-- Episode Card 4 -->
                 <div class="episode-card fade-in">
                     <button class="episode-header" aria-expanded="false">
-                        <h3>Episode 4: Virtue After the Fire</h3>
+                        <div class="episode-number">04</div>
+                        <svg class="episode-divider" viewBox="0 0 2 60" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M1 0C1 0 1 15 1 30C1 45 1 60 1 60" stroke="currentColor" stroke-width="1" fill="none" opacity="0.3"/>
+                        </svg>
+                        <h3>Virtue After the Fire</h3>
                     </button>
                     <div class="episode-content">
                         <h4>The Philosophy of Adversity</h4>
@@ -366,33 +378,34 @@
         <div class="section-container">
             <h2 class="section-title fade-in">The Library: Research & Resources</h2>
             <div class="library-list">
-            <!-- Research Brief Item 1 -->
-            <div class="research-item fade-in">
-                <h3>Brief 1: The Anthropology of Adolescent Transitions</h3>
-                <p>An abstract outlining cross-cultural studies of puberty rites and their societal functions across various indigenous communities, highlighting the common threads of separation, instruction, and reincorporation.</p>
-                <a href="The Anthropology of Adolescent Transitions.pdf" class="download-link" download="The Anthropology of Adolescent Transitions.pdf">Download PDF</a>
-            </div>
-            <!-- Research Brief Item 2 -->
-            <div class="research-item fade-in">
-                <h3>Brief 2: Modern Psychology & Masculine Identity</h3>
-                <p>Exploration of contemporary psychological perspectives on male development, addressing the challenges faced by young men in the absence of traditional rites of passage.</p>
-                <a href="Modern Psychology & Masculine Identity.pdf" class="download-link" download="Modern Psychology & Masculine Identity.pdf">Download PDF</a>
-            </div>
-            <!-- Research Brief Item 3 -->
-            <div class="research-item fade-in">
-                <h3>Brief 3: Mythology as a Blueprint for Growth</h3>
-                <p>Analyzes how archetypal narratives and mythic structures provide profound insights and practical guidance for personal development and navigating life's challenges.</p>
-                <a href="Mythology as a Blueprint for Growth.pdf" class="download-link" download="Mythology as a Blueprint for Growth.pdf">Download PDF</a>
-            </div>
-            <!-- Research Brief Item 4 -->
-            <div class="research-item fade-in">
-                <h3>Brief 4: Building Resilient Communities</h3>
-                <p>Examines the societal benefits of intentional initiation processes, fostering community cohesion, moral integrity, and the development of responsible, contributing men.</p>
-                <a href="Building Resilient Communities.pdf" class="download-link" download="Building Resilient Communities.pdf">Download PDF</a>
-            </div>
+                <!-- Research Brief Item 1 -->
+                <div class="research-item fade-in">
+                    <h3>Brief 1: Rites of Passage — The Lost Map to Adulthood</h3>
+                    <p>Explores the universal structure of initiation ceremonies across cultures. Shows how separation, liminality, and reintegration shaped stable identities, resilience, belonging, and moral grounding — and why their absence today fuels prolonged adolescence.</p>
+                    <a href="Ep1_Research_Brief.pdf" class="download-link" download="Ep1_Research_Brief.pdf">Download PDF</a>
+                </div>
+                <!-- Research Brief Item 2 -->
+                <div class="research-item fade-in">
+                    <h3>Brief 2: The Ordeal of Transformation — Cross-Cultural Initiation Rites</h3>
+                    <p>A comparative look at warrior and indigenous traditions from the Maasai to the Spartans. Highlights ordeals of pain, fear, and secret knowledge as crucibles of courage, community, and rebirth, with reflections on modern “pseudo-rites” that succeed or fail to replicate them.</p>
+                    <a href="Ep2_Research_Brief.pdf" class="download-link" download="Ep2_Research_Brief.pdf">Download PDF</a>
+                </div>
+                <!-- Research Brief Item 3 -->
+                <div class="research-item fade-in">
+                    <h3>Brief 3: Initiation — The Archetype of Transformation</h3>
+                    <p>Frames initiation as a symbolic death and rebirth rooted in myth and psychology. Links van Gennep, Turner, and Campbell’s models to examples from the Maasai, Spartans, and Native Americans, showing how the Hero’s Journey maps onto personal growth.</p>
+                    <a href="Ep3_Research_Brief.pdf" class="download-link" download="Ep3_Research_Brief.pdf">Download PDF</a>
+                </div>
+                <!-- Research Brief Item 4 -->
+                <div class="research-item fade-in">
+                    <h3>Brief 4: Rites of Passage & The Forging of Moral Adulthood</h3>
+                    <p>Connects ancient ordeals with modern psychology (Kohlberg, Haidt, Peterson, Erikson). Explains how structured thresholds forge resilience, belonging, and moral maturity — and asks what happens when society leaves adolescents without such trials.</p>
+                    <a href="Ep4_Research_Brief.pdf" class="download-link" download="Ep4_Research_Brief.pdf">Download PDF</a>
+                </div>
             </div>
         </div>
     </section>
+
 
     <!-- About Section -->
     <section id="about" class="about-section">

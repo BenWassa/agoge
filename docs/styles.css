@@ -908,18 +908,20 @@ h4 {
 }
 
 .episode-card .research-link {
-    display: inline-flex;
-    align-items: center;
+    display: block;
+    width: 100%;
+    text-align: center;
     color: var(--earth-green);
     text-decoration: none;
     font-weight: 500;
     margin-bottom: 0.5rem;
     transition: all 0.3s ease;
     font-size: 0.85rem;
-    padding: 0.4rem 0.8rem;
+    padding: 0.8rem 1.5rem;
     background: rgba(74, 90, 58, 0.1);
-    border-radius: 6px;
+    border-radius: 8px;
     border: 1px solid rgba(74, 90, 58, 0.2);
+    box-sizing: border-box;
 }
 
 .episode-card .research-link:hover {
@@ -949,15 +951,40 @@ h4 {
     font: inherit;
     width: 100%;
     text-align: left;
-    padding: 0;
+    padding: 1rem 0;
     display: flex;
-    justify-content: space-between;
     align-items: center;
     cursor: pointer;
+    gap: 1.5rem;
+    position: relative;
+}
+
+.episode-number {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--gold);
+    background: rgba(201, 169, 110, 0.1);
+    padding: 0.5rem 0.75rem;
+    border-radius: 8px;
+    min-width: 50px;
+    text-align: center;
+    border: 1px solid rgba(201, 169, 110, 0.2);
+    flex-shrink: 0;
+}
+
+.episode-divider {
+    height: 40px;
+    width: 2px;
+    color: var(--gold);
+    flex-shrink: 0;
+    margin: 0 0.5rem;
 }
 
 .episode-header h3 {
     margin: 0;
+    flex-grow: 1;
+    font-size: 1.4rem;
 }
 
 .episode-header::after {
@@ -965,6 +992,8 @@ h4 {
     font-size: 1.5rem;
     color: var(--gold);
     transition: transform 0.3s ease;
+    flex-shrink: 0;
+    margin-left: auto;
 }
 
 .episode-card.active .episode-header::after {
