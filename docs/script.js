@@ -83,11 +83,19 @@ function rotateFaces() {
 function startFaceRotation() {
     // Redirect to timer version
     debugLog('🎯 startFaceRotation() called');
+    
+    // Add stack trace to see what's calling this function
+    console.trace('🔍 Stack trace for startFaceRotation call');
+    
     startFaceRotationWithTimer();
 }
 
 function pauseFaceRotation() {
     debugLog('🛑 Stopping face rotation system');
+    
+    // Add stack trace to see what's calling this function
+    console.trace('🔍 Stack trace for pauseFaceRotation call');
+    
     clearInterval(faceRotationInterval);
     if (timerInterval) {
         clearInterval(timerInterval);
@@ -160,16 +168,21 @@ document.addEventListener('DOMContentLoaded', function() {
 const heroSection = document.querySelector('.hero-section');
 if (heroSection) {
     heroSection.addEventListener('mouseenter', () => {
+        debugLog('🖱️ Mouse entered hero section', { systemRunning });
         if (systemRunning) {
             pauseFaceRotation();
         }
     });
     heroSection.addEventListener('mouseleave', () => {
+        debugLog('🖱️ Mouse left hero section', { systemRunning, timerStarted });
         if (!systemRunning) {
             // Don't start if system hasn't been initialized yet
-            return;
+            if (!timerStarted) {
+                debugLog('🖱️ System not yet initialized, skipping restart');
+                return;
+            }
+            startFaceRotation();
         }
-        startFaceRotation();
     });
 }
 
