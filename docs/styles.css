@@ -820,7 +820,7 @@ h4 {
     transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
     position: relative;
     overflow: hidden;
-    min-height: 320px;
+    min-height: 0;
     display: flex;
     flex-direction: column;
 }
@@ -940,6 +940,46 @@ h4 {
     font-size: 0.8rem;
     border: 1px dashed rgba(247, 245, 243, 0.15);
     font-style: italic;
+}
+
+.episode-header {
+    background: none;
+    border: none;
+    color: inherit;
+    font: inherit;
+    width: 100%;
+    text-align: left;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.episode-header h3 {
+    margin: 0;
+}
+
+.episode-header::after {
+    content: '+';
+    font-size: 1.5rem;
+    color: var(--gold);
+    transition: transform 0.3s ease;
+}
+
+.episode-card.active .episode-header::after {
+    content: '\2212';
+}
+
+.episode-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+    margin-top: 0;
+}
+
+.episode-card.active .episode-content {
+    margin-top: 1rem;
 }
 
 /* Insights Section */

@@ -299,3 +299,33 @@ const observer = new IntersectionObserver((entries) => {
 document.querySelectorAll('.fade-in').forEach(el => {
     observer.observe(el);
 });
+
+// Episode accordion functionality
+document.querySelectorAll('.episode-header').forEach(header => {
+    header.addEventListener('click', () => {
+        const card = header.parentElement;
+        const content = card.querySelector('.episode-content');
+        const expanded = header.getAttribute('aria-expanded') === 'true';
+
+        // Close other open episodes for accordion behavior
+        document.querySelectorAll('.episode-card').forEach(otherCard => {
+            if (otherCard !== card) {
+                otherCard.classList.remove('active');
+                const otherHeader = otherCard.querySelector('.episode-header');
+                const otherContent = otherCard.querySelector('.episode-content');
+                if (otherHeader) otherHeader.setAttribute('aria-expanded', 'false');
+                if (otherContent) otherContent.style.maxHeight = null;
+            }
+        });
+
+        if (expanded) {
+            header.setAttribute('aria-expanded', 'false');
+            card.classList.remove('active');
+            content.style.maxHeight = null;
+        } else {
+            header.setAttribute('aria-expanded', 'true');
+            card.classList.add('active');
+            content.style.maxHeight = content.scrollHeight + 'px';
+        }
+    });
+});
