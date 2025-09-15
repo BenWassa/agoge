@@ -417,7 +417,7 @@ h4 {
 
 .hero-title {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(3rem, 8vw, 6rem);
+    font-size: 6vw;
     font-weight: 700;
     color: var(--gold);
     margin-bottom: 0.8rem; /* Adjusted for tagline */
@@ -431,7 +431,7 @@ h4 {
 }
 
 .hero-tagline {
-    font-size: clamp(1rem, 2.5vw, 1.3rem);
+    font-size: 1.3rem;
     font-weight: 500; /* Stronger weight, removed italic */
     margin-bottom: 0.10rem; /* Space before arrow */
     color: var(--bone-white);
@@ -441,7 +441,7 @@ h4 {
     margin-right: auto;
     font-family: 'playfair display', serif;
     font-variant: small-caps;
-    letter-spacing: 0.025em;
+    letter-spacing: 0.08em;
 }
 
 .hero-arrow {
