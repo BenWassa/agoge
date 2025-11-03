@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Agoge Journey - Your Path Through Initiation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Journey-specific styles that extend the base system */
+        .journey-hero {
+            min-height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            padding: 4rem 2rem;
+        }
+
+        .journey-hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 8vw, 5.5rem);
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.9), 0 0 20px rgba(201, 169, 110, 0.3);
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+        }
+
+        .journey-hero-tagline {
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(1rem, 2.5vw, 1.4rem);
+            color: rgba(247, 245, 243, 0.8);
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            line-height: 1.8;
+        }
+
+        /* Journey Map Container */
+        .journey-map-container {
+            position: relative;
+            max-width: 1000px;
+            margin: 4rem auto;
+            padding: 2rem;
+        }
+
+        /* Central connecting element */
+        .journey-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(201, 169, 110, 0.1) 0%, transparent 70%);
+            border: 2px solid rgba(201, 169, 110, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            opacity: 0.3;
+            transition: all 0.8s ease;
+            z-index: 1;
+        }
+
+        .journey-center.awakened {
+            opacity: 1;
+            background: radial-gradient(circle, rgba(201, 169, 110, 0.3) 0%, transparent 70%);
+            border-color: var(--gold);
+            box-shadow: 0 0 60px rgba(201, 169, 110, 0.4);
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); }
+            50% { transform: translate(-50%, -50%) scale(1.05); }
+        }
+
+        /* Journey Map Grid */
+        .journey-map {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 4rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        @media (max-width: 768px) {
+            .journey-map {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+            .journey-center {
+                display: none;
+            }
+        }
+
+        /* Symbol Node */
+        .symbol-node {
+            position: relative;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(31, 31, 31, 0.95) 0%, rgba(31, 31, 31, 0.85) 100%);
+            border: 3px solid rgba(201, 169, 110, 0.3);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: rgba(247, 245, 243, 0.7);
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            text-align: center;
+            padding: 2rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+        }
+
+        .symbol-node:hover {
+            transform: translateY(-8px);
+            border-color: rgba(201, 169, 110, 0.6);
+            box-shadow: 0 12px 48px rgba(201, 169, 110, 0.2);
+        }
+
+        .symbol-node.completed {
+            background: linear-gradient(135deg, var(--gold) 0%, #d4af75 100%);
+            border-color: var(--gold);
+            color: var(--deep-black);
+            box-shadow: 0 12px 48px rgba(201, 169, 110, 0.5);
+        }
+
+        .symbol-node.completed:hover {
+            transform: translateY(-8px) scale(1.02);
+        }
+
+        .symbol-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+        }
+
+        .symbol-node.completed .symbol-icon {
+            animation: symbolGlow 2s ease-in-out infinite;
+        }
+
+        @keyframes symbolGlow {
+            0%, 100% { filter: drop-shadow(0 0 8px rgba(8, 8, 8, 0.4)); }
+            50% { filter: drop-shadow(0 0 16px rgba(8, 8, 8, 0.6)); }
+        }
+
+        .symbol-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .symbol-subtitle {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 400;
+            opacity: 0.8;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Progress Indicator */
+        .progress-indicator {
+            text-align: center;
+            margin: 3rem auto 2rem;
+            padding: 1.5rem;
+            max-width: 600px;
+            background: rgba(31, 31, 31, 0.5);
+            border-radius: 16px;
+            border: 1px solid rgba(201, 169, 110, 0.2);
+        }
+
+        .progress-bar-container {
+            width: 100%;
+            height: 8px;
+            background: rgba(51, 51, 51, 0.5);
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 1rem 0;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--gold) 0%, #d4af75 100%);
+            width: 0%;
+            transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 0 12px rgba(201, 169, 110, 0.6);
+        }
+
+        .progress-text {
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            color: rgba(247, 245, 243, 0.8);
+            margin-top: 0.5rem;
+        }
+
+        /* Reflection Section */
+        .reflection-section {
+            max-width: 700px;
+            margin: 4rem auto;
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(31, 31, 31, 0.7) 0%, rgba(31, 31, 31, 0.5) 100%);
+            border-radius: 16px;
+            border: 1px solid rgba(201, 169, 110, 0.2);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s ease;
+        }
+
+        .reflection-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reflection-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .reflection-prompt {
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            color: rgba(247, 245, 243, 0.7);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .reflection-textarea {
+            width: 100%;
+            min-height: 150px;
+            background: rgba(8, 8, 8, 0.6);
+            color: var(--bone-white);
+            border: 1px solid rgba(201, 169, 110, 0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            line-height: 1.6;
+            resize: vertical;
+            transition: all 0.3s ease;
+        }
+
+        .reflection-textarea:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 16px rgba(201, 169, 110, 0.3);
+        }
+
+        .reflection-textarea::placeholder {
+            color: rgba(247, 245, 243, 0.4);
+        }
+
+        .save-reflection-btn {
+            margin-top: 1.5rem;
+            background: linear-gradient(135deg, var(--gold) 0%, #d4af75 100%);
+            border: none;
+            padding: 1rem 2.5rem;
+            color: var(--deep-black);
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .save-reflection-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(201, 169, 110, 0.4);
+        }
+
+        .save-reflection-btn:active {
+            transform: translateY(0);
+        }
+
+        /* Completion Message */
+        .completion-message {
+            text-align: center;
+            margin: 4rem auto;
+            padding: 3rem 2rem;
+            max-width: 800px;
+            background: linear-gradient(135deg, rgba(201, 169, 110, 0.1) 0%, rgba(201, 169, 110, 0.05) 100%);
+            border-radius: 16px;
+            border: 2px solid var(--gold);
+            opacity: 0;
+            transform: scale(0.9);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .completion-message.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .completion-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            animation: completionPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes completionPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .completion-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+            text-shadow: 0 0 20px rgba(201, 169, 110, 0.4);
+        }
+
+        .completion-text {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.2rem;
+            color: rgba(247, 245, 243, 0.8);
+            line-height: 1.8;
+        }
+
+        /* Back to Home Link */
+        .back-link {
+            display: inline-block;
+            margin: 3rem auto 1rem;
+            padding: 0.8rem 1.8rem;
+            background: transparent;
+            border: 2px solid rgba(201, 169, 110, 0.5);
+            color: var(--gold);
+            text-decoration: none;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            background: rgba(201, 169, 110, 0.1);
+            border-color: var(--gold);
+            transform: translateY(-2px);
+        }
+
+        /* Stage indicator badges */
+        .stage-badge {
+            position: absolute;
+            top: -12px;
+            right: -12px;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--charcoal);
+            border: 2px solid rgba(201, 169, 110, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: var(--gold);
+        }
+
+        .symbol-node.completed .stage-badge {
+            background: var(--deep-black);
+            border-color: var(--deep-black);
+            color: var(--gold);
+        }
+    </style>
+</head>
+<body>
+    <!-- Journey Hero Section -->
+    <section class="journey-hero">
+        <h1 class="journey-hero-title fade-in">Your Agoge Journey</h1>
+        <p class="journey-hero-tagline fade-in">
+            Cross each threshold as you listen and reflect. Your progress will be saved and honored.
+        </p>
+    </section>
+
+    <!-- Progress Indicator -->
+    <div class="progress-indicator fade-in">
+        <div class="progress-text">
+            <span id="progress-count">0</span> of 4 stages completed
+        </div>
+        <div class="progress-bar-container">
+            <div class="progress-bar-fill" id="progress-fill"></div>
+        </div>
+    </div>
+
+    <!-- Journey Map -->
+    <section class="section-container">
+        <div class="journey-map-container">
+            <div class="journey-center" id="journey-center">⚔️</div>
+            
+            <div class="journey-map">
+                <!-- Threshold Node -->
+                <div class="symbol-node fade-in" data-stage="thresholds" data-episode="1">
+                    <div class="stage-badge">01</div>
+                    <div class="symbol-icon">🚪</div>
+                    <div class="symbol-title">Thresholds</div>
+                    <div class="symbol-subtitle">Separation & Identity</div>
+                </div>
+
+                <!-- Ordeal Node -->
+                <div class="symbol-node fade-in" data-stage="ordeal" data-episode="2">
+                    <div class="stage-badge">02</div>
+                    <div class="symbol-icon">🌀</div>
+                    <div class="symbol-title">Ordeal</div>
+                    <div class="symbol-subtitle">Testing & Resilience</div>
+                </div>
+
+                <!-- Transformation Node -->
+                <div class="symbol-node fade-in" data-stage="transformation" data-episode="3">
+                    <div class="stage-badge">03</div>
+                    <div class="symbol-icon">♻️</div>
+                    <div class="symbol-title">Transformation</div>
+                    <div class="symbol-subtitle">Death & Rebirth</div>
+                </div>
+
+                <!-- Return Node -->
+                <div class="symbol-node fade-in" data-stage="return" data-episode="4">
+                    <div class="stage-badge">04</div>
+                    <div class="symbol-icon">🛡️</div>
+                    <div class="symbol-title">Return</div>
+                    <div class="symbol-subtitle">Integration & Duty</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reflection Section -->
+    <section class="reflection-section" id="reflection-section">
+        <h3 class="reflection-title">Reflection</h3>
+        <p class="reflection-prompt" id="reflection-prompt">
+            What did this stage mean to you? How does it resonate with your own journey?
+        </p>
+        <textarea 
+            class="reflection-textarea" 
+            id="reflection-textarea" 
+            placeholder="Write your thoughts here... This reflection will be saved privately on your device."
+        ></textarea>
+        <button class="save-reflection-btn" id="save-reflection-btn">
+            Save Reflection
+        </button>
+    </section>
+
+    <!-- Completion Message -->
+    <div class="completion-message" id="completion-message">
+        <div class="completion-icon">🏛️</div>
+        <h2 class="completion-title">Journey Complete</h2>
+        <p class="completion-text">
+            You have crossed all four thresholds of the Agoge. Strength, resilience, and virtue walk with you.<br><br>
+            Your reflections have been saved. Return whenever you wish to review your path.
+        </p>
+    </div>
+
+    <!-- Back to Home -->
+    <div style="text-align: center; padding: 2rem;">
+        <a href="index.html" class="back-link">← Return to Project Agoge</a>
+    </div>
+
+    <script>
+        // Journey state management
+        const STORAGE_KEY = 'agogeJourneyProgress';
+        const REFLECTION_KEY = 'agogeReflections';
+        
+        const nodes = document.querySelectorAll('.symbol-node');
+        const reflectionSection = document.getElementById('reflection-section');
+        const reflectionTextarea = document.getElementById('reflection-textarea');
+        const reflectionPrompt = document.getElementById('reflection-prompt');
+        const saveReflectionBtn = document.getElementById('save-reflection-btn');
+        const completionMessage = document.getElementById('completion-message');
+        const progressCount = document.getElementById('progress-count');
+        const progressFill = document.getElementById('progress-fill');
+        const journeyCenter = document.getElementById('journey-center');
+
+        let currentStage = null;
+
+        // Stage-specific reflection prompts
+        const reflectionPrompts = {
+            thresholds: "What thresholds are you facing in your own life? What identity are you leaving behind, and what are you becoming?",
+            ordeal: "What trials have tested you and made you stronger? How have you grown through adversity?",
+            transformation: "What parts of yourself have you let go of? What have you transformed into?",
+            return: "Who do you wish to become? What responsibilities are you ready to embrace?"
+        };
+
+        // Load saved progress
+        function loadProgress() {
+            const saved = localStorage.getItem(STORAGE_KEY);
+            return saved ? JSON.parse(saved) : {};
+        }
+
+        // Save progress
+        function saveProgress(progress) {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(progress));
+        }
+
+        // Load reflections
+        function loadReflections() {
+            const saved = localStorage.getItem(REFLECTION_KEY);
+            return saved ? JSON.parse(saved) : {};
+        }
+
+        // Save reflection
+        function saveReflection(stage, text) {
+            const reflections = loadReflections();
+            reflections[stage] = {
+                text: text,
+                timestamp: new Date().toISOString()
+            };
+            localStorage.setItem(REFLECTION_KEY, JSON.stringify(reflections));
+        }
+
+        // Update UI based on progress
+        function updateUI() {
+            const progress = loadProgress();
+            const completedCount = Object.values(progress).filter(v => v).length;
+            
+            // Update nodes
+            nodes.forEach(node => {
+                const stage = node.dataset.stage;
+                if (progress[stage]) {
+                    node.classList.add('completed');
+                }
+            });
+
+            // Update progress bar
+            progressCount.textContent = completedCount;
+            progressFill.style.width = `${(completedCount / 4) * 100}%`;
+
+            // Show completion message if all done
+            if (completedCount === 4) {
+                setTimeout(() => {
+                    completionMessage.classList.add('visible');
+                    journeyCenter.classList.add('awakened');
+                }, 500);
+            }
+        }
+
+        // Toggle stage completion
+        nodes.forEach(node => {
+            node.addEventListener('click', () => {
+                const stage = node.dataset.stage;
+                const progress = loadProgress();
+                
+                // Toggle completion
+                progress[stage] = !progress[stage];
+                saveProgress(progress);
+                
+                // Update UI
+                node.classList.toggle('completed');
+                updateUI();
+
+                // Show reflection section
+                currentStage = stage;
+                reflectionPrompt.textContent = reflectionPrompts[stage];
+                
+                // Load existing reflection if any
+                const reflections = loadReflections();
+                if (reflections[stage]) {
+                    reflectionTextarea.value = reflections[stage].text;
+                } else {
+                    reflectionTextarea.value = '';
+                }
+
+                // Scroll to reflection
+                reflectionSection.classList.add('visible');
+                setTimeout(() => {
+                    reflectionSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }, 100);
+            });
+        });
+
+        // Save reflection button
+        saveReflectionBtn.addEventListener('click', () => {
+            const text = reflectionTextarea.value.trim();
+            
+            if (!text) {
+                alert('Please write your reflection first.');
+                return;
+            }
+
+            if (!currentStage) {
+                alert('Please select a stage first.');
+                return;
+            }
+
+            saveReflection(currentStage, text);
+            
+            // Show confirmation
+            const originalText = saveReflectionBtn.textContent;
+            saveReflectionBtn.textContent = '✓ Saved';
+            saveReflectionBtn.style.background = 'linear-gradient(135deg, #4a5a3a 0%, #5a6a4a 100%)';
+            
+            setTimeout(() => {
+                saveReflectionBtn.textContent = originalText;
+                saveReflectionBtn.style.background = '';
+            }, 2000);
+        });
+
+        // Initialize fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // Initialize on load
+        updateUI();
+
+        // Show reflection section after a delay
+        setTimeout(() => {
+            reflectionSection.classList.add('visible');
+        }, 1500);
+    </script>
+</body>
+</html>
